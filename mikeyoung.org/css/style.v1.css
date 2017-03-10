@@ -1,13 +1,40 @@
+@font-face {
+	font-family: 'QuentinEF';
+	src: url('../fonts/QuentinEF.eot');
+	src: local('☺'), url('../fonts/QuentinEF.woff') format('woff'), url('../fonts/QuentinEF.ttf') format('truetype'), url('../fonts/QuentinEF.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
+@font-face {
+	font-family: 'futurabc';
+	src: url('../fonts/FUTURABC.eot');
+	src: local('☺'), url('../fonts/FUTURABC.woff') format('woff'), url('../fonts/FUTURABC.ttf') format('truetype'), url('../fonts/FUTURABC.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'futura-book';
+	src: url('../fonts/futura-book.eot');
+	src: local('☺'), url('../fonts/futura-book.woff') format('woff'), url('../fonts/futura-book.ttf') format('truetype'), url('../fonts/futura-book.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body,
 button,
 input,
 select,
-textarea {
-	font-family: 'Almendra', serif;
+textarea,
+pre,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'futura-book', serif;
 }
 
 h1,
@@ -16,9 +43,50 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Almendra', serif;
+	font-family: 'futurabc', serif;
+	text-transform: uppercase;
 }
 
-pre {
-	font-family: 'Almendra', serif;
+
+.site-branding,
+.site-title {
+	font-family: 'QuentinEF', serif;
+	font-weight: 400 !important;
+}
+
+.thac0-table {
+	float: none;
+	width: 100%;
+}
+
+.thac0-table th {
+	border: 1px solid #000;
+	background-color: #eee;
+	text-align: center;
+}
+
+.thac0-table td {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+@media screen and ( min-width: 45em ) {
+	.thac0-table {
+		float: left;
+		width: 50%;
+	}
+
+	.thac0-table:nth-child(even) th:first-child {
+		border-left: 0 none;
+	}
+
+	.thac0-table:nth-child(even) td:first-child {
+		border-left: 0 none;
+	}
+}
+
+.clear {
+	clear: both;
+	display: block;
+	height: 0;
 }
