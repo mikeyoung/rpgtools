@@ -5,6 +5,16 @@
  * @package Libre
  */
 
+ /* BEGIN MIKE YOUNG FUNCTIONS */
+ function printFormattedAttribute($label,$value,$modifiers = '') {
+	  echo "<div><span class='field-label'>$label:</span> <span class='field-value'>$value";
+	  if ($modifiers != "") {
+	  	echo  " (Modifiers: $modifiers)";
+	  }
+	  echo "</span></div>";
+ }
+ /* END MIKE YOUNG FUNCTIONS */
+
 if ( ! function_exists( 'libre_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

@@ -9,7 +9,7 @@
 @font-face {
 	font-family: 'futurabc';
 	src: url('../fonts/FUTURABC.eot');
-	src: local('☺'), url('../fonts/FUTURABC.woff') format('woff'), url('../fonts/FUTURABC.ttf') format('truetype'), url('../fonts/FUTURABC.svg') format('svg');
+	src: local('☺'), url('../fonts/futurabc.woff') format('woff'), url('../fonts/futurabc.ttf') format('truetype'), url('../fonts/futurabc.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -70,23 +70,92 @@ h6 {
 	text-align: center;
 }
 
+.clear {
+	clear: both;
+	display: block;
+	height: 0;
+}
+
 @media screen and ( min-width: 45em ) {
 	.thac0-table {
 		float: left;
 		width: 50%;
 	}
 
-	.thac0-table:nth-child(even) th:first-child {
-		border-left: 0 none;
-	}
-
-	.thac0-table:nth-child(even) td:first-child {
+	.thac0-table-right th:first-child,
+	.thac0-table-right td:first-child {
 		border-left: 0 none;
 	}
 }
 
-.clear {
+.thac0-tableL {
 	clear: both;
-	display: block;
-	height: 0;
+}
+
+.field-label {
+	text-transform: uppercase;
+}
+
+.field-value {
+	font-style: italic;
+	text-transform: capitalize;
+}
+
+.post-edit-link {
+	display: none;
+}
+
+.weapon-details {
+	margin-bottom: 2em;
+}
+
+.weapon-name {
+	font-weight: 700;
+	margin-bottom: .5em;
+	text-transform: uppercase;
+	font-family: 'futurabc';
+	font-size: 1.1em;
+}
+
+.thac0-key-table {
+	display: none;
+}
+
+.thac0-key-table td {
+	border: 1px solid #000;
+	text-align: center;
+	padding: 0 1em;
+
+}
+
+.thac0-table-left {
+	clear: both;
+}
+
+.thac0-key-table td:nth-child(1) {
+	border: 0 none;
+}
+
+.thac0-key-table td:nth-child(2) {
+	background-color: #eee;
+}
+
+.weapon-roll-table h3 {
+	font-size: 1.1em;
+	margin: 0;
+}
+
+@media screen and ( min-width: 45em ) {
+	.weapon-roll-table h3 {
+		float: left;
+		margin: 0;
+	}
+
+	.thac0-key-table {
+		display: table;
+		width: initial;
+		font-size: .8em;
+		margin-top: 0;
+		float: right;
+	}
 }
