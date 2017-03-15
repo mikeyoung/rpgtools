@@ -47,33 +47,114 @@ h6 {
 	text-transform: uppercase;
 }
 
-
-.site-branding,
-.site-title {
-	font-family: 'QuentinEF', serif;
-	font-weight: 400 !important;
-}
-
-.thac0-table {
-	float: none;
-	width: 100%;
-}
-
-.thac0-table th {
-	border: 1px solid #000;
-	background-color: #eee;
-	text-align: center;
-}
-
-.thac0-table td {
-	border: 1px solid #000;
-	text-align: center;
+h3 {
+	font-weight: 700;
+	margin: 0;
+	font-size: 1.1em;
 }
 
 .clear {
 	clear: both;
 	display: block;
 	height: 0;
+}
+
+.entry-title {
+	font-size: 1.4em !important;
+}
+
+.character-overview {
+	margin: 0 auto;
+	width: 300px;
+}
+
+@media screen and ( min-width: 45em ) {
+	.character-overview {
+		float: left;
+		margin: 0;
+		width: 50%;
+	}
+}
+
+.character-portrait {
+	display: block;
+	max-width: 300px;
+	margin: 0 auto;
+	-webkit-filter: grayscale(100%);
+  	filter: grayscale(100%) ;
+}
+
+@media screen and ( min-width: 45em ) {
+	.character-portrait {
+		float: right;
+		margin: 0 0 2em 2em;
+		width: 40%;
+	}
+}
+
+ul.stat-list,
+ul.stat-list li {
+	display: block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.stat-list li:nth-child(odd) {
+	background-color: #ccc;
+}
+
+ul.stat-list li {
+	padding: 0 1em;
+}
+
+.site-header {
+	margin-bottom: 2em;
+}
+
+.site,
+#page {
+	margin: 0 auto;
+}
+
+.single-post header {
+	padding: 0;
+	margin: 0;
+}
+
+.single-post .site-title {
+	display: none;
+}
+
+.site-branding,
+.site-title {
+	font-family: 'QuentinEF', serif;
+	font-weight: 400 !important;
+	text-transform: uppercase;
+}
+
+.horz-table {
+	width: 100%;
+}
+
+.horz-table th {
+	border: 1px solid #000;
+	background-color: #ccc;
+	text-align: center;
+}
+
+.horz-table td {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.save-table {
+	width: 100%;
+}
+
+.stat-box {
+	margin: 1em 0;
+	padding: .5em;
 }
 
 @media screen and ( min-width: 45em ) {
@@ -109,13 +190,6 @@ h6 {
 	margin-bottom: 2em;
 }
 
-.weapon-name {
-	font-weight: 700;
-	margin-bottom: .5em;
-	text-transform: uppercase;
-	font-family: 'futurabc';
-	font-size: 1.1em;
-}
 
 .thac0-key-table {
 	display: none;
@@ -137,7 +211,7 @@ h6 {
 }
 
 .thac0-key-table td:nth-child(2) {
-	background-color: #eee;
+	background-color: #ccc;
 }
 
 .weapon-roll-table h3 {
