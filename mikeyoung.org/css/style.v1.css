@@ -195,49 +195,13 @@ ul.stat-list li {
 }
 
 
-.thac0-key-table {
+[v-cloak] {
 	display: none;
 }
 
-.thac0-key-table td {
-	border: 1px solid #000;
-	text-align: center;
-	padding: 0 1em;
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
 }
-
-.thac0-table-left {
-	clear: both;
-}
-
-.thac0-key-table td:nth-child(1) {
-	border: 0 none;
-}
-
-.thac0-key-table td:nth-child(2) {
-	background-color: #ccc;
-}
-
-.weapon-roll-table {
-	font-size: .75rem;
-}
-
-.weapon-roll-table h3 {
-	font-size: 1.1em;
-	margin: 0;
-}
-
-@media screen and ( min-width: 45em ) {
-	.weapon-roll-table h3 {
-		float: left;
-		margin: 0;
-	}
-
-	.thac0-key-table {
-		display: table;
-		width: initial;
-		font-size: .8em;
-		margin-top: 0;
-		float: right;
-	}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
 }
