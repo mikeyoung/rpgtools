@@ -6,13 +6,10 @@
  */
 
  /* BEGIN MIKE YOUNG FUNCTIONS */
- function printFormattedAttribute($label,$value,$modifiers = '') {
+ function printFormattedAttribute($label,$value) {
 	  echo "<div><span class='field-label'>$label:</span> <span class='field-value'>$value";
 	  if ($label == 'Strength' && get_field('exceptional_strength') > 0) {
 		  echo  "/".get_field('exceptional_strength');
-	  }
-	  if ($modifiers != "" && strtolower($modifiers) != "nil") {
-	  	echo  " (Mod: $modifiers)";
 	  }
 	  echo "</span></div>";
  }
