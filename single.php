@@ -11,10 +11,7 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
-
-
-
-
+			2{{ title.rendered }}2
 			<img class="character-portrait" src="<?= wp_get_attachment_url( get_post_thumbnail_id(), 'large') ?>" />
 			<div class="character-overview">
 				<header class="entry-header">
@@ -56,11 +53,12 @@ get_header(); ?>
 				</ul>
 			</div>
 			<div class="stat-box">
-				<h3>ARMOR CLASS</h3>
+				<h3>ARMOR</h3>
 				<ul class="stat-list">
-					<li><?php printFormattedAttribute('Full',get_field('armor_class_full')) ?></li>
+					<li><?php printFormattedAttribute('Armor',get_field('armor')) ?></li>
+					<li><?php printFormattedAttribute('Shield',get_field('shield')) ?></li>
+					<li><?php printFormattedAttribute('Armor Class',get_field('armor_class')) ?></li>
 					<li><?php printFormattedAttribute('Shieldless',get_field('armor_class_shieldless')) ?></li>
-					<li><?php printFormattedAttribute('Surprised / Immobile',get_field('armor_class_surprised__immobile')) ?></li>
 				</ul>
 			</div>
 			<br class="clear" />
@@ -113,3 +111,14 @@ get_header(); ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
+<script>
+function startVue(theData) {
+	var vm = new Vue({
+		el: "#primary",
+		data: theData
+	});
+}
+
+jQuery.getJSON("/wordpress/wp-json/wp/v2/posts/98", startVue);
+
+</script>
