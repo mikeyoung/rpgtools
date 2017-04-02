@@ -7,11 +7,31 @@
 
  /* BEGIN MIKE YOUNG FUNCTIONS */
  function printFormattedAttribute($label,$value) {
-	  echo "<div><span class='field-label'>$label:</span> <span class='field-value'>$value";
+	  echo "<div><span class='field-label'>$label:</span> <span class='field-value'>$value</span></div>";
+ }
+
+ function printAbility($label,$value) {
+	 /*
+	  echo "<div class=""<div class="abilityLabel"><span class='field-label'>$label:</span> <span class='field-value'>$value";
 	  if ($label == 'Strength' && get_field('exceptional_strength') > 0) {
 		  echo  "/".get_field('exceptional_strength');
 	  }
 	  echo "</span></div>";
+	  */
+	  echo "
+	  <div class='ability-container'>
+	  	<div class='ability-label'>$label</div>
+		<div class='ability-value'>$value</div>
+	  </div>
+	  ";
+ }
+
+ function formatMod($theNumber) {
+	$modSign = "";
+	if ($theNumber > 0) {
+		$modSign = "+";
+	}
+	return "$modSign"."$theNumber";
  }
  /* END MIKE YOUNG FUNCTIONS */
 

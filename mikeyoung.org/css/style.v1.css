@@ -67,33 +67,24 @@ h3 {
 	font-size: 1.4em !important;
 }
 
-.character-overview {
-	margin: 0 auto;
-	width: 300px;
+.sheet-top {
+	padding-bottom: 1em;
 }
 
-@media screen and ( min-width: 45em ) {
-	.character-overview {
-		float: left;
-		margin: 0;
-		width: 50%;
-	}
+.character-overview {
+	width: 50%;
+	float: left;
+	margin: 0;
 }
 
 .character-portrait {
+	float: right;
+	margin: 0 0 2em 2em;
+	width: 40%;
 	display: block;
-	max-width: 300px;
-	margin: 0 auto;
 	-webkit-filter: grayscale(100%);
-  	filter: grayscale(100%) ;
-}
-
-@media screen and ( min-width: 45em ) {
-	.character-portrait {
-		float: right;
-		margin: 0 0 2em 2em;
-		width: 40%;
-	}
+	filter: grayscale(100%);
+	border: 1px solid #000;
 }
 
 ul.stat-list,
@@ -158,23 +149,6 @@ ul.stat-list li {
 
 .stat-box {
 	margin: 1em 0;
-	padding: .5em;
-}
-
-@media screen and ( min-width: 45em ) {
-	.thac0-table {
-		float: left;
-		width: 50%;
-	}
-
-	.thac0-table-right th:first-child,
-	.thac0-table-right td:first-child {
-		border-left: 0 none;
-	}
-}
-
-.thac0-tableL {
-	clear: both;
 }
 
 .field-label {
@@ -194,14 +168,119 @@ ul.stat-list li {
 	margin-bottom: 2em;
 }
 
+.ability-scores-area,
+.saving-throw-area {
+	float: left;
+}
+
+.ability-scores-area {
+	width: 65%;
+}
+
+.saving-throw-area {
+	width: 35%;
+}
+
+.ability-scores-table {
+	width: 100%;
+	margin-bottom: .5em;
+}
+
+.ability-scores-table td {
+	vertical-align: middle;
+}
+
+.ability-container {
+	display: block;
+	float: left;
+	width: 12%;
+}
+
+.ability-value-cell {
+	font-family: 'IM Fell English', serif;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 700;
+    border: 2px solid #000;
+    height: 1.2em;
+    width: 2.7em;
+    line-height: 0;
+}
+
+.ability-label-cell {
+	font-family: 'IM Fell English', serif;
+    font-size: 1.5em;
+    text-align: left;
+    padding-left: .5em;
+    width: 3em;
+    line-height: 0;
+    padding-top: .3em;
+}
+
+.ability-details-cell {
+	font-size: .7em;
+}
+
+.save-value-cell {
+    font-size: 1.5em;
+    height: 1.5em;
+    width: 1.5em;
+    background-color: #000;
+    border: 1px solid #000;
+    display: block;
+	border: 3px solid #000;
+}
+
+.save-value-inner {
+    font-family: 'IM Fell English', serif;
+    font-size: 1em;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.saves-table {
+	margin: 0;
+	padding: 0;
+}
+
+.saves-table td {
+	margin: 0;
+	padding: 0;
+}
+
+td.save-label-cell {
+	font-family: 'Corben', cursive;
+	font-weight: 700;
+	padding-left: .8em;
+    vertical-align: middle;
+    font-size: .6em;
+    line-height: 1.6em;
+	width: 100%;
+ }
+
+ .save-pad-cell {
+	 height: .5em;
+	 background-color: #000;
+ }
 
 [v-cloak] {
 	display: none;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0
+@media print {
+	#secondary {
+		display: none;
+	}
+
+	.singular .site-main {
+		margin: 0;
+	}
+
+	.character-portrait {
+		margin: 0;
+	}
 }
