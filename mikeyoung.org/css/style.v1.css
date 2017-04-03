@@ -77,6 +77,10 @@ h3 {
 	margin: 0;
 }
 
+.character-summary-block {
+	font-size: .9rem;
+}
+
 .character-portrait {
 	float: right;
 	margin: 0 0 2em 2em;
@@ -96,7 +100,7 @@ ul.stat-list li {
 }
 
 ul.stat-list li:nth-child(odd) {
-	background-color: #ccc;
+	background-color: #ddd;
 }
 
 ul.stat-list li {
@@ -260,12 +264,52 @@ td.save-label-cell {
     font-size: .6em;
     line-height: 1.6em;
 	width: 100%;
- }
+}
 
- .save-pad-cell {
+.save-pad-cell {
 	 height: .5em;
 	 background-color: #000;
- }
+}
+
+.defense-detail-table {
+	width: 100%;
+	margin-top: 1.5em;
+}
+
+.defense-detail-ac {
+	text-align: center;
+	font-size: 1.5em;
+	font-family: 'Corben', cursive;
+	font-weight: 700;
+	width: 10%;
+}
+
+.defense-detail-adj-ac,
+.defense-detail-armor {
+	font-size: .8em;
+}
+
+.defense-detail-adj-ac {
+	width: 35%;
+}
+
+.defense-detail-armor {
+	width: 55%;
+}
+
+.defense-detail-table th {
+	text-align: left;
+}
+
+.defense-detail-table td {
+	border: 2px solid #000;
+	vertical-align: top;
+}
+
+.hit-points-table {
+	width: 25%;
+	float: right;
+}
 
 [v-cloak] {
 	display: none;
