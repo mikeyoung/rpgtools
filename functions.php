@@ -227,10 +227,218 @@ function getWeaponsArray() {
 		"speed" => 15,
 		"damageSM" => "1d10",
 		"damageL" => "1d10",
+		"rof" => "1/3",
+		"rangeS" => "50",
+		"rangeM" => "150",
+		"rangeL" => "210",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Battle Axe",
+		"size" => "M",
+		"type" => "S",
+		"speed" => 7,
+		"damageSM" => "1d8",
+		"damageL" => "1d8",
 		"rof" => "n/a",
 		"rangeS" => "n/a",
 		"rangeM" => "n/a",
 		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Blowgun w/ Barbed Dart",
+		"size" => "S",
+		"type" => "P",
+		"speed" => 5,
+		"damageSM" => "1d3",
+		"damageL" => "1d2",
+		"rof" => "2/1",
+		"rangeS" => "10",
+		"rangeM" => "20",
+		"rangeL" => "30",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Blowgun w/ Needle",
+		"size" => "S",
+		"type" => "P",
+		"speed" => 5,
+		"damageSM" => "1",
+		"damageL" => "1",
+		"rof" => "2/1",
+		"rangeS" => "10",
+		"rangeM" => "20",
+		"rangeL" => "30",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Short Bow w/ Sheaf Arrow",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 7,
+		"damageSM" => "1d8",
+		"damageL" => "1d8",
+		"rof" => "2/1",
+		"rangeS" => "50",
+		"rangeM" => "100",
+		"rangeL" => "150",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Long Bow w/ Sheaf Arrow",
+		"size" => "L",
+		"type" => "P",
+		"speed" => 8,
+		"damageSM" => "1d8",
+		"damageL" => "1d8",
+		"rof" => "2/1",
+		"rangeS" => "50",
+		"rangeM" => "100",
+		"rangeL" => "170",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Long Bow w/ Flight Arrow",
+		"size" => "L",
+		"type" => "P",
+		"speed" => 8,
+		"damageSM" => "1d6",
+		"damageL" => "1d6",
+		"rof" => "2/1",
+		"rangeS" => "70",
+		"rangeM" => "140",
+		"rangeL" => "210",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Composite Short Bow w/ Sheaf Arrow",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 6,
+		"damageSM" => "1d8",
+		"damageL" => "1d8",
+		"rof" => "2/1",
+		"rangeS" => "50",
+		"rangeM" => "100",
+		"rangeL" => "180",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Composite Long Bow w/ Sheaf Arrow",
+		"size" => "L",
+		"type" => "P",
+		"speed" => 7,
+		"damageSM" => "1d8",
+		"damageL" => "1d8",
+		"rof" => "2/1",
+		"rangeS" => "40",
+		"rangeM" => "80",
+		"rangeL" => "170",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Composite Long Bow w/ Flight Arrow",
+		"size" => "L",
+		"type" => "P",
+		"speed" => 7,
+		"damageSM" => "1d6",
+		"damageL" => "1d6",
+		"rof" => "2/1",
+		"rangeS" => "60",
+		"rangeM" => "120",
+		"rangeL" => "210",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Club",
+		"size" => "M",
+		"type" => "B",
+		"speed" => 4,
+		"damageSM" => "1d6",
+		"damageL" => "1d3",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Hand Crossbow",
+		"size" => "S",
+		"type" => "P",
+		"speed" => 5,
+		"damageSM" => "1d3",
+		"damageL" => "1d2",
+		"rof" => "1",
+		"rangeS" => "20",
+		"rangeM" => "40",
+		"rangeL" => "60",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Light Crossbow",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 7,
+		"damageSM" => "1d4",
+		"damageL" => "1d4",
+		"rof" => "1",
+		"rangeS" => "60",
+		"rangeM" => "120",
+		"rangeL" => "180",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Heavy Crossbow",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 10,
+		"damageSM" => "1d4+1",
+		"damageL" => "1d6+1",
+		"rof" => "1/2",
+		"rangeS" => "80",
+		"rangeM" => "160",
+		"rangeL" => "240",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Dagger",
+		"size" => "S",
+		"type" => "P",
+		"speed" => 2,
+		"damageSM" => "1d4",
+		"damageL" => "1d3",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Dirk",
+		"size" => "S",
+		"type" => "P",
+		"speed" => 2,
+		"damageSM" => "1d4",
+		"damageL" => "1d3",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Dart",
+		"size" => "S",
+		"type" => "P",
+		"speed" => 2,
+		"damageSM" => "1d3",
+		"damageL" => "1d2",
+		"rof" => "3/1",
+		"rangeS" => "10",
+		"rangeM" => "20",
+		"rangeL" => "40",
 	));
 
 	return $weaponsArray;
