@@ -441,6 +441,20 @@ function getWeaponsArray() {
 		"rangeL" => "40",
 	));
 
+	array_push($weaponsArray, array(
+		"name" => "Footman's Flail",
+		"size" => "M",
+		"type" => "B",
+		"speed" => 7,
+		"damageSM" => "1d6+1",
+		"damageL" => "2d4",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+
 	return $weaponsArray;
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
