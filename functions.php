@@ -454,6 +454,122 @@ function getWeaponsArray() {
 		"rangeL" => "n/a",
 	));
 
+	array_push($weaponsArray, array(
+		"name" => "Footman's Mace",
+		"size" => "M",
+		"type" => "B",
+		"speed" => 7,
+		"damageSM" => "1d6+1",
+		"damageL" => "1d6",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Footman's Pick",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 7,
+		"damageSM" => "1d6+1",
+		"damageL" => "2d4",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Hand Axe / Throwing Axe",
+		"size" => "M",
+		"type" => "S",
+		"speed" => 4,
+		"damageSM" => "1d6",
+		"damageL" => "1d4",
+		"rof" => "1",
+		"rangeS" => "10",
+		"rangeM" => "20",
+		"rangeL" => "30",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Harpoon",
+		"size" => "L",
+		"type" => "P",
+		"speed" => 7,
+		"damageSM" => "2d4",
+		"damageL" => "2d6",
+		"rof" => "1",
+		"rangeS" => "10",
+		"rangeM" => "20",
+		"rangeL" => "30",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Horseman's Flail",
+		"size" => "M",
+		"type" => "B",
+		"speed" => 6,
+		"damageSM" => "1d4+1",
+		"damageL" => "1d4+1",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Horseman's Mace",
+		"size" => "M",
+		"type" => "B",
+		"speed" => 6,
+		"damageSM" => "1d6",
+		"damageL" => "1d4",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Horseman's Pick",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 5,
+		"damageSM" => "1d4+1",
+		"damageL" => "1d4",
+		"rof" => "n/a",
+		"rangeS" => "n/a",
+		"rangeM" => "n/a",
+		"rangeL" => "n/a",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Javelin",
+		"size" => "M",
+		"type" => "P",
+		"speed" => 4,
+		"damageSM" => "1d6",
+		"damageL" => "1d6",
+		"rof" => "1",
+		"rangeS" => "20",
+		"rangeM" => "40",
+		"rangeL" => "60",
+	));
+
+	array_push($weaponsArray, array(
+		"name" => "Knife",
+		"size" => "S",
+		"type" => "P/S",
+		"speed" => 2,
+		"damageSM" => "1d3",
+		"damageL" => "1d2",
+		"rof" => "2/1",
+		"rangeS" => "10",
+		"rangeM" => "20",
+		"rangeL" => "30",
+	));
 
 	return $weaponsArray;
 }
