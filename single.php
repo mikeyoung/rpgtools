@@ -239,6 +239,37 @@ get_header(); ?>
 									?>
 								</div>
 
+								<table class="weapons-table">
+									<tr>
+										<th colspan="6" class="no-border"></th>
+										<th colspan="2">Damage</th>
+										<th class="no-border"></th>
+										<th colspan="3">Range</th>
+										<th colspan="2" class="no-border"></th>
+									</tr>
+									<tr>
+										<th>Weapon</th>
+										<th># AT</th>
+										<th>ROF</th>
+										<th>AT Adj</th>
+										<th>THAC0</th>
+										<th>Dmg Adj</th>
+										<th>S / M</th>
+										<th>L</th>
+										<th>Dmg Type</th>
+										<th>S</th>
+										<th>M (-2)</th>
+										<th>L (-5)</th>
+										<th>Size</th>
+										<th>Speed</th>
+									</tr>
+									<tr>
+									</tr>
+									<tr>
+										<td colspan="14">Notes: </td>
+									</tr>
+								</table>
+
 								<?php
 									$weapon_thac0 = (int) get_sub_field('thac0');
 								?>

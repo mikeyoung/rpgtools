@@ -342,14 +342,14 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Load AD&D general functions
  */
-require get_template_directory() . '/add-functions.php';
+require get_template_directory() . '/mikeyoung.org/php/add-functions.php';
 
 /**
  * Load AD&D weapons function
  */
-require get_template_directory() . '/add-weapons.php';
+require get_template_directory() . '/mikeyoung.org/php/add-weapons.php';
 
 /**
  * Load AD&D armor function
  */
-require get_template_directory() . '/add-armor.php';
+require get_template_directory() . '/mikeyoung.org/php/add-armor.php';
