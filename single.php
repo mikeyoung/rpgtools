@@ -16,8 +16,8 @@ get_header(); ?>
 						<!-- <img class="character-portrait" src="<?= wp_get_attachment_url( get_post_thumbnail_id(), 'large') ?>" />  -->
 						<div class="character-overview">
 							<header class="entry-header">
-								<h1 class="entry-title"><?= single_post_title() ?></h1>
 								<div class="character-summary-block">
+									<h1 class="entry-title"><?= single_post_title() ?></h1>
 									<?php printFormattedAttribute('Player Name',get_field('player_name')) ?>
 									<?php printFormattedAttribute('Alignment',get_field('alignment')) ?>
 									<?php printFormattedAttribute('Race',get_field('race')) ?>
@@ -33,116 +33,129 @@ get_header(); ?>
 								</div>
 							</header><!-- .entry-header -->
 						</div>
+
+						<div class="ability-scores-area">
+							<h3>ABILITIES</h3>
+							<table class="ability-scores-table">
+								<tr>
+									<td class="ability-value-cell"><?= get_field('strength') ?><?php if (get_field('exceptional_strength') > 0) {echo  "/".get_field('exceptional_strength');}	?></td>
+									<td class="ability-label-cell">
+										STR
+										<div class="ability-details">
+											<?= printStrHit(get_field('strength'),get_field('exceptional_strength')) ?>,
+											<?= printStrDmg(get_field('strength'),get_field('exceptional_strength')) ?>,
+											<?= printStrDoors(get_field('strength'),get_field('exceptional_strength')) ?>,
+											<?= printStrBarsGates(get_field('strength'),get_field('exceptional_strength')) ?>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table class="ability-scores-table">
+								<tr>
+									<td class="ability-value-cell"><?= get_field('intelligence') ?></td>
+									<td class="ability-label-cell">
+										INT
+										<div class="ability-details">
+											<?= printIntMaxSpellLevel(get_field('intelligence')) ?>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table class="ability-scores-table">
+								<tr>
+									<td class="ability-value-cell"><?= get_field('wisdom') ?></td>
+									<td class="ability-label-cell">
+										WIS
+										<div class="ability-details">
+											<?= printWisMagDefAdj(get_field('wisdom')) ?>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table class="ability-scores-table">
+								<tr>
+									<td class="ability-value-cell"><?= get_field('dexterity') ?></td>
+									<td class="ability-label-cell">
+										DEX
+										<div class="ability-details">
+											<?= printDexMissileAttack(get_field('dexterity')) ?>,
+											<?= printDexDefAdj(get_field('dexterity')) ?>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table class="ability-scores-table">
+								<tr>
+									<td class="ability-value-cell"><?= get_field('constitution') ?></td>
+									<td class="ability-label-cell">
+										CON
+										<div class="ability-details">
+											Hit Point Adj: <?= formatMod(get_field('constitution_hit_point_adjustment')) ?>,
+											<?= printConPoisonAdj(get_field('constitution')) ?>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table class="ability-scores-table">
+								<tr>
+									<td class="ability-value-cell"><?= get_field('charisma') ?></td>
+									<td class="ability-label-cell">CHA</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="saving-throw-area">
+							<h3>SAVING THROWS</h3>
+							<table class="saves-table">
+								<tr>
+									<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_paralyzation_poison_or_death_magic') ?></div></td>
+									<td class="save-label-cell">Paralyzation, Poison,<br />or Death Magic</td>
+								</tr>
+								<tr>
+									<td class="save-pad-cell"></td>
+									<td></td>
+								</tr>
+							</table>
+							<table class="saves-table">
+								<tr>
+									<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_rod_staff_or_wand') ?></div></td>
+									<td class="save-label-cell">Rod, Staff, or Wand</td>
+								</tr>
+								<tr>
+									<td class="save-pad-cell"></td>
+									<td></td>
+								</tr>
+							</table>
+							<table class="saves-table">
+								<tr>
+									<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_petrification_or_polymorph') ?></div></td>
+									<td class="save-label-cell">Petrification<br />or Polymorph</td>
+								</tr>
+								<tr>
+									<td class="save-pad-cell"></td>
+									<td></td>
+								</tr>
+							</table>
+							<table class="saves-table">
+								<tr>
+									<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_breath_weapon') ?></div></td>
+									<td class="save-label-cell">Breath Weapon</td>
+								</tr>
+								<tr>
+									<td class="save-pad-cell"></td>
+									<td></td>
+								</tr>
+							</table>
+							<table class="saves-table">
+								<tr>
+									<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_spell') ?></div></td>
+									<td class="save-label-cell">Spell</td>
+								</tr>
+							</table>
+							<div class="current-hp">Hit Points:</div>
+						</div>
 						<br class="clear" />
 					</div>
-					<div class="ability-scores-area">
-						<h3>ABILITIES</h3>
-						<table class="ability-scores-table">
-							<tr>
-								<td class="ability-value-cell"><?= get_field('strength') ?><?php if (get_field('exceptional_strength') > 0) {echo  "/".get_field('exceptional_strength');}	?></td>
-								<td class="ability-label-cell">STR</td>
-								<td class="ability-details-cell">
-									(<?= printStrHit(get_field('strength'),get_field('exceptional_strength')) ?>,
-									<?= printStrDmg(get_field('strength'),get_field('exceptional_strength')) ?>,
-									<?= printStrDoors(get_field('strength'),get_field('exceptional_strength')) ?>,
-									<?= printStrBarsGates(get_field('strength'),get_field('exceptional_strength')) ?>)
-								</td>
-							</tr>
-						</table>
-						<table class="ability-scores-table">
-							<tr>
-								<td class="ability-value-cell"><?= get_field('intelligence') ?></td>
-								<td class="ability-label-cell">INT</td>
-								<td class="ability-details-cell">
-									(<?= printIntMaxSpellLevel(get_field('intelligence')) ?>)
-								</td>
-							</tr>
-						</table>
-						<table class="ability-scores-table">
-							<tr>
-								<td class="ability-value-cell"><?= get_field('wisdom') ?></td>
-								<td class="ability-label-cell">WIS</td>
-								<td class="ability-details-cell">(<?= printWisMagDefAdj(get_field('wisdom')) ?>)</td>
-							</tr>
-						</table>
-						<table class="ability-scores-table">
-							<tr>
-								<td class="ability-value-cell"><?= get_field('dexterity') ?></td>
-								<td class="ability-label-cell">DEX</td>
-								<td class="ability-details-cell">
-									(<?= printDexMissileAttack(get_field('dexterity')) ?>,
-									<?= printDexDefAdj(get_field('dexterity')) ?>)
-								</td>
-							</tr>
-						</table>
-						<table class="ability-scores-table">
-							<tr>
-								<td class="ability-value-cell"><?= get_field('constitution') ?></td>
-								<td class="ability-label-cell">CON</td>
-								<td class="ability-details-cell">
-									(Hit Point Adj: <?= formatMod(get_field('constitution_hit_point_adjustment')) ?>,
-									<?= printConPoisonAdj(get_field('constitution')) ?>)
-								</td>
-							</tr>
-						</table>
-						<table class="ability-scores-table">
-							<tr>
-								<td class="ability-value-cell"><?= get_field('charisma') ?></td>
-								<td class="ability-label-cell">CHA</td>
-								<td class="ability-details-cell">&nbsp;</td>
-							</tr>
-						</table>
-					</div>
-					<div class="saving-throw-area">
-						<h3>SAVING THROWS</h3>
-						<table class="saves-table">
-							<tr>
-								<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_paralyzation_poison_or_death_magic') ?></div></td>
-								<td class="save-label-cell">Paralyzation, Poison,<br />or Death Magic</td>
-							</tr>
-							<tr>
-								<td class="save-pad-cell"></td>
-								<td></td>
-							</tr>
-						</table>
-						<table class="saves-table">
-							<tr>
-								<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_rod_staff_or_wand') ?></div></td>
-								<td class="save-label-cell">Rod, Staff, or Wand</td>
-							</tr>
-							<tr>
-								<td class="save-pad-cell"></td>
-								<td></td>
-							</tr>
-						</table>
-						<table class="saves-table">
-							<tr>
-								<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_petrification_or_polymorph') ?></div></td>
-								<td class="save-label-cell">Petrification or Polymorph</td>
-							</tr>
-							<tr>
-								<td class="save-pad-cell"></td>
-								<td></td>
-							</tr>
-						</table>
-						<table class="saves-table">
-							<tr>
-								<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_breath_weapon') ?></div></td>
-								<td class="save-label-cell">Breath Weapon</td>
-							</tr>
-							<tr>
-								<td class="save-pad-cell"></td>
-								<td></td>
-							</tr>
-						</table>
-						<table class="saves-table">
-							<tr>
-								<td class="save-value-cell"><div class="save-value-inner"><?= get_field('save_vs_spell') ?></div></td>
-								<td class="save-label-cell">Spell</td>
-							</tr>
-						</table>
-					</div>
-					<br class="clear" />
 
 					<table class="defense-detail-table">
 						<tr>
@@ -211,7 +224,7 @@ get_header(); ?>
 
 					<?php
 						if( have_rows('weapon_profiles') ):
-							echo "<h3>WEAPONS</h3>";
+							echo '<h3>WEAPONS</h3>';
 							while ( have_rows('weapon_profiles') ) : the_row();
 					?>
 
@@ -241,7 +254,7 @@ get_header(); ?>
 								?>
 											<table class="weapons-table">
 												<tr>
-													<th colspan="2" class="no-border"><?= strtoupper($weapon['name']) ?></th>
+													<th colspan="2" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?></th>
 													<th colspan="2">THAC0</th>
 													<th colspan="2">Damage</th>
 													<th class="no-border"></th>
@@ -280,23 +293,10 @@ get_header(); ?>
 												<tr>
 													<td colspan="13" class="weapon-notes">Notes: <?= get_sub_field('notes') ?>. Raw Attack Adj: <?= get_sub_field('attack_adjustment') ?>, Raw Damage Adj: <?= get_sub_field('damage_adjustment') ?>.</td>
 												</tr>
-
-
 											</table>
-								<?php
+					<?php
 										}
 									}
-								?>
-
-
-
-
-
-
-								<?php
-									$weapon_thac0 = (int) get_sub_field('thac0');
-								?>
-							<?php
 							endwhile;
 						else :
 							// no rows found
