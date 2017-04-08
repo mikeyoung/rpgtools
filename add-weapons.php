@@ -139,10 +139,10 @@ function getWeaponsArray() {
             "speed" => 4,
             "damageSM" => "1d6",
             "damageL" => "1d3",
-            "rof" => "n/a",
-            "rangeS" => "n/a",
-            "rangeM" => "n/a",
-            "rangeL" => "n/a",
+            "rof" => "1",
+            "rangeS" => "10",
+            "rangeM" => "20",
+            "rangeL" => "30",
         ),
 
         array(
@@ -594,10 +594,10 @@ function getWeaponsArray() {
             "speed" => 9,
             "damageSM" => "2d4",
             "damageL" => "1d6",
-            "rof" => "n/a",
-            "rangeS" => "n/a",
-            "rangeM" => "n/a",
-            "rangeL" => "n/a",
+            "rof" => "1",
+            "rangeS" => "10",
+            "rangeM" => "20",
+            "rangeL" => "30",
         ),
 
         array(
