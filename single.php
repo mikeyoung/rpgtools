@@ -229,7 +229,7 @@ get_header(); ?>
 									<?php printFormattedAttribute('Damage Adjustment',get_sub_field('damage_adjustment')) ?>
 									<?php printFormattedAttribute('Damage (S,M/L)',get_sub_field('damage')) ?>
 									<?php printFormattedAttribute('Damage Type',get_sub_field('damage_type')) ?>
-									<?php printFormattedAttribute('Range (S/M/L)',get_sub_field('range')) ?>
+									<?php printFormattedAttribute('Range (S/M (-2)/L (-5)',get_sub_field('range')) ?>
 									<?php printFormattedAttribute('Size',get_sub_field('size')) ?>
 									<?php printFormattedAttribute('Speed',get_sub_field('speed')) ?>
 									<?php
