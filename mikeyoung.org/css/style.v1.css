@@ -79,7 +79,7 @@ h3 {
 }
 
 .character-summary-block {
-	font-size: .9rem;
+	font-size: .8em;
 }
 
 .character-portrait {
@@ -203,7 +203,7 @@ ul.stat-list li {
 
 .ability-value-cell {
 	font-family: 'IM Fell English', serif;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     font-weight: 700;
     border: 2px solid #000;
@@ -214,7 +214,7 @@ ul.stat-list li {
 
 .ability-label-cell {
 	font-family: 'IM Fell English', serif;
-    font-size: 1.5em;
+    font-size: 1.1em;
     text-align: left;
     padding-left: .5em;
     width: 3em;

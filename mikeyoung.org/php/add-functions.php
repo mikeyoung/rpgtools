@@ -211,8 +211,8 @@ function printWisMagDefAdj($ability) {
 	return 'Mag. Def. Adj: '.formatMod($stat);
 }
 
-function clog($theOutput) {
-	echo "<script>console.log('$theOutput')</script>";
+function clog($output) {
+	echo "<script>console.log('$output')</script>";
 }
 
 function getFormattedDamage($weaponDmg, $dmgAdj) {

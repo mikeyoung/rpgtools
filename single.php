@@ -13,16 +13,9 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="sheet-top">
-						<img class="character-portrait" src="<?= wp_get_attachment_url( get_post_thumbnail_id(), 'large') ?>" />
+						<!-- <img class="character-portrait" src="<?= wp_get_attachment_url( get_post_thumbnail_id(), 'large') ?>" />  -->
 						<div class="character-overview">
 							<header class="entry-header">
-
-<!-- BEGIN TEMP AREA -->
-<!-- <h1><?= (getWeaponsArray())[0]['name'] ?></h1> -->
-<!-- END TEMP AREA -->
-
-
-
 								<h1 class="entry-title"><?= single_post_title() ?></h1>
 								<div class="character-summary-block">
 									<?php printFormattedAttribute('Player Name',get_field('player_name')) ?>
@@ -96,7 +89,7 @@ get_header(); ?>
 							<tr>
 								<td class="ability-value-cell"><?= get_field('charisma') ?></td>
 								<td class="ability-label-cell">CHA</td>
-								<td class="ability-details-cell"></td>
+								<td class="ability-details-cell">&nbsp;</td>
 							</tr>
 						</table>
 					</div>
@@ -218,28 +211,9 @@ get_header(); ?>
 
 					<?php
 						if( have_rows('weapon_profiles') ):
+							echo "<h3>WEAPONS</h3>";
 							while ( have_rows('weapon_profiles') ) : the_row();
 					?>
-								<div class="weapon-details">
-									<h3><?= get_sub_field('weapon') ?></h3>
-									<?php printFormattedAttribute('No. of Attacks',get_sub_field('number_of_attacks')) ?>
-									<?php printFormattedAttribute('Rate of Fire',get_sub_field('rate_of_fire')) ?>
-									<?php printFormattedAttribute('Attack Adjustment',get_sub_field('attack_adjustment')) ?>
-									<?php printFormattedAttribute('THAC0',get_sub_field('thac0')) ?>
-									<?php printFormattedAttribute('Damage Adjustment',get_sub_field('damage_adjustment')) ?>
-									<?php printFormattedAttribute('Damage (S,M/L)',get_sub_field('damage')) ?>
-									<?php printFormattedAttribute('Damage Type',get_sub_field('damage_type')) ?>
-									<?php printFormattedAttribute('Range (S/M (-2)/L (-5)',get_sub_field('range')) ?>
-									<?php printFormattedAttribute('Size',get_sub_field('size')) ?>
-									<?php printFormattedAttribute('Speed',get_sub_field('speed')) ?>
-									<?php
-										if (get_sub_field('notes') != '') {
-											printFormattedAttribute('notes',get_sub_field('notes'));
-										}
-									?>
-								</div>
-
-								
 
 								<?php
 									$weaponsArray = getWeaponsArray();
@@ -248,21 +222,26 @@ get_header(); ?>
 
 										/* if (strpos($weapon['name'], $sheetWeapon) !== false) { */
 										if (true) {
-											$thac0Melee = ((int) get_field('base_thac0')) - ((int) getStrHit(get_field('strength'),get_field('exceptional_strength'))) - ((int) get_sub_field('attack_adjustment'));
-											$thac0Ranged = ((int) get_field('base_thac0')) - ((int) getDexMissileAttack(get_field('dexterity'))) - ((int) get_sub_field('attack_adjustment'));
+											$thac0Melee = "n/a";
+											$thac0Ranged = "n/a";
+
+											if ($weapon['attackType'] == "melee" || $weapon['attackType'] == "both") {
+												$thac0Melee = ((int) get_field('base_thac0')) - ((int) getStrHit(get_field('strength'),get_field('exceptional_strength'))) - ((int) get_sub_field('attack_adjustment'));
+											}
+
+											if ($weapon['attackType'] == "ranged" || $weapon['attackType'] == "both") {
+												$thac0Ranged = ((int) get_field('base_thac0')) - ((int) getDexMissileAttack(get_field('dexterity'))) - ((int) get_sub_field('attack_adjustment'));
+											}
+
 											$dmgAdj = ((int) get_sub_field('damage_adjustment'));
+											
 											if ($weapon['strDmg'] == "yes") {
 												$dmgAdj = $dmgAdj + getStrDmg(get_field('strength'),get_field('exceptional_strength'));
 											}
-
-
 								?>
 											<table class="weapons-table">
 												<tr>
-													<th colspan="12" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?></th>
-												</tr>
-												<tr>
-													<th colspan="2" class="no-border"></th>
+													<th colspan="2" class="no-border"><?= strtoupper($weapon['name']) ?></th>
 													<th colspan="2">THAC0</th>
 													<th colspan="2">Damage</th>
 													<th class="no-border"></th>
@@ -284,16 +263,25 @@ get_header(); ?>
 													<th>Speed</th>
 												</tr>
 												<tr>
+
 													<td><?= get_sub_field('number_of_attacks') ?></td>
 													<td><?= $weapon['rof'] ?></td>
 													<td><?= $thac0Melee ?></td>
 													<td><?= $thac0Ranged ?></td>
 													<td><?= getFormattedDamage($weapon['damageSM'], $dmgAdj) ?></td>
 													<td><?= getFormattedDamage($weapon['damageL'], $dmgAdj) ?></td>
+													<td><?= $weapon['damageType'] ?></td>
+													<td><?= $weapon['rangeS'] ?></td>
+													<td><?= $weapon['rangeM'] ?></td>
+													<td><?= $weapon['rangeL'] ?></td>
+													<td><?= $weapon['size'] ?></td>
+													<td><?= $weapon['speed'] ?></td>
 												</tr>
 												<tr>
-													<td colspan="12" class="weapon-notes">Notes: <?= get_sub_field('notes') ?>. Raw Attack Adj: <?= get_sub_field('attack_adjustment') ?>, Raw Damage Adj: <?= get_sub_field('damage_adjustment') ?>.</td>
+													<td colspan="13" class="weapon-notes">Notes: <?= get_sub_field('notes') ?>. Raw Attack Adj: <?= get_sub_field('attack_adjustment') ?>, Raw Damage Adj: <?= get_sub_field('damage_adjustment') ?>.</td>
 												</tr>
+
+
 											</table>
 								<?php
 										}
