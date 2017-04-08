@@ -339,6 +339,9 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
+
+/* BEGIN MIKEYOUNG.ORG AD&D */
+
 /**
  * Load AD&D general functions
  */
@@ -353,3 +356,5 @@ require get_template_directory() . '/mikeyoung.org/php/add-weapons.php';
  * Load AD&D armor function
  */
 require get_template_directory() . '/mikeyoung.org/php/add-armor.php';
+
+/* END MIKEYOUNG.ORG AD&D */

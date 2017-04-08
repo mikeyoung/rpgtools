@@ -211,5 +211,38 @@ function printWisMagDefAdj($ability) {
 	return 'Mag. Def. Adj: '.formatMod($stat);
 }
 
+function clog($theOutput) {
+	echo "<script>console.log('$theOutput')</script>";
+}
+
+function getFormattedDamage($weaponDmg, $dmgAdj) {
+	$dmgDice = "";
+	$dmgMod = 0;
+	$formattedMod = "";
+
+
+
+	if (strpos($weaponDmg, "-") !== false) {
+		$dmgPart = explode("-", $weaponDmg);
+		$dmgDice = $dmgPart[0];
+		$dmgMod = 0 - (int) $dmgPart[1];
+		$dmgMod += $dmgAdj;
+	} elseif (strpos($weaponDmg, "+") !== false) {
+		$dmgPart = explode("+", $weaponDmg);
+		$dmgDice = $dmgPart[0];
+		$dmgMod = (int) $dmgPart[1];
+		$dmgMod += $dmgAdj;
+	} else {
+		$dmgDice = $weaponDmg;
+		$dmgMod += $dmgAdj;
+	}
+
+	if ($dmgMod != 0) {
+		$formattedMod = formatMod($dmgMod);
+	}
+
+	return $dmgDice.$formattedMod;
+}
+
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
 ?>

@@ -24,6 +24,7 @@
 
 body {
 	-webkit-print-color-adjust: exact;
+	color: #000;
 }
 
 body,
@@ -309,6 +310,29 @@ td.save-label-cell {
 .hit-points-table {
 	width: 25%;
 	float: right;
+}
+
+.weapons-table {
+	font-size: .7em;
+}
+
+.weapons-table th,
+.weapons-table td {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+th.weapon-title {
+	text-align: left;
+	font-weight: 700;
+}
+
+th.no-border {
+	border: 0 none;
+}
+
+.weapons-table td.weapon-notes {
+	text-align: left;
 }
 
 [v-cloak] {
