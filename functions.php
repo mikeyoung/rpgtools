@@ -348,3 +348,8 @@ require get_template_directory() . '/add-functions.php';
  * Load AD&D weapons function
  */
 require get_template_directory() . '/add-weapons.php';
+
+/**
+ * Load AD&D armor function
+ */
+require get_template_directory() . '/add-armor.php';
