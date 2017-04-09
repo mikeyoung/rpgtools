@@ -6,6 +6,10 @@
  */
 
 get_header(); ?>
+	<?php
+		$armorClass = 10;
+		$shieldlessArmorClass = 10;
+	?>
 
 	<div id="primary" class="content-area">
 		<div class="character-container">
@@ -164,11 +168,50 @@ get_header(); ?>
 							<th class="defense-detail-armor-head"><h3>ARMOR</h3></th>
 						</tr>
 						<tr>
-							<td class="defense-detail-ac">?</td>
+							<td class="defense-detail-ac">
+								<?php
+									if( have_rows('armor') ):
+										while ( have_rows('armor') ) : the_row();
+											if (strtolower(get_sub_field('armor_type')) != "none") {
+												$armorType = get_sub_field('armor_type');
+												$armorArray = getArmorArray();
+
+												foreach ($armorArray as $armor) {
+													if (strpos($armor['name'], $armorType) !== false) {
+														$armorClass = $armor['ac'];
+														break;
+													}
+												}
+											}
+										endwhile;
+									else :
+										// no rows found
+									endif;
+
+									$armorClass += getDexDefAdj(get_field('dexterity'));
+
+									// capture armor class before shield added
+									$shieldlessArmorClass = $armorClass;
+
+									if( have_rows('shield') ):
+										while ( have_rows('shield') ) : the_row();
+											if (strtolower(get_sub_field('shield_type')) != "none") {
+												$armorClass -= 1;
+												$armorClass += (int) get_sub_field('shield_adjustment');
+												break;
+											}
+										endwhile;
+									else :
+										// no rows found
+									endif;
+
+									echo $armorClass;
+								?>
+							</td>
 							<td class="defense-detail-adj-ac">
 								
 								<?php
-									printFormattedAttribute('Shieldless A.C.','?');
+									printFormattedAttribute('Shieldless A.C.',$shieldlessArmorClass);
 									printFormattedAttribute('Parry Adjustment',get_field('parry_adjustment'));
 								?>
 							</td>
@@ -194,10 +237,9 @@ get_header(); ?>
 									else :
 										// no rows found
 									endif;
-								?>
 
-								<?php
 									if( have_rows('shield') ):
+										clog("has shield row");
 										while ( have_rows('shield') ) : the_row();
 											if (strtolower(get_sub_field('shield_type')) != "none") {
 												$shieldDetail = get_sub_field('shield_type');
@@ -229,11 +271,10 @@ get_header(); ?>
 
 								<?php
 									$weaponsArray = getWeaponsArray();
-									foreach ($weaponsArray as $weapon) {
-										$sheetWeapon = get_sub_field('weapon');
+									$sheetWeapon = get_sub_field('weapon');
 
-										/* if (strpos($weapon['name'], $sheetWeapon) !== false) { */
-										if (true) {
+									foreach ($weaponsArray as $weapon) {
+										if (strpos($weapon['name'], $sheetWeapon) !== false) {
 											$thac0Melee = "n/a";
 											$thac0Ranged = "n/a";
 
