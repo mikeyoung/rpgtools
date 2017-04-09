@@ -220,7 +220,6 @@ get_header(); ?>
 							</td>
 						</tr>
 					</table>
-					<br class="clear" />
 
 					<?php
 						if( have_rows('weapon_profiles') ):
@@ -239,11 +238,11 @@ get_header(); ?>
 											$thac0Ranged = "n/a";
 
 											if ($weapon['attackType'] == "melee" || $weapon['attackType'] == "both") {
-												$thac0Melee = ((int) get_field('base_thac0')) - ((int) getStrHit(get_field('strength'),get_field('exceptional_strength'))) - ((int) get_sub_field('attack_adjustment'));
+												$thac0Melee = (int) get_field('base_thac0') - (int) getStrHit(get_field('strength'),get_field('exceptional_strength')) - (int) get_sub_field('attack_adjustment');
 											}
 
 											if ($weapon['attackType'] == "ranged" || $weapon['attackType'] == "both") {
-												$thac0Ranged = ((int) get_field('base_thac0')) - ((int) getDexMissileAttack(get_field('dexterity'))) - ((int) get_sub_field('attack_adjustment'));
+												$thac0Ranged = (int) get_field('base_thac0') - (int) getDexMissileAttack(get_field('dexterity')) - (int) get_sub_field('attack_adjustment');
 											}
 
 											$dmgAdj = ((int) get_sub_field('damage_adjustment'));
