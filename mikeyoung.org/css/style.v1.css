@@ -54,14 +54,28 @@ h6 {
 
 h3 {
 	font-weight: 700;
-	margin: 0;
-	font-size: 1.1em;
+    margin: 0;
+    font-size: 14pt;
+}
+
+@media screen and (min-width: 55em) {
+	.sticking .site-content {
+		padding-top: 0;
+	}
 }
 
 .clear {
 	clear: both;
 	display: block;
 	height: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.avoid-page-break {
+	page-break-inside: avoid;
 }
 
 .entry-title {
@@ -72,13 +86,10 @@ h3 {
 	padding-bottom: 1em;
 }
 
-.character-overview {
+.character-summary-block {
 	width: 28%;
 	float: left;
 	margin: 0;
-}
-
-.character-summary-block {
 	font-size: .8em;
 }
 
@@ -118,8 +129,7 @@ ul.stat-list li {
 }
 
 .single-post header {
-	padding: 0;
-	margin: 0;
+	display: none;
 }
 
 .single-post .site-title {
@@ -281,10 +291,12 @@ td.save-label-cell {
 
 .defense-detail-ac {
 	text-align: center;
-	font-size: 1.5em;
-	font-family: 'Corben', cursive;
-	font-weight: 700;
-	width: 10%;
+    font-size: 3em;
+    font-family: 'Corben', cursive;
+    font-weight: 700;
+    width: 10%;
+    line-height: 1.3em;
+	white-space: nowrap;
 }
 
 .defense-detail-adj-ac,
@@ -316,7 +328,6 @@ td.save-label-cell {
 
 .weapons-table {
 	font-size: .7em;
-	page-break-inside: avoid;
 }
 
 .weapon-title {
@@ -340,6 +351,10 @@ th.no-border {
 	border: 0 none;
 }
 
+.weapons-header {
+	margin-top: 1em;
+}
+
 .weapons-table td.weapon-notes {
 	text-align: left;
 }
@@ -351,6 +366,42 @@ th.no-border {
     font-size: .8em;
     padding: 0 .2em;
     margin-top: .5em;
+}
+
+.max-spells-table {
+	font-size: .8em;
+}
+
+.max-spells-table td {
+	border: 2px solid #000;
+	text-align: center;
+}
+
+.text-box {
+	border: 2px solid #000;
+	font-size: .8em;
+	padding: .5em;
+}
+
+.proficiences-and-languages-table th {
+	width: 33%;
+	text-align: left;
+}
+
+.proficiences-and-languages-table td {
+	border: 2px solid #000;
+	font-size: .8em;
+	padding: .5em;
+}
+
+.proficiences-and-languages-table th:last-child {
+	width: 34%;
+}
+
+.proficiences-and-languages-headers {
+    font-family: 'futurabc', serif;
+    text-transform: uppercase;
+    font-size: 1em;
 }
 
 [v-cloak] {

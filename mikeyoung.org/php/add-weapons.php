@@ -3,21 +3,6 @@
 function getWeaponsArray() {
 	$weaponsArray = [
         array(
-            "name" => "Arquebus",
-            "size" => "M",
-            "damageType" => "P",
-            "speed" => 15,
-            "damageSM" => "1d10",
-            "damageL" => "1d10",
-            "rof" => "1/3",
-            "rangeS" => "50",
-            "rangeM" => "150",
-            "rangeL" => "210",
-        	"attackType" => "ranged",
-        	"strDmg" => "no"
-        ),
-
-        array(
             "name" => "Battle Axe",
             "size" => "M",
             "damageType" => "S",

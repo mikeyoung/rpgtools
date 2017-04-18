@@ -9,6 +9,10 @@ get_header(); ?>
 	<?php
 		$armorClass = 10;
 		$shieldlessArmorClass = 10;
+		$shieldDetail = "";
+		$armorDetail = "";
+		$weaponsArray = getWeaponsArray();
+		$armorArray = getArmorArray();
 	?>
 
 	<div id="primary" class="content-area">
@@ -17,27 +21,21 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="sheet-top">
-						<!-- <img class="character-portrait" src="<?= wp_get_attachment_url( get_post_thumbnail_id(), 'large') ?>" />  -->
-						<div class="character-overview">
-							<header class="entry-header">
-								<div class="character-summary-block">
-									<h1 class="entry-title"><?= single_post_title() ?></h1>
-									<?php printFormattedAttribute('Player Name',get_field('player_name')) ?>
-									<?php printFormattedAttribute('Alignment',get_field('alignment')) ?>
-									<?php printFormattedAttribute('Race',get_field('race')) ?>
-									<?php printFormattedAttribute('Class',get_field('class')) ?>
-									<?php printFormattedAttribute('Age',get_field('age')) ?>
-									<?php printFormattedAttribute('Sex',get_field('sex')) ?>
-									<?php printFormattedAttribute('Height',get_field('height')) ?>
-									<?php printFormattedAttribute('Weight',get_field('weight')) ?>
-									<?php printFormattedAttribute('Base THAC0',get_field('base_thac0')) ?>
-									<?php printFormattedAttribute('Move',get_field('movement')) ?>
-									<?php printFormattedAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
-									<?php printFormattedAttribute('Exp. Points',get_field('experience_points')) ?>
-								</div>
-							</header><!-- .entry-header -->
+						<div class="character-summary-block">
+							<h3><?= single_post_title() ?></h3>
+							<?php printFormattedAttribute('Player Name',get_field('player_name')) ?>
+							<?php printFormattedAttribute('Alignment',get_field('alignment')) ?>
+							<?php printFormattedAttribute('Race',get_field('race')) ?>
+							<?php printFormattedAttribute('Class',get_field('class')) ?>
+							<?php printFormattedAttribute('Age',get_field('age')) ?>
+							<?php printFormattedAttribute('Sex',get_field('sex')) ?>
+							<?php printFormattedAttribute('Height',get_field('height')) ?>
+							<?php printFormattedAttribute('Weight',get_field('weight')) ?>
+							<?php printFormattedAttribute('Base THAC0',get_field('base_thac0')) ?>
+							<?php printFormattedAttribute('Move',get_field('movement')) ?>
+							<?php printFormattedAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
+							<?php printFormattedAttribute('Exp. Points',get_field('experience_points')) ?>
 						</div>
-
 						<div class="ability-scores-area">
 							<h3>ABILITIES</h3>
 							<table class="ability-scores-table">
@@ -174,13 +172,26 @@ get_header(); ?>
 										while ( have_rows('armor') ) : the_row();
 											if (strtolower(get_sub_field('armor_type')) != "none") {
 												$armorType = get_sub_field('armor_type');
-												$armorArray = getArmorArray();
 
 												foreach ($armorArray as $armor) {
 													if (strpos($armor['name'], $armorType) !== false) {
 														$armorClass = $armor['ac'];
 														break;
 													}
+												}
+
+												if (get_sub_field('armor_adjustment') != 0) {
+													$armorClass += (int) get_sub_field('armor_adjustment');
+												}
+
+												$armorDetail = get_sub_field('armor_type');
+
+												if (get_sub_field('armor_adjustment') != 0) {
+													$armorDetail = $armorDetail.formatMod(get_sub_field('armor_adjustment'));
+												}
+
+												if (get_sub_field('armor_notes') != '') {
+													$armorDetail = $armorDetail.' ('.get_sub_field('armor_notes').')';
 												}
 											}
 										endwhile;
@@ -198,7 +209,16 @@ get_header(); ?>
 											if (strtolower(get_sub_field('shield_type')) != "none") {
 												$armorClass -= 1;
 												$armorClass += (int) get_sub_field('shield_adjustment');
-												break;
+											}
+
+											$shieldDetail = get_sub_field('shield_type');
+
+											if (get_sub_field('shield_adjustment') != 0) {
+												$shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));
+											}
+
+											if (get_sub_field('shield_notes') != '') {
+												$shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
 											}
 										endwhile;
 									else :
@@ -211,53 +231,15 @@ get_header(); ?>
 							<td class="defense-detail-adj-ac">
 								
 								<?php
-									printFormattedAttribute('Shieldless A.C.',$shieldlessArmorClass);
+									printFormattedAttribute('Shieldless AC',$shieldlessArmorClass);
+									printFormattedAttribute('Armorless & Shieldless AC',10 + getDexDefAdj(get_field('dexterity')));
 									printFormattedAttribute('Parry Adjustment',get_field('parry_adjustment'));
 								?>
 							</td>
 							<td class="defense-detail-armor">
 								<?php
-									if( have_rows('armor') ):
-										while ( have_rows('armor') ) : the_row();
-											if (strtolower(get_sub_field('armor_type')) != "none") {
-												$armorDetail = get_sub_field('armor_type');
-
-												if (get_sub_field('armor_adjustment') != 0) {
-													$armorDetail = $armorDetail.formatMod(get_sub_field('armor_adjustment'));
-												}
-
-												if (get_sub_field('armor_notes') != '') {
-													$armorDetail = $armorDetail.' ('.get_sub_field('armor_notes').')';
-												}
-
-												printFormattedAttribute('Armor',$armorDetail);
-											}
-
-										endwhile;
-									else :
-										// no rows found
-									endif;
-
-									if( have_rows('shield') ):
-										clog("has shield row");
-										while ( have_rows('shield') ) : the_row();
-											if (strtolower(get_sub_field('shield_type')) != "none") {
-												$shieldDetail = get_sub_field('shield_type');
-
-												if (get_sub_field('shield_adjustment') != 0) {
-													$shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));
-												}
-
-												if (get_sub_field('shield_notes') != '') {
-													$shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
-												}
-											}
-
-											printFormattedAttribute('Shield',$shieldDetail);
-										endwhile;
-									else :
-										// no rows found
-									endif;
+									printFormattedAttribute('Armor',$armorDetail);
+									printFormattedAttribute('Shield',$shieldDetail);
 								?>
 							</td>
 						</tr>
@@ -265,12 +247,11 @@ get_header(); ?>
 
 					<?php
 						if( have_rows('weapon_profiles') ):
-							echo '<h3>WEAPONS</h3>';
+							echo '<h3 class="weapons-header">WEAPONS</h3>';
 							while ( have_rows('weapon_profiles') ) : the_row();
 					?>
 
 								<?php
-									$weaponsArray = getWeaponsArray();
 									$sheetWeapon = get_sub_field('weapon');
 
 									foreach ($weaponsArray as $weapon) {
@@ -292,7 +273,7 @@ get_header(); ?>
 												$dmgAdj = $dmgAdj + getStrDmg(get_field('strength'),get_field('exceptional_strength'));
 											}
 								?>
-											<table class="weapons-table">
+											<table class="weapons-table avoid-page-break">
 												<tr>
 													<th colspan="2" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?></th>
 													<th colspan="2">THAC0</th>
@@ -343,7 +324,88 @@ get_header(); ?>
 						endif;
 					?>
 
-					<?php get_template_part( 'template-parts/content', 'single' ); ?>
+					<div class="avoid-page-break">
+						<h3>PROFICIENCIES AND LANGUAGES</h3>
+						<table class="proficiences-and-languages-table">
+							<tr class="proficiences-and-languages-headers">
+								<th>Weapon Proficiencies</th>
+								<th>Non-Weapon Proficiencies</th>
+								<th>Languages</th>
+							</tr>
+							<tr>
+								<td><?= get_field('weapon_proficiencies') ?></td>
+								<td><?= get_field('non_weapon_proficiencies') ?></td>
+								<td><?= get_field('languages') ?></td>
+							</tr>
+						</table>
+					</div>
+
+					<?php
+						if (get_field('maximum_spells_level_1') != 0) {
+					?>
+						<div class="avoid-page-break">
+							<h3>Maximum Prepared Spells Per Level</h3>
+							<table class="max-spells-table">
+								<tr>
+									<th>1</th>
+									<th>2</th>
+									<th>3</th>
+									<th>4</th>
+									<th>5</th>
+									<th>6</th>
+									<th>7</th>
+									<th>8</th>
+									<th>9</th>
+								</tr>
+								<tr>
+									<td><?= get_field('maximum_spells_level_1') ?></td>
+									<td><?= get_field('maximum_spells_level_2') ?></td>
+									<td><?= get_field('maximum_spells_level_3') ?></td>
+									<td><?= get_field('maximum_spells_level_4') ?></td>
+									<td><?= get_field('maximum_spells_level_5') ?></td>
+									<td><?= get_field('maximum_spells_level_6') ?></td>
+									<td><?= get_field('maximum_spells_level_7') ?></td>
+									<td><?= get_field('maximum_spells_level_8') ?></td>
+									<td><?= get_field('maximum_spells_level_9') ?></td>
+								</tr>
+							</table>
+						</div>
+					<?php
+						}
+
+						if (get_field('maximum_spells_level_1') != 0) {
+							echo '<div class="avoid-page-break"><h3>Spell Book</h3><div class="text-box">'.get_field('spell_book').'</div></div><br />';
+						}
+					?>
+
+					<div class="avoid-page-break">
+						<h3>Notes</h3>
+						<div class="text-box"><?= get_field('notes') ?></div>
+					</div>
+
+
+					<?php
+						if (isset($_GET['debug']) && $_GET['debug'] == 'true') {
+					?>
+						<h3>DEBUG WEAPONS LIST</h3>
+						<?php
+							foreach ($weaponsArray as $weapon) {
+								echo $weapon['name'].'<br />';
+							}
+						?>
+
+						<h3>DEBUG ARMOR LIST</h3>
+						<?php
+							foreach ($armorArray as $armor) {
+								echo $armor['name'].'<br />';
+							}
+						?>
+					<?php
+						}
+					?>
+
+
+					<div class="hidden"><?php get_template_part( 'template-parts/content', 'single' ); ?></div>
 
 				<?php endwhile; // End of the loop. ?>
 
@@ -361,5 +423,4 @@ get_header(); ?>
 	}
 
 	jQuery.getJSON("/wordpress/wp-json/wp/v2/posts/<?= get_the_ID() ?>", startVue);
-
 </script>
