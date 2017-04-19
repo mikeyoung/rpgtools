@@ -116,7 +116,7 @@ function getStrDmg($ability,$exStr) {
 	if ($ability == 1) $stat = -4;
 	if ($ability == 2) $stat = -2;
 	if ($ability >= 3 && $ability < 6) $stat = -1;
-	if ($ability >= 16 && $ability < 18) $stat = +1;
+	if ($ability >= 16 && $ability < 18) $stat = 1;
 	if ($ability == 18 && $exStr == 0) $stat = 2;
 	if ($ability == 18 && $exStr > 0) {
 		if ($exStr < 76) $stat = 3;
