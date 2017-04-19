@@ -20,14 +20,14 @@ function getNwpArray() {
 			'name' => 'Ancient History',
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
 			'name' => 'Animal Handling',
 			'minSlots' => '1',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -55,7 +55,7 @@ function getNwpArray() {
 			'name' => 'Armorer',
 			'minSlots' => '2',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -97,7 +97,7 @@ function getNwpArray() {
 			'name' => 'Bowyer/Fletcher',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -167,7 +167,7 @@ function getNwpArray() {
 			'name' => 'Disguise',
 			'minSlots' => '1',
 			'ability' => 'Charisma',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -181,7 +181,7 @@ function getNwpArray() {
 			'name' => 'Engineering',
 			'minSlots' => '2',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–3',
+			'abilityMod' => '-3',
         ),
 
         array(
@@ -195,21 +195,21 @@ function getNwpArray() {
 			'name' => 'Fire-building',
 			'minSlots' => '1',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
 			'name' => 'Fishing',
 			'minSlots' => '1',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
 			'name' => 'Forgery',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -223,14 +223,14 @@ function getNwpArray() {
 			'name' => 'Gem Cutting',
 			'minSlots' => '2',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
 			'name' => 'Healing',
 			'minSlots' => '2',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -251,14 +251,14 @@ function getNwpArray() {
 			'name' => 'Herbalism',
 			'minSlots' => '2',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
 			'name' => 'Hunting',
 			'minSlots' => '1',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -279,7 +279,7 @@ function getNwpArray() {
 			'name' => 'Juggling',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -328,7 +328,7 @@ function getNwpArray() {
 			'name' => 'Mining',
 			'minSlots' => '2',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–3',
+			'abilityMod' => '-3',
         ),
 
         array(
@@ -342,14 +342,14 @@ function getNwpArray() {
 			'name' => 'Musical Instrument',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
 			'name' => 'Navigation',
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -363,14 +363,14 @@ function getNwpArray() {
 			'name' => 'Pottery',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
 			'name' => 'Reading Lips',
 			'minSlots' => '2',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -391,7 +391,7 @@ function getNwpArray() {
 			'name' => 'Riding, Airborne',
 			'minSlots' => '2',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -412,7 +412,7 @@ function getNwpArray() {
 			'name' => 'Running',
 			'minSlots' => '1',
 			'ability' => 'Constitution',
-			'abilityMod' => '–6',
+			'abilityMod' => '-6',
         ),
 
         array(
@@ -426,14 +426,14 @@ function getNwpArray() {
 			'name' => 'Seamstress/Tailor',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
 			'name' => 'Set Snares',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
@@ -447,14 +447,14 @@ function getNwpArray() {
 			'name' => 'Spellcraft',
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
 			'name' => 'Stonemasonry',
 			'minSlots' => '1',
 			'ability' => 'Strength',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -503,7 +503,7 @@ function getNwpArray() {
 			'name' => 'Ventriloquism',
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–2',
+			'abilityMod' => '-2',
         ),
 
         array(
@@ -517,21 +517,21 @@ function getNwpArray() {
 			'name' => 'Weaponsmithing',
 			'minSlots' => '3',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–3',
+			'abilityMod' => '-3',
         ),
 
         array(
 			'name' => 'Weather Sense',
 			'minSlots' => '1',
 			'ability' => 'Wisdom',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
 
         array(
 			'name' => 'Weaving',
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
-			'abilityMod' => '–1',
+			'abilityMod' => '-1',
         ),
     ];
 
