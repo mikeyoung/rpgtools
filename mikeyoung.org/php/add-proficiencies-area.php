@@ -26,7 +26,7 @@
                                 $slots = get_sub_field('slots');
                                 $minSlots = (int) $nwp['minSlots'];
                                 if ($nwp['abilityMod'] != 'NA' && $nwp['abilityMod'] != 'SP' ) {
-                                    $abilityMod = intval(strval($nwp['abilityMod']));
+                                    $abilityMod = (int) ($nwp['abilityMod']);
                                 } else {
                                     $abilityMod = $nwp['abilityMod'];
                                     if ($abilityMod == "SP") {
