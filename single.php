@@ -15,6 +15,8 @@ get_header(); ?>
 		$armorArray = getArmorArray();
 		$classArray = getClassArray();
 		$classNameArray = getClassNameArray();
+		$wpArray = getWpArray();
+		$nwpArray = getNwpArray();
 	?>
 
 	<div id="primary" class="content-area">
@@ -338,7 +340,7 @@ get_header(); ?>
 								<td>
 									<?php 								
 									if( have_rows('non_weapon_proficiencies') ):
-										echo '<ul>';
+										echo '<ul class="vertList">';
 										while ( have_rows('non_weapon_proficiencies') ) : the_row();
 											echo '<li>'.get_sub_field('proficiency').' '.get_sub_field('slots').'</li>';
 										endwhile;
@@ -435,31 +437,13 @@ get_header(); ?>
 						<div class="text-box"><?= get_field('notes') ?></div>
 					</div>
 
-
-					<?php
-						if (isset($_GET['debug']) && $_GET['debug'] == 'true') {
-					?>
-						<h3>DEBUG WEAPONS LIST</h3>
-						<?php
-							foreach ($weaponsArray as $weapon) {
-								echo $weapon['name'].'<br />';
-							}
-						?>
-
-						<h3>DEBUG ARMOR LIST</h3>
-						<?php
-							foreach ($armorArray as $armor) {
-								echo $armor['name'].'<br />';
-							}
-						?>
-					<?php
-						}
-					?>
-
-
 					<div class="hidden"><?php get_template_part( 'template-parts/content', 'single' ); ?></div>
 
 				<?php endwhile; // End of the loop. ?>
+
+				<?php
+					require get_template_directory() . '/mikeyoung.org/php/add-debug.php';
+				?>
 
 			</main><!-- #main -->
 		</div>

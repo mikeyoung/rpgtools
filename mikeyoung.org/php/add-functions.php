@@ -1,4 +1,25 @@
 <?php
+/**
+ * Load AD&D weapons function
+ */
+require get_template_directory() . '/mikeyoung.org/php/add-weapons.php';
+
+/**
+ * Load AD&D armor function
+ */
+require get_template_directory() . '/mikeyoung.org/php/add-armor.php';
+
+/**
+ * Load AD&D nwp function
+ */
+require get_template_directory() . '/mikeyoung.org/php/add-nwp.php';
+
+/**
+ * Load AD&D wp function
+ */
+require get_template_directory() . '/mikeyoung.org/php/add-wp.php';
+
+
 /* BEGIN MIKE YOUNG FUNCTIONS & CLASSES */
 function printAttribute($label,$value) {
 	echo "<div><span class='field-label'>$label:</span> <span class='field-value'>$value</span></div>";
