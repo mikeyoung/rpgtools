@@ -42,6 +42,40 @@ function printClasses($classArray) {
 	}
 }
 
+function hasClassGroup($classNameArray, $classGroup) {
+	if ($classGroup == "Warrior") {
+		if (in_array("Fighter", $classNameArray) || in_array("Ranger", $classNameArray) || in_array("Paladin", $classNameArray)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	if ($classGroup == "Wizard") {
+		if (in_array("Mage", $classNameArray) || in_array("Illusionist", $classNameArray)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	if ($classGroup == "Priest") {
+		if (in_array("Cleric", $classNameArray) || in_array("Druid", $classNameArray)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	if ($classGroup == "Rogue") {
+		if (in_array("Thief", $classNameArray) || in_array("Bard", $classNameArray) || in_array("Assassin", $classNameArray)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
 function formatMod($theNumber) {
 	$statSign = "";
 	if ($theNumber > 0) {
@@ -258,8 +292,6 @@ function getFormattedDamage($weaponDmg, $dmgAdj) {
 	$dmgMod = 0;
 	$formattedMod = "";
 
-
-
 	if (strpos($weaponDmg, "-") !== false) {
 		$dmgPart = explode("-", $weaponDmg);
 		$dmgDice = $dmgPart[0];
@@ -314,5 +346,31 @@ function getClassNameArray() {
 	endif;
 
 	return $classArray;
+}
+
+function getParryAdjustment($classArray,$isWarrior) {
+	$parryAdjustment = 0;
+	$characterLevel = 0;
+
+	// get the highest level of all classes
+	foreach ($classArray as $key=>$value) {
+		if ($classArray[$key]['level'] > $characterLevel) {
+			$characterLevel = $classArray[$key]['level'];
+		}
+	}
+
+	$parryAdjustment = floor($characterLevel / 2);
+
+	if ($parryAdjustment < 1) {
+		$parryAdjustment = 1;
+	}
+
+	if ($isWarrior) {
+		$parryAdjustment += 1;
+	}
+
+	$parryAdjustment = 0 - $parryAdjustment;
+
+	return $parryAdjustment;
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
