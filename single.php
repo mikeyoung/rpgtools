@@ -13,6 +13,8 @@ get_header(); ?>
 		$armorDetail = "";
 		$weaponsArray = getWeaponsArray();
 		$armorArray = getArmorArray();
+		$classArray = getClassArray();
+		$classNameArray = getClassNameArray();
 	?>
 
 	<div id="primary" class="content-area">
@@ -23,18 +25,17 @@ get_header(); ?>
 					<div class="sheet-top">
 						<div class="character-summary-block">
 							<h3><?= single_post_title() ?></h3>
-							<?php printFormattedAttribute('Player Name',get_field('player_name')) ?>
-							<?php printFormattedAttribute('Alignment',get_field('alignment')) ?>
-							<?php printFormattedAttribute('Race',get_field('race')) ?>
-							<?php printFormattedAttribute('Class',get_field('class')) ?>
-							<?php printFormattedAttribute('Age',get_field('age')) ?>
-							<?php printFormattedAttribute('Sex',get_field('sex')) ?>
-							<?php printFormattedAttribute('Height',get_field('height')) ?>
-							<?php printFormattedAttribute('Weight',get_field('weight')) ?>
-							<?php printFormattedAttribute('Base THAC0',get_field('base_thac0')) ?>
-							<?php printFormattedAttribute('Move',get_field('movement')) ?>
-							<?php printFormattedAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
-							<?php printFormattedAttribute('Exp. Points',get_field('experience_points')) ?>
+							<?php printAttribute('Player Name',get_field('player_name')) ?>
+							<?php printAttribute('Alignment',get_field('alignment')) ?>
+							<?php printAttribute('Race',get_field('race')) ?>
+							<?php printClasses($classArray) ?>
+							<?php printAttribute('Age',get_field('age')) ?>
+							<?php printAttribute('Sex',get_field('sex')) ?>
+							<?php printAttribute('Height',get_field('height')) ?>
+							<?php printAttribute('Weight',get_field('weight')) ?>
+							<?php printAttribute('Base THAC0',get_field('base_thac0')) ?>
+							<?php printAttribute('Move',get_field('movement')) ?>
+							<?php printAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
 						</div>
 						<div class="ability-scores-area">
 							<h3>ABILITIES</h3>
@@ -231,24 +232,24 @@ get_header(); ?>
 							<td class="defense-detail-adj-ac">
 								
 								<?php
-									printFormattedAttribute('Shieldless AC',$shieldlessArmorClass);
-									printFormattedAttribute('Armorless & Shieldless AC',10 + getDexDefAdj(get_field('dexterity')));
-									printFormattedAttribute('Parry Adjustment',get_field('parry_adjustment'));
+									printAttribute('Shieldless AC',$shieldlessArmorClass);
+									printAttribute('Armorless & Shieldless AC',10 + getDexDefAdj(get_field('dexterity')));
+									printAttribute('Parry Adjustment',get_field('parry_adjustment'));
 								?>
 							</td>
 							<td class="defense-detail-armor">
 								<?php
-									printFormattedAttribute('Armor',$armorDetail);
-									printFormattedAttribute('Shield',$shieldDetail);
+									printAttribute('Armor',$armorDetail);
+									printAttribute('Shield',$shieldDetail);
 								?>
 							</td>
 						</tr>
 					</table>
 
 					<?php
-						if( have_rows('weapon_profiles') ):
+						if( have_rows('weapons') ):
 							echo '<h3 class="weapons-header">WEAPONS</h3>';
-							while ( have_rows('weapon_profiles') ) : the_row();
+							while ( have_rows('weapons') ) : the_row();
 					?>
 
 								<?php
@@ -334,17 +335,32 @@ get_header(); ?>
 							</tr>
 							<tr>
 								<td><?= get_field('weapon_proficiencies') ?></td>
-								<td><?= get_field('non_weapon_proficiencies') ?></td>
+								<td>
+									<?php 								
+									if( have_rows('non_weapon_proficiencies') ):
+										echo '<ul>';
+										while ( have_rows('non_weapon_proficiencies') ) : the_row();
+											echo '<li>'.get_sub_field('proficiency').' '.get_sub_field('slots').'</li>';
+										endwhile;
+										echo '</ul>';
+									else :
+										// no rows found
+									endif;
+									?>
+								
+								
+								</td>
 								<td><?= get_field('languages') ?></td>
 							</tr>
 						</table>
 					</div>
 
+					<!-- Begin: Wizard Spells -->
 					<?php
-						if (get_field('maximum_spells_level_1') != 0) {
+						if (in_array("Mage", $classNameArray) || in_array("Illusionist", $classNameArray)) {
 					?>
 						<div class="avoid-page-break">
-							<h3>Maximum Prepared Spells Per Level</h3>
+							<h3>Maximum Prepared Wizard Spells Per Level</h3>
 							<table class="max-spells-table">
 								<tr>
 									<th>1</th>
@@ -369,14 +385,50 @@ get_header(); ?>
 									<td><?= get_field('maximum_spells_level_9') ?></td>
 								</tr>
 							</table>
+					<?php
+							echo '<h3>Spell Book</h3><div class="text-box">'.get_field('spell_book').'</div><br />';
+					?>
 						</div>
 					<?php
 						}
+					?>
+					<!-- End: Wizard Spells -->
 
-						if (get_field('maximum_spells_level_1') != 0) {
-							echo '<div class="avoid-page-break"><h3>Spell Book</h3><div class="text-box">'.get_field('spell_book').'</div></div><br />';
+					<!-- Begin: Priest Spells -->
+					<?php
+						if (in_array("Cleric", $classNameArray) || in_array("Druid", $classNameArray)) {
+					?>
+						<div class="avoid-page-break">
+							<h3>Maximum Prepared Priest Spells Per Level</h3>
+							<table class="max-spells-table">
+								<tr>
+									<th>1</th>
+									<th>2</th>
+									<th>3</th>
+									<th>4</th>
+									<th>5</th>
+									<th>6</th>
+									<th>7</th>
+								</tr>
+								<tr>
+									<td><?= get_field('maximum_spells_level_1') ?></td>
+									<td><?= get_field('maximum_spells_level_2') ?></td>
+									<td><?= get_field('maximum_spells_level_3') ?></td>
+									<td><?= get_field('maximum_spells_level_4') ?></td>
+									<td><?= get_field('maximum_spells_level_5') ?></td>
+									<td><?= get_field('maximum_spells_level_6') ?></td>
+									<td><?= get_field('maximum_spells_level_7') ?></td>
+								</tr>
+							</table>
+					<?php
+							echo '<h3>Spell Book</h3><div class="text-box">'.get_field('spell_book').'</div><br />';
+					?>
+						</div>
+					<?php
 						}
 					?>
+					<!-- End: Priest Spells -->
+
 
 					<div class="avoid-page-break">
 						<h3>Notes</h3>

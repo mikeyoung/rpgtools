@@ -1,7 +1,24 @@
 <?php
 /* BEGIN MIKE YOUNG FUNCTIONS & CLASSES */
-function printFormattedAttribute($label,$value) {
+function printAttribute($label,$value) {
 	echo "<div><span class='field-label'>$label:</span> <span class='field-value'>$value</span></div>";
+}
+
+function printClasses($classArray) {
+	if (count($classArray) > 1) {
+		echo "<div><span class='field-label'>Classes:</span></div>";
+		foreach ($classArray as $key=>$value) {
+			$className = $classArray[$key]['name'];
+			$classLevel = $classArray[$key]['level'];
+			$classExperience = $classArray[$key]['experience'];
+			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (Exp $classExperience)</span></div>";
+		}
+	} else {
+		$className = $classArray[0]['name'];
+		$classLevel = $classArray[0]['level'];
+		$classExperience = $classArray[0]['experience'];
+		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (Exp $classExperience)</span></div>";
+	}
 }
 
 function formatMod($theNumber) {
@@ -244,5 +261,37 @@ function getFormattedDamage($weaponDmg, $dmgAdj) {
 	return $dmgDice.$formattedMod;
 }
 
+function getClassArray() {
+	$classArray = [];
+
+	if( have_rows('classes') ):
+		$loop = 0;
+		while ( have_rows('classes') ) : the_row();
+			$classArray[$loop]["name"] = get_sub_field('class');
+			$classArray[$loop]["level"] = get_sub_field('level');
+			$classArray[$loop]["experience"] = get_sub_field('experience');
+			$loop += 1;
+		endwhile;
+	else :
+		// no rows found
+	endif;
+
+	return $classArray;
+}
+
+
+function getClassNameArray() {
+	$classArray = [];
+
+	if( have_rows('classes') ):
+		while ( have_rows('classes') ) : the_row();
+			$class = get_sub_field('class');
+			array_push($classArray, $class);
+		endwhile;
+	else :
+		// no rows found
+	endif;
+
+	return $classArray;
+}
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
-?>
