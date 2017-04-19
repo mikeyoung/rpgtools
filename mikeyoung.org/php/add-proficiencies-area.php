@@ -27,7 +27,6 @@
                                 $minSlots = (int) $nwp['minSlots'];
                                 if ($nwp['abilityMod'] != 'NA' && $nwp['abilityMod'] != 'SP' ) {
                                     $abilityMod = intval(strval($nwp['abilityMod']));
-                                    clog($abilityMod);
                                 } else {
                                     $abilityMod = $nwp['abilityMod'];
                                     if ($abilityMod == "SP") {
@@ -61,7 +60,7 @@
             <td><?= get_field('languages') ?></td>
         </tr>
         <tr>
-            <td colspan="3">* Does not have the minimum slots allocated / &dagger; Special modifiers in proficiency description</td>
+            <td colspan="3">* Does not have the minimum slots allocated / <sup>&dagger;</sup>Special modifiers in proficiency description</td>
         </tr>
     </table>
 </div>
