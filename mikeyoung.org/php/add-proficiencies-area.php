@@ -60,7 +60,7 @@
             <td><?= get_field('languages') ?></td>
         </tr>
         <tr>
-            <td colspan="3">* Does not have the minimum slots allocated / <sup>&dagger;</sup>Special modifiers in proficiency description</td>
+            <td colspan="3">* Does not have the minimum slots allocated / <sup>&dagger;</sup> Special modifiers in proficiency description</td>
         </tr>
     </table>
 </div>
