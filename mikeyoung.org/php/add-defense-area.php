@@ -8,6 +8,8 @@
         <td class="defense-detail-ac">
             <?php
                 if( have_rows('armor') ):
+                    $baseArmorAC = 0;
+
                     while ( have_rows('armor') ) : the_row();
                         if (strtolower(get_sub_field('armor_type')) != "none") {
                             $armorType = get_sub_field('armor_type');
@@ -19,11 +21,13 @@
                                 }
                             }
 
+                            $baseArmorAC = $armorClass;
+
                             if (get_sub_field('armor_adjustment') != 0) {
                                 $armorClass += (int) get_sub_field('armor_adjustment');
                             }
 
-                            $armorDetail = get_sub_field('armor_type');
+                            $armorDetail = get_sub_field('armor_type')." ($baseArmorAC)";
 
                             if (get_sub_field('armor_adjustment') != 0) {
                                 $armorDetail = $armorDetail.formatMod(get_sub_field('armor_adjustment'));
@@ -37,7 +41,6 @@
                 else :
                     // no rows found
                 endif;
-
                 $armorClass += getDexDefAdj(get_field('dexterity'));
 
                 // capture armor class before shield added
@@ -50,7 +53,7 @@
                             $armorClass += (int) get_sub_field('shield_adjustment');
                         }
 
-                        $shieldDetail = get_sub_field('shield_type');
+                        $shieldDetail = get_sub_field('shield_type').'(-1)';
 
                         if (get_sub_field('shield_adjustment') != 0) {
                             $shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));

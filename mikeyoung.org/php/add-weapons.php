@@ -14,7 +14,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -29,7 +30,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -44,7 +46,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -59,7 +62,8 @@ function getWeaponsArray() {
             "rangeM" => "100",
             "rangeL" => "150",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -74,7 +78,8 @@ function getWeaponsArray() {
             "rangeM" => "100",
             "rangeL" => "170",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -89,7 +94,8 @@ function getWeaponsArray() {
             "rangeM" => "140",
             "rangeL" => "210",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -104,7 +110,8 @@ function getWeaponsArray() {
             "rangeM" => "100",
             "rangeL" => "180",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -119,7 +126,8 @@ function getWeaponsArray() {
             "rangeM" => "80",
             "rangeL" => "170",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -134,7 +142,8 @@ function getWeaponsArray() {
             "rangeM" => "120",
             "rangeL" => "210",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -149,7 +158,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -164,7 +174,8 @@ function getWeaponsArray() {
             "rangeM" => "40",
             "rangeL" => "60",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -179,7 +190,8 @@ function getWeaponsArray() {
             "rangeM" => "120",
             "rangeL" => "180",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -194,7 +206,8 @@ function getWeaponsArray() {
             "rangeM" => "160",
             "rangeL" => "240",
         	"attackType" => "ranged",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -209,7 +222,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -224,7 +238,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -239,7 +254,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "40",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -254,7 +270,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -269,7 +286,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -284,7 +302,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -299,7 +318,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -314,7 +334,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -329,7 +350,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -344,7 +366,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -359,7 +382,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -374,7 +398,8 @@ function getWeaponsArray() {
             "rangeM" => "40",
             "rangeL" => "60",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -389,7 +414,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -404,7 +430,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -419,7 +446,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -434,7 +462,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -449,7 +478,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -464,7 +494,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "no"
+        	"strDmg" => "no",
+        	"thrown" => "no"
         ),
 
         array(
@@ -479,7 +510,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -494,7 +526,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -509,7 +542,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -524,7 +558,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -539,7 +574,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -554,7 +590,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -569,7 +606,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -584,7 +622,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -599,7 +638,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -614,7 +654,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -629,7 +670,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -644,7 +686,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -659,7 +702,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -674,7 +718,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -689,7 +734,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -704,7 +750,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -719,7 +766,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -734,7 +782,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -749,7 +798,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -764,7 +814,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -779,7 +830,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -794,7 +846,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -809,7 +862,8 @@ function getWeaponsArray() {
             "rangeM" => "100",
             "rangeL" => "200",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -824,7 +878,8 @@ function getWeaponsArray() {
             "rangeM" => "80",
             "rangeL" => "160",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -839,7 +894,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -854,7 +910,8 @@ function getWeaponsArray() {
             "rangeM" => "100",
             "rangeL" => "200",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
         
         array(
@@ -869,7 +926,8 @@ function getWeaponsArray() {
             "rangeM" => "30-60",
             "rangeL" => "90",
         	"attackType" => "ranged",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
         
         array(
@@ -884,7 +942,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
         
         array(
@@ -899,7 +958,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
         
         array(
@@ -914,7 +974,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
         
         array(
@@ -929,7 +990,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -944,7 +1006,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -959,7 +1022,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -974,7 +1038,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -989,7 +1054,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -1004,7 +1070,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
         array(
@@ -1019,7 +1086,8 @@ function getWeaponsArray() {
             "rangeM" => "20",
             "rangeL" => "30",
         	"attackType" => "both",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "yes"
         ),
 
         array(
@@ -1034,7 +1102,8 @@ function getWeaponsArray() {
             "rangeM" => "-",
             "rangeL" => "-",
         	"attackType" => "melee",
-        	"strDmg" => "yes"
+        	"strDmg" => "yes",
+        	"thrown" => "no"
         ),
 
     ];

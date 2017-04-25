@@ -11,24 +11,119 @@
                     if (strpos($weapon['name'], $sheetWeapon) !== false) {
                         $thac0Melee = "-";
                         $thac0Ranged = "-";
+                        $slots = 0;
+                        $minSlots = 0; // extra slots required for specialization
+                        $proficient = false;
+                        $specialized = false;
+                        $profBadge = '';
+                        $warriorProfPenalty = -2;
+                        $wizardProfPenalty = -5;
+                        $priestProfPenalty = -3;
+                        $rogueProfPenalty = -3;
+                        $specialAttackAdj = (int) get_sub_field('attack_adjustment');
+                        $thac0Mods = "";
+                        $dmgAdjMods = "";
+                        $dmgAdj = $specialDmgAdj = (int) get_sub_field('damage_adjustment');
+                        $weaponNotes = '';
+                        $nonProficientMod = 0;
+                        $nonProficientNote = '';
+
+
+                        if( have_rows('weapon_proficiencies') ):
+                            while ( have_rows('weapon_proficiencies') ) : the_row();
+                                $sheetWp = get_sub_field('weapon');
+
+                                if (strpos($weapon['name'], $sheetWp) !== false) {
+                                    $proficient = true;
+                                    $profBadge = '(P)';
+                                    $thac0Mods = $thac0Mods.'proficient ';
+                                    
+                                    foreach ($wpArray as $wp) {
+                                        if (strpos($wp['name'], $sheetWp) !== false) {
+                                            $slots = (int) get_sub_field('slots');
+                                            $minSlots = (int) $wp['minSlots'];
+                                        }
+                                    }
+                                }
+
+                                if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
+                                    $specialized = true;
+                                    $profBadge = '(S)';
+                                }
+                            endwhile;
+                        else :
+                            // no rows found
+                        endif;
+
+                        $thac0Mods = $thac0Mods."baseTHAC0($baseThac0) ";
+
+                        if ($slots == 0) {
+                            if ($isWizard) {
+                                $nonProficientNote = 'wizardNonProficiency(+5) ';
+                                $nonProficientMod = -5;
+                            }
+
+                            if ($isPriest || $isRogue) {
+                                if ($isPriest) $nonProficientNote = 'priestNonProficiency(+3) ';
+                                if ($isRogue) $nonProficientNote = 'rogueNonProficiency(+3) ';
+                                $nonProficientMod = -3;
+                            }
+
+                            if ($isWarrior) {
+                                $nonProficientNote = 'warriorNonProficiency(+2) ';
+                                $nonProficientMod = -2;
+                            }
+
+                            $thac0Mods = $thac0Mods."$nonProficientNote ";
+                        }
+
+                        $thac0Mods = $thac0Mods.'specialAttackAdj('.formatMod(-$specialAttackAdj).') ';
 
                         if ($weapon['attackType'] == "melee" || $weapon['attackType'] == "both") {
-                            $thac0Melee = (int) get_field('base_thac0') - (int) getStrHit(get_field('strength'),get_field('exceptional_strength')) - (int) get_sub_field('attack_adjustment');
+                            $thac0Melee = $baseThac0 - $strHit - $specialAttackAdj - $nonProficientMod;
+                            $thac0Mods = $thac0Mods.'strength('.formatMod(-$strHit).') ';
+
+                            // apply proficiencies
+                            if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
+                                $thac0Mods = $thac0Mods.'specialized(-1) ';
+                                $thac0Melee--;
+                            }
                         }
 
                         if ($weapon['attackType'] == "ranged" || $weapon['attackType'] == "both") {
-                            $thac0Ranged = (int) get_field('base_thac0') - (int) getDexMissileAttack(get_field('dexterity')) - (int) get_sub_field('attack_adjustment');
+                            $thac0Ranged = $baseThac0 - $missileAttackAdj - $specialAttackAdj - $nonProficientMod;
+                            $thac0Mods = $thac0Mods.'missileAttackAdj('.formatMod(-$missileAttackAdj).') ';
+
+                            if ($slots > $minSlots && in_array('fighter', $classNameArray) && (strpos(strToLower($weapon['name']), 'bow') !== false)) {
+                                $weaponNotes = $weaponNotes.'Specialization: +2 to hit at Point Blank Range. ';
+                            }
                         }
 
-                        $dmgAdj = ((int) get_sub_field('damage_adjustment'));
-                        
                         if ($weapon['strDmg'] == "yes") {
-                            $dmgAdj = $dmgAdj + getStrDmg(get_field('strength'),get_field('exceptional_strength'));
+                            $dmgAdj = $dmgAdj + $strDmg;
+                            $dmgAdjMods = $dmgAdjMods.'strength('.formatMod($strDmg).') ';
+                            $dmgAdjMods = $dmgAdjMods.'special('.formatMod($specialDmgAdj).') ';
+                            if ($slots > $minSlots && in_array('fighter', $classNameArray) && ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both')) {
+                                $dmgAdj = $dmgAdj +2;
+                                $dmgAdjMods = $dmgAdjMods."specialized(+2) ";
+                            }
                         }
+
+                        if (strToLower($race) == 'elf' && strpos($weapon['name'], " Bow ") !== false || $weapon['name'] == 'Short Sword' || $weapon['name'] == 'Short Sword') {
+                            $thac0Melee--;
+                            $thac0Ranged--;
+                            $thac0Mods = $thac0Mods.'elfFavoredWeapon(-1) ';
+                        }
+
+                        if (strToLower($race) == 'halfling' && $weapon['thrown'] == 'yes') {
+                            $thac0Ranged--;
+                            $thac0Mods = $thac0Mods.'halflingThrownWeapon(-1) ';
+                        }
+
             ?>
                         <table class="weapons-table avoid-page-break">
                             <tr>
-                                <th colspan="2" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?></th>
+                                <th colspan="2" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?> <?= $profBadge ?></th>
                                 <th colspan="2">THAC0</th>
                                 <th colspan="2">Damage</th>
                                 <th class="no-border"></th>
@@ -65,7 +160,7 @@
                                 <td><?= $weapon['speed'] ?></td>
                             </tr>
                             <tr>
-                                <td colspan="13" class="weapon-notes">Notes: <?= get_sub_field('notes') ?>. Raw Attack Adj: <?= get_sub_field('attack_adjustment') ?>, Raw Damage Adj: <?= get_sub_field('damage_adjustment') ?>.</td>
+                                <td colspan="13" class="weapon-notes">THAC0 Mods: <?= $thac0Mods ?> / Dmg Mods: <?= $dmgAdjMods ?> / Notes: <?= $weaponNotes ?> <?= get_sub_field('notes') ?></td>
                             </tr>
                         </table>
 <?php

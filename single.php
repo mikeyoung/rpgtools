@@ -17,10 +17,15 @@ get_header(); ?>
 		$classNameArray = getClassNameArray();
 		$wpArray = getWpArray();
 		$nwpArray = getNwpArray();
-		$isWarrior = hasClassGroup($classNameArray,"Warrior");
-		$isWizard = hasClassGroup($classNameArray,"Wizard");
-		$isPriest = hasClassGroup($classNameArray,"Priest");
-		$isRogue = hasClassGroup($classNameArray,"Rogue");
+		$isWarrior = hasClassGroup($classNameArray,'warrior');
+		$isWizard = hasClassGroup($classNameArray,'wizard');
+		$isPriest = hasClassGroup($classNameArray,'priest');
+		$isRogue = hasClassGroup($classNameArray,'rogue');
+		$baseThac0 = (int) get_field('base_thac0');
+		$strHit = (int) getStrHit(get_field('strength'),get_field('exceptional_strength'));
+		$strDmg = getStrDmg(get_field('strength'),get_field('exceptional_strength'));
+		$missileAttackAdj = (int) getDexMissileAttack(get_field('dexterity'));
+		$race = get_field('race');
 	?>
 
 	<div id="primary" class="content-area">
@@ -62,12 +67,3 @@ get_header(); ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
-<script>
-	var vm;
-
-	function startVue(theData) {
-		// slug
-	}
-
-	jQuery.getJSON("/wordpress/wp-json/wp/v2/posts/<?= get_the_ID() ?>", startVue);
-</script>

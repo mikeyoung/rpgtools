@@ -151,8 +151,7 @@ function libre_scripts() {
 
 	/* BEGIN MIKE YOUNG MODIFED CODE */
 	wp_enqueue_style( 'style-mikeyoung-org', get_template_directory_uri() . '/mikeyoung.org/css/style.v1.css',array( 'libre-style' ));
-	wp_enqueue_script( 'vuejs-mikeyoung-org', get_template_directory_uri() . '/mikeyoung.org/js/vue.v2.2.1.min.js');
-	wp_enqueue_script( 'main-mikeyoung-org', get_template_directory_uri() . '/mikeyoung.org/js/main.v1.js', array( 'vuejs-mikeyoung-org' ));
+	wp_enqueue_script( 'main-mikeyoung-org', get_template_directory_uri() . '/mikeyoung.org/js/main.v1.js');
 	/* END MIKE YOUNG MODIFED CODE */
 
 

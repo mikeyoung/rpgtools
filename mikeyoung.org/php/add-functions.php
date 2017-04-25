@@ -43,32 +43,32 @@ function printClasses($classArray) {
 }
 
 function hasClassGroup($classNameArray, $classGroup) {
-	if ($classGroup == "Warrior") {
-		if (in_array("Fighter", $classNameArray) || in_array("Ranger", $classNameArray) || in_array("Paladin", $classNameArray)) {
+	if ($classGroup == 'warrior') {
+		if (in_array('fighter', $classNameArray) || in_array('ranger', $classNameArray) || in_array('paladin', $classNameArray)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	if ($classGroup == "Wizard") {
-		if (in_array("Mage", $classNameArray) || in_array("Illusionist", $classNameArray)) {
+	if ($classGroup == 'wizard') {
+		if (in_array('mage', $classNameArray) || in_array('illusionist', $classNameArray)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	if ($classGroup == "Priest") {
-		if (in_array("Cleric", $classNameArray) || in_array("Druid", $classNameArray)) {
+	if ($classGroup == 'priest') {
+		if (in_array('cleric', $classNameArray) || in_array('druid', $classNameArray)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	if ($classGroup == "Rogue") {
-		if (in_array("Thief", $classNameArray) || in_array("Bard", $classNameArray) || in_array("Assassin", $classNameArray)) {
+	if ($classGroup == 'rogue') {
+		if (in_array('thief', $classNameArray) || in_array('bard', $classNameArray) || in_array('assassin', $classNameArray)) {
 			return true;
 		} else {
 			return false;
@@ -338,7 +338,7 @@ function getClassNameArray() {
 
 	if( have_rows('classes') ):
 		while ( have_rows('classes') ) : the_row();
-			$class = get_sub_field('class');
+			$class = strToLower(get_sub_field('class'));
 			array_push($classArray, $class);
 		endwhile;
 	else :

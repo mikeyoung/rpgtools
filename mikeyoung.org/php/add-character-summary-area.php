@@ -2,7 +2,7 @@
     <h3><?= single_post_title() ?></h3>
     <?php printAttribute('Player Name',get_field('player_name')) ?>
     <?php printAttribute('Alignment',get_field('alignment')) ?>
-    <?php printAttribute('Race',get_field('race')) ?>
+    <?php printAttribute('Race',$race) ?>
     <?php printClasses($classArray) ?>
     <?php printAttribute('Age',get_field('age')) ?>
     <?php printAttribute('Sex',get_field('sex')) ?>
