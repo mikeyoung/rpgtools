@@ -9,8 +9,8 @@
 
                 foreach ($weaponsArray as $weapon) {
                     if (strpos($weapon['name'], $sheetWeapon) !== false) {
-                        $thac0Melee = "n/a";
-                        $thac0Ranged = "n/a";
+                        $thac0Melee = "-";
+                        $thac0Ranged = "-";
 
                         if ($weapon['attackType'] == "melee" || $weapon['attackType'] == "both") {
                             $thac0Melee = (int) get_field('base_thac0') - (int) getStrHit(get_field('strength'),get_field('exceptional_strength')) - (int) get_sub_field('attack_adjustment');

@@ -7,7 +7,30 @@
             <th>Languages</th>
         </tr>
         <tr>
-            <td><?= get_field('weapon_proficiencies') ?></td>
+            <td>
+                <?php 								
+                if( have_rows('weapon_proficiencies') ):
+                    echo '<ul class="vertList">';
+                    while ( have_rows('weapon_proficiencies') ) : the_row();
+                        $sheetWp = get_sub_field('weapon');
+                        $slots = 0;
+                        $minSlots = 0;
+
+                        foreach ($wpArray as $wp) {
+                            if (strpos($wp['name'], $sheetWp) !== false) {
+                                $slots = get_sub_field('slots');
+                                $minSlots = (int) $wp['minSlots'];
+                            }
+                        }
+
+                        echo "<li>$sheetWp($slots)</li>";
+                    endwhile;
+                    echo '</ul>';
+                else :
+                    // no rows found
+                endif;
+                ?>
+            </td>
             <td>
                 <?php 								
                 if( have_rows('non_weapon_proficiencies') ):
@@ -54,8 +77,6 @@
                     // no rows found
                 endif;
                 ?>
-            
-            
             </td>
             <td><?= get_field('languages') ?></td>
         </tr>

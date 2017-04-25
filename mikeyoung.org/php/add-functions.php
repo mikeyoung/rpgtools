@@ -373,4 +373,42 @@ function getParryAdjustment($classArray,$isWarrior) {
 
 	return $parryAdjustment;
 }
+
+function printProficiencies($profArray) {
+	$sheetprof = get_sub_field('proficiency');
+	$rollUnder = 0;
+	$slots = 0;
+	$minSlots = 0;
+	$abilityScore = "";
+	$abilityMod = 0;
+	$specialNote = "";
+
+	foreach ($profArray as $prof) {
+		if (strpos($prof['name'], $sheetprof) !== false) {
+			$slots = get_sub_field('slots');
+			$minSlots = (int) $prof['minSlots'];
+			if ($prof['abilityMod'] != 'NA' && $prof['abilityMod'] != 'SP' ) {
+				$abilityMod = (int) ($prof['abilityMod']);
+			} else {
+				$abilityMod = $prof['abilityMod'];
+				if ($abilityMod == "SP") {
+					$specialNote = "&dagger;";
+				}
+			}
+			$abilityScore = get_field(strtolower($prof['ability']));
+		}
+	}
+
+	if ($slots < $minSlots) {
+		$rollUnder = "*";
+	} else {
+		if (is_int($abilityMod)) {
+			$rollUnder = $abilityScore + $abilityMod + ($slots - $minSlots);
+		} else {
+			$rollUnder = $abilityScore + ($slots - $minSlots);
+		}
+	}
+
+	echo "<li>$sheetprof($slots): $rollUnder<sup>$specialNote</sup></li>";
+}
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
