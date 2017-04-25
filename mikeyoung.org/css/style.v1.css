@@ -376,11 +376,11 @@ th.no-border {
     margin-top: .5em;
 }
 
-.max-spells-table {
+.single-row-table {
 	font-size: .8em;
 }
 
-.max-spells-table td {
+.single-row-table td {
 	border: 2px solid #000;
 	text-align: center;
 }

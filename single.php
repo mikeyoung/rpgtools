@@ -44,6 +44,7 @@ get_header(); ?>
 					<?php
 						require get_template_directory() . '/mikeyoung.org/php/add-defense-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-weapons-area.php';
+						require get_template_directory() . '/mikeyoung.org/php/add-rogue-abilities.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-proficiencies-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-spells-area.php';
 					?>

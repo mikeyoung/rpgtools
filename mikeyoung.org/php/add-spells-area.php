@@ -4,7 +4,7 @@
 ?>
     <div class="avoid-page-break">
         <h3>Maximum Prepared Wizard Spells Per Level</h3>
-        <table class="max-spells-table">
+        <table class="single-row-table">
             <tr>
                 <th>1</th>
                 <th>2</th>
@@ -52,7 +52,7 @@
 ?>
     <div class="avoid-page-break">
         <h3>Maximum Prepared Priest Spells Per Level</h3>
-        <table class="max-spells-table">
+        <table class="single-row-table">
             <tr>
                 <th>1</th>
                 <th>2</th>
