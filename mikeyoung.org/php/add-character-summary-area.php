@@ -8,7 +8,7 @@
     <?php printAttribute('Sex',get_field('sex')) ?>
     <?php printAttribute('Height',get_field('height')) ?>
     <?php printAttribute('Weight',get_field('weight')) ?>
-    <?php printAttribute('Base THAC0',get_field('base_thac0')) ?>
-    <?php printAttribute('Move',get_field('movement')) ?>
+    <?php printAttribute('Base THAC0',$baseThac0) ?>
+    <?php printAttribute('Move',$baseMovement) ?>
     <?php printAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
 </div>

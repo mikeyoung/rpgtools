@@ -32,13 +32,13 @@ function printClasses($classArray) {
 			$className = $classArray[$key]['name'];
 			$classLevel = $classArray[$key]['level'];
 			$classExperience = $classArray[$key]['experience'];
-			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (Exp $classExperience)</span></div>";
+			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (".$classExperience."xp)</span></div>";
 		}
 	} else {
 		$className = $classArray[0]['name'];
 		$classLevel = $classArray[0]['level'];
 		$classExperience = $classArray[0]['experience'];
-		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (Exp $classExperience)</span></div>";
+		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (".$classExperience."xp)</span></div>";
 	}
 }
 
@@ -314,15 +314,26 @@ function getFormattedDamage($weaponDmg, $dmgAdj) {
 	return $dmgDice.$formattedMod;
 }
 
+function getClassGroup($class) {
+	if ($class == 'fighter' || $class == 'ranger'  || $class == 'paladin' ) return 'warrior';
+	if ($class == 'mage' || $class == 'illusionist') return 'wizard';
+	if ($class == 'cleric' || $class == 'druid') return 'priest';
+	if ($class == 'thief' || $class == 'bard'  || $class == 'assassin' ) return 'rogue';
+}
+
 function getClassArray() {
 	$classArray = [];
 
 	if( have_rows('classes') ):
 		$loop = 0;
 		while ( have_rows('classes') ) : the_row();
-			$classArray[$loop]["name"] = get_sub_field('class');
-			$classArray[$loop]["level"] = get_sub_field('level');
-			$classArray[$loop]["experience"] = get_sub_field('experience');
+			$className = get_sub_field('class');
+			$xp = get_sub_field('experience');
+
+			$classArray[$loop]["name"] = $className;
+			$classArray[$loop]["level"] = getLevel( strtolower($className),$xp);
+			$classArray[$loop]["experience"] = $xp;
+			$classArray[$loop]["classGroup"] = getClassGroup(strtolower($className));
 			$loop += 1;
 		endwhile;
 	else :
@@ -338,7 +349,7 @@ function getClassNameArray() {
 
 	if( have_rows('classes') ):
 		while ( have_rows('classes') ) : the_row();
-			$class = strToLower(get_sub_field('class'));
+			$class = strtolower(get_sub_field('class'));
 			array_push($classArray, $class);
 		endwhile;
 	else :
@@ -410,5 +421,232 @@ function printProficiencies($profArray) {
 	}
 
 	echo "<li>$sheetprof($slots): $rollUnder<sup>$specialNote</sup></li>";
+}
+
+function getLevel($class,$xp) {
+	$level = 0;
+	$levelTable = [];
+
+	$mageSpecialistLevels = [
+		0,
+		2500,
+		5000,
+		10000,
+		20000,
+		40000,
+		60000,
+		90000,
+		135000,
+		250000,
+		375000,
+		750000,
+		1125000,
+		1500000,
+		1875000,
+		2250000,
+		2625000,
+		3000000,
+		3375000,
+		3750000
+	];
+
+	$fighterLevels = [
+		0,
+		2000,
+		4000,
+		8000,
+		16000,
+		32000,
+		64000,
+		125000,
+		250000,
+		500000,
+		750000,
+		1000000,
+		1250000,
+		1500000,
+		1750000,
+		2000000,
+		2250000,
+		2500000,
+		2750000,
+		3000000
+	];
+
+	$paladinRangerLevels = [
+		0,
+		2250,
+		4500,
+		9000,
+		18000,
+		36000,
+		75000,
+		150000,
+		300000,
+		600000,
+		900000,
+		1200000,
+		1500000,
+		1800000,
+		2100000,
+		2400000,
+		2700000,
+		3000000,
+		3300000,
+		3600000
+	];
+
+	$clericLevels = [
+		0,
+		1500,
+		3000,
+		6000,
+		13000,
+		27500,
+		55000,
+		110000,
+		225000,
+		450000,
+		675000,
+		900000,
+		1125000,
+		1350000,
+		1575000,
+		1800000,
+		2025000,
+		2250000,
+		2475000,
+		2700000
+	];
+
+	$druidLevels = [
+		0,
+		2000,
+		4000,
+		7500,
+		12500,
+		20000,
+		35000,
+		60000,
+		90000,
+		125000,
+		200000,
+		300000,
+		750000,
+		1500000,
+		3000000,
+		3500000,
+		4000000,
+		4500000,
+		5000000,
+		5500000
+	];
+
+	$thiefBardAssassinLevels = [
+		0,
+		1250,
+		2500,
+		5000,
+		10000,
+		20000,
+		40000,
+		70000,
+		110000,
+		160000,
+		220000,
+		440000,
+		660000,
+		880000,
+		1100000,
+		1320000,
+		1540000,
+		1760000,
+		1980000,
+		2200000
+	];
+
+	switch ($class) {
+		case 'fighter':
+			$levelTable = $fighterLevels;
+			break;
+			
+		case 'ranger':
+			$levelTable = $paladinRangerLevels;
+			break;
+			
+		case 'paladin':
+			$levelTable = $paladinRangerLevels;
+			break;
+			
+		case 'mage':
+			$levelTable = $mageSpecialistLevels;
+			break;
+			
+		case 'illusionist':
+			$levelTable = $mageSpecialistLevels;
+			break;
+			
+		case 'cleric':
+			$levelTable = $clericLevels;
+			break;
+			
+		case 'druid':
+			$levelTable = $druidLevels;
+			break;
+			
+		case 'thief':
+			$levelTable = $thiefBardAssassinLevels;
+			break;
+			
+		case 'bard':
+			$levelTable = $thiefBardAssassinLevels;
+			break;
+			
+		case 'assassin':
+			$levelTable = $thiefBardAssassinLevels;
+			break;
+	}
+
+	foreach ($levelTable as $key => $value) {
+		if ($xp >= $value) {
+			$level = 1 + $key;
+		}
+	}
+	return $level;
+}
+
+function getBaseThac0($classArray) {
+	$thac0 = 20;
+
+	$thac0TableArray = array(
+		'priest' => [20,20,20,18,18,18,16,16,16,14,14,14,12,12,12,10,10,10,8,8],
+		'rogue' => [20,20,19,19,18,18,17,17,16,16,15,15,14,14,13,13,12,12,11,11],
+		'warrior' => [20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1],
+		'wizard' => [20,20,20,19,19,19,18,18,18,17,17,17,16,16,16,15,15,15,14,14],
+	);
+
+	foreach ($classArray as $class) {
+		$classGroup = getClassGroup(strtolower($class['name']));
+		$classLevelIndex = $class['level'] - 1;
+		$classGroupThac0 = $thac0TableArray[$classGroup][$classLevelIndex];
+		if ($classGroupThac0 < $thac0) $thac0 = $classGroupThac0;
+	}
+
+	return $thac0;
+}
+
+function getMovementRate($race) {
+	$race = strtolower($race);
+
+	$moveArray = [
+		'human' => 12,	
+		'dwarf' => 6,
+		'elf' => 12,
+		'gnome' => 6,
+		'half-elf' => 12,
+		'halfling' => 6,
+	];
+
+	return $moveArray[$race];
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */

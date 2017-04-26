@@ -21,11 +21,12 @@ get_header(); ?>
 		$isWizard = hasClassGroup($classNameArray,'wizard');
 		$isPriest = hasClassGroup($classNameArray,'priest');
 		$isRogue = hasClassGroup($classNameArray,'rogue');
-		$baseThac0 = (int) get_field('base_thac0');
+		$baseThac0 = getBaseThac0($classArray);
 		$strHit = (int) getStrHit(get_field('strength'),get_field('exceptional_strength'));
 		$strDmg = getStrDmg(get_field('strength'),get_field('exceptional_strength'));
 		$missileAttackAdj = (int) getDexMissileAttack(get_field('dexterity'));
 		$race = get_field('race');
+		$baseMovement = getMovementRate($race);
 	?>
 
 	<div id="primary" class="content-area">

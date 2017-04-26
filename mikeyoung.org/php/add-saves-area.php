@@ -46,6 +46,6 @@
             <td class="save-label-cell">Spell</td>
         </tr>
     </table>
-    <div class="current-hp">Hit Points:</div>
+    <div class="save-mods"></div>
 </div>
 <br class="clear" />

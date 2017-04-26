@@ -48,7 +48,7 @@
 
 <!-- Begin: Priest Spells -->
 <?php
-    if ($isPriest) {
+    if ($isPriest || in_array('paladin',$classNameArray)) {
 ?>
     <div class="avoid-page-break">
         <h3>Maximum Prepared Priest Spells Per Level</h3>

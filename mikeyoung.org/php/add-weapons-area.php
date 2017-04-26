@@ -94,7 +94,7 @@
                             $thac0Ranged = $baseThac0 - $missileAttackAdj - $specialAttackAdj - $nonProficientMod;
                             $thac0Mods = $thac0Mods.'missileAttackAdj('.formatMod(-$missileAttackAdj).') ';
 
-                            if ($slots > $minSlots && in_array('fighter', $classNameArray) && (strpos(strToLower($weapon['name']), 'bow') !== false)) {
+                            if ($slots > $minSlots && in_array('fighter', $classNameArray) && (strpos(strtolower($weapon['name']), 'bow') !== false)) {
                                 $weaponNotes = $weaponNotes.'Specialization: +2 to hit at Point Blank Range. ';
                             }
                         }
@@ -109,13 +109,13 @@
                             }
                         }
 
-                        if (strToLower($race) == 'elf' && strpos($weapon['name'], " Bow ") !== false || $weapon['name'] == 'Short Sword' || $weapon['name'] == 'Short Sword') {
+                        if (strtolower($race) == 'elf' && strpos($weapon['name'], " Bow ") !== false || $weapon['name'] == 'Short Sword' || $weapon['name'] == 'Short Sword') {
                             $thac0Melee--;
                             $thac0Ranged--;
                             $thac0Mods = $thac0Mods.'elfFavoredWeapon(-1) ';
                         }
 
-                        if (strToLower($race) == 'halfling' && $weapon['thrown'] == 'yes') {
+                        if (strtolower($race) == 'halfling' && $weapon['thrown'] == 'yes') {
                             $thac0Ranged--;
                             $thac0Mods = $thac0Mods.'halflingThrownWeapon(-1) ';
                         }
