@@ -43,37 +43,13 @@ function printClasses($classArray) {
 }
 
 function hasClassGroup($classNameArray, $classGroup) {
-	if ($classGroup == 'warrior') {
-		if (in_array('fighter', $classNameArray) || in_array('ranger', $classNameArray) || in_array('paladin', $classNameArray)) {
+	foreach ($classNameArray as $className) {
+		if (getClassGroup($className) == $classGroup) {
 			return true;
-		} else {
-			return false;
 		}
 	}
 
-	if ($classGroup == 'wizard') {
-		if (in_array('mage', $classNameArray) || in_array('illusionist', $classNameArray)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	if ($classGroup == 'priest') {
-		if (in_array('cleric', $classNameArray) || in_array('druid', $classNameArray)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	if ($classGroup == 'rogue') {
-		if (in_array('thief', $classNameArray) || in_array('bard', $classNameArray) || in_array('assassin', $classNameArray)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	return false;
 }
 
 function formatMod($theNumber) {
