@@ -1,5 +1,5 @@
 <div class="character-summary-block">
-    <h3><?= single_post_title() ?></h3>
+    <div class="character-name"><?= single_post_title() ?></div>
     <?php printAttribute('Player Name',get_field('player_name')) ?>
     <?php printAttribute('Alignment',get_field('alignment')) ?>
     <?php printAttribute('Race',$race) ?>
@@ -10,12 +10,5 @@
     <?php printAttribute('Weight',get_field('weight')) ?>
     <?php printAttribute('Base THAC0',$baseThac0) ?>
     <?php printAttribute('Move',$baseMovement) ?>
-    <?php printAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
 </div>
-<?php
-    $imageUrl = '';
-    if (has_post_thumbnail()) {
-        $imageUrl = 123;
-    }
-?>
-<img class="character-image" src="<?= $imageUrl ?>" />
+<img class="character-image" src='<?= the_post_thumbnail_url('large'); ?>' />

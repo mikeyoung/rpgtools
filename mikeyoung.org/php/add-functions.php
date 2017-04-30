@@ -296,8 +296,9 @@ function getFormattedDamage($weaponDmg, $dmgAdj) {
 }
 
 function getClassGroup($class) {
+	$class = strtolower($class);
 	if ($class == 'fighter' || $class == 'ranger'  || $class == 'paladin' ) return 'warrior';
-	if ($class == 'mage' || $class == 'illusionist') return 'wizard';
+	if ($class == 'mage' || $class == 'illusionist' || $class == 'abjurer' || $class == 'conjurer' || $class == 'diviner' || $class == 'enchanter' || $class == 'invoker' || $class == 'necromancer' || $class == 'transmuter') return 'wizard';
 	if ($class == 'cleric' || $class == 'druid') return 'priest';
 	if ($class == 'thief' || $class == 'bard'  || $class == 'assassin' ) return 'rogue';
 }
@@ -549,7 +550,7 @@ function getLevel($class,$xp) {
 	];
 
 	if ($class == 'paladin' || $class == 'ranger') $levelClass = 'paladin';
-	if ($class == 'illusionist') $levelClass = 'mage';
+	if (getClassGroup($class) == 'wizard') $levelClass = 'mage';
 	if ($class == 'thief' || $class == 'bard' || $class == 'assassin') $levelClass = 'thief';
 
 	foreach ($levelTable[$levelClass] as $key => $value) {

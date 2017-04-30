@@ -58,6 +58,26 @@ h3 {
     font-size: 14pt;
 }
 
+.hr {
+	height: .1em;
+	background-color: #000;
+}
+
+.multi-size-header {
+	float: left;
+}
+
+.character-name {
+    font-family: 'futurabc', serif;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+
+.multi-size-header-small {
+	font-size: .8em;
+    margin: .4em 0 0 .4em;
+}
+
 .vertList,
 .vertList li {
 	display: block;
@@ -67,9 +87,12 @@ h3 {
 }
 
 .character-image {
-	display: block;
-	float: left;
-	width: 44%;
+    float: left;
+    max-width: 44%;
+    max-height: 20em;
+    border: 1px solid #000;
+    margin: .2em;
+    height: auto;
 }
 
 @media screen and (min-width: 55em) {
@@ -197,9 +220,12 @@ ul.stat-list li {
 	margin-bottom: 2em;
 }
 
-.ability-scores-area,
-.saving-throw-area {
+.ability-scores-area {
 	float: left;
+}
+
+.saving-throw-area {
+	float: right;
 }
 
 .ability-scores-area {
@@ -237,9 +263,13 @@ ul.stat-list li {
     padding: 15px 0;
 }
 
+.ability-label {
+	float: left;
+}
+
 .ability-label-cell {
 	font-family: 'IM Fell English', serif;
-    font-size: 1.1em;
+    font-size: 1.2em;
     text-align: left;
     padding-left: .5em;
     width: 3em;
@@ -250,6 +280,8 @@ ul.stat-list li {
 .ability-details {
 	font-size: .5em;
     font-family: 'futura-book', serif;
+	float: left;
+	margin-left: 1em;
 }
 
 .save-value-cell {
@@ -299,8 +331,9 @@ td.save-label-cell {
 }
 
 .defense-detail-table {
-	width: 100%;
+	width: 50%;
 	margin: 0;
+	float: right;
 }
 
 .defense-detail-ac {
@@ -324,6 +357,14 @@ td.save-label-cell {
 
 .defense-detail-armor {
 	width: 55%;
+}
+
+.hit-points {
+	height: 7em;
+}
+
+.hp-sup {
+    font-family: 'futura-book', serif;
 }
 
 .defense-detail-table th {

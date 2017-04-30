@@ -52,6 +52,9 @@ get_header(); ?>
 					<?php
 						require get_template_directory() . '/mikeyoung.org/php/add-abilities-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-defense-area.php';
+					?>
+					<br class="clear" />
+					<?php
 						require get_template_directory() . '/mikeyoung.org/php/add-weapons-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-rogue-abilities.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-proficiencies-area.php';
@@ -59,8 +62,11 @@ get_header(); ?>
 					?>
 
 					<div class="avoid-page-break">
-						<h3>Notes</h3>
-						<div class="text-box"><?= get_field('notes') ?></div>
+						<h3 class="multi-size-header">Notes</h3>
+						<div class="multi-size-header multi-size-header-small">Memorized spells, inventory, quests, etc.</div>
+						<br class="clear" />
+						<div class="hr" />
+						<?= get_field('notes') ?>
 					</div>
 
 					<div class="hidden"><?php get_template_part( 'template-parts/content', 'single' ); ?></div>

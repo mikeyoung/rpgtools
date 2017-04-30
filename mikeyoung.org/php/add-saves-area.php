@@ -65,25 +65,30 @@
                 if ($constitution >= 19) $magicSaveBonus = 5;
 
                 if ($magicSaveBonus > 0) {
-                    $saveNotes = $saveNotes."$race: +$magicSaveBonus vs magic<br>";
+                    $saveNotes = $saveNotes."$race: +$magicSaveBonus vs magic<br />";
                 }
             }
 
             if ($race == 'Dwarf' || $race == 'Halfling') {
-                $saveNotes = $saveNotes."$race: +2 vs poison<br>";
+                $saveNotes = $saveNotes."$race: +2 vs poison<br />";
             }
 
             if ($race == 'Elf') {
-                $saveNotes = $saveNotes.'Elf: 90% resistance to sleep and all charm-related spells (in addition to normal saving throw).<br>';
+                $saveNotes = $saveNotes.'Elf: 90% resistance to sleep and all charm-related spells (in addition to normal saving throw).<br />';
             }
 
             if ($race == 'Half-Elf') {
-                $saveNotes = $saveNotes.'Half-Elf: 30% resistance to sleep and all charm-related spells (in addition to normal saving throw).<br>';
+                $saveNotes = $saveNotes.'Half-Elf: 30% resistance to sleep and all charm-related spells (in addition to normal saving throw).<br />';
             }
 
             if (in_array('paladin',$classNameArray)) {
-                $saveNotes = $saveNotes.'Paladin: global save +2 (already applied above)<br>';
+                $saveNotes = $saveNotes.'Paladin: global save +2 (already applied above)<br />';
             }
+
+            if (in_array('druid', $classNameArray)) {
+                $saveNotes = $saveNotes.'Druid: +2 vs. fire or electrical attacks.<br />';
+            }
+
             echo $saveNotes;
         ?>
     </div>

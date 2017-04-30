@@ -2,7 +2,6 @@
     <tr>
         <th class="defense-detail-ac-head"><h3>A.C.</h3></th>
         <th class="defense-detail-adj-ac-head"><h3>A.C. ADJUSTMENTS</h3></th>
-        <th class="defense-detail-armor-head"><h3>ARMOR</h3></th>
     </tr>
     <tr>
         <td class="defense-detail-ac">
@@ -79,11 +78,18 @@
                 printAttribute('Parry Adjustment',getParryAdjustment($classArray,$isWarrior));
             ?>
         </td>
-        <td class="defense-detail-armor">
+    </tr>
+    <tr>
+        <td class="defense-detail-armor" colspan="2">
             <?php
                 printAttribute('Armor',$armorDetail);
                 printAttribute('Shield',$shieldDetail);
             ?>
+        </td>
+    </tr>
+    <tr>
+        <td class="defense-detail-armor hit-points" colspan="2">
+            <h3>Hit Points <sup class="hp-sup">(<?= get_field('maximum_hit_points') ?>)</sup></h3>
         </td>
     </tr>
 </table>

@@ -1,17 +1,17 @@
 <?php
     if (isset($_GET['debug']) && $_GET['debug'] == 'true') {
 
-		echo '<br><h3>DEBUG WEAPONS LIST</h3><br>';
+		echo '<br /><h3>DEBUG WEAPONS LIST</h3><br />';
 		foreach ($weaponsArray as $weapon) {
 			echo $weapon['name'].'<br />';
 		}
 
-		echo '<br><h3>DEBUG ARMOR LIST</h3><br>';
+		echo '<br /><h3>DEBUG ARMOR LIST</h3><br />';
 		foreach ($armorArray as $armor) {
 			echo $armor['name'].'<br />';
 		}
 
-		echo '<br><h3>NWP Array Builder</h3><br>';
+		echo '<br /><h3>NWP Array Builder</h3><br />';
 		$nwpArray = [
 			["Agriculture","1","Intelligence","0"],
 			["Alertness","1","Wisdom","+1"],
@@ -91,20 +91,20 @@
 			["Weaving","1","Intelligence","–1"],
 		];
 
-		echo '$nwpArray = [<br>';
+		echo '$nwpArray = [<br />';
 		foreach ($nwpArray as $nwp) {
 			echo "
 				array(\n
-					'name' => '$nwp[0]',<br>
-					'minSlots' => '$nwp[1]',<br>
-					'ability' => '$nwp[2]',<br>
-					'abilityMod' => '$nwp[3]',<br>
-				),<br>
+					'name' => '$nwp[0]',<br />
+					'minSlots' => '$nwp[1]',<br />
+					'ability' => '$nwp[2]',<br />
+					'abilityMod' => '$nwp[3]',<br />
+				),<br />
 			";
 		}
-		echo '];<br>';
+		echo '];<br />';
 
-		echo '<br><h3>WP Array Builder</h3><br>';
+		echo '<br /><h3>WP Array Builder</h3><br />';
 		$wpArray = [
 			["Awl Pike", 1],
 			["Bardiche", 1],
@@ -171,16 +171,16 @@
 			["Whip", 1],
 		];
 
-		echo '$wpArray = [<br>';
+		echo '$wpArray = [<br />';
 		foreach ($wpArray as $wp) {
 			echo "
 				array(\n
-					'name' => '$wp[0]',<br>
-					'minSlots' => '$wp[1]',<br>
-				),<br>
+					'name' => '$wp[0]',<br />
+					'minSlots' => '$wp[1]',<br />
+				),<br />
 			";
 		}
-		echo '];<br>';
+		echo '];<br />';
 	}
 ?>
 
