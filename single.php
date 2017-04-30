@@ -45,12 +45,12 @@ get_header(); ?>
 					<div class="sheet-top">
 						<?php
 							require get_template_directory() . '/mikeyoung.org/php/add-character-summary-area.php';
-							require get_template_directory() . '/mikeyoung.org/php/add-abilities-area.php';
 							require get_template_directory() . '/mikeyoung.org/php/add-saves-area.php';
 						?>
 					</div>
 
 					<?php
+						require get_template_directory() . '/mikeyoung.org/php/add-abilities-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-defense-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-weapons-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-rogue-abilities.php';

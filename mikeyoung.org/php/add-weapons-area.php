@@ -21,8 +21,8 @@
                         $priestProfPenalty = -3;
                         $rogueProfPenalty = -3;
                         $specialAttackAdj = (int) get_sub_field('attack_adjustment');
-                        $thac0Mods = "";
-                        $dmgAdjMods = "";
+                        $thac0Mods = '';
+                        $dmgAdjMods = '';
                         $dmgAdj = $specialDmgAdj = (int) get_sub_field('damage_adjustment');
                         $weaponNotes = '';
                         $nonProficientMod = 0;
@@ -77,7 +77,10 @@
                             $thac0Mods = $thac0Mods."$nonProficientNote ";
                         }
 
-                        $thac0Mods = $thac0Mods.'specialAttackAdj('.formatMod(-$specialAttackAdj).') ';
+                        if ($specialAttackAdj != 0) {
+                            $thac0Mods = $thac0Mods.'specialAttackAdj('.formatMod(-$specialAttackAdj).') ';
+                        }
+                        
 
                         if ($weapon['attackType'] == "melee" || $weapon['attackType'] == "both") {
                             $thac0Melee = $baseThac0 - $strHit - $specialAttackAdj - $nonProficientMod;
@@ -92,7 +95,9 @@
 
                         if ($weapon['attackType'] == "ranged" || $weapon['attackType'] == "both") {
                             $thac0Ranged = $baseThac0 - $missileAttackAdj - $specialAttackAdj - $nonProficientMod;
-                            $thac0Mods = $thac0Mods.'missileAttackAdj('.formatMod(-$missileAttackAdj).') ';
+                            if ($missileAttackAdj != 0) {
+                                $thac0Mods = $thac0Mods.'missileAttackAdj('.formatMod(-$missileAttackAdj).') ';
+                            }
 
                             if ($slots > $minSlots && in_array('fighter', $classNameArray) && (strpos(strtolower($weapon['name']), 'bow') !== false)) {
                                 $weaponNotes = $weaponNotes.'Specialization: +2 to hit at Point Blank Range. ';
@@ -102,7 +107,11 @@
                         if ($weapon['strDmg'] == "yes") {
                             $dmgAdj = $dmgAdj + $strDmg;
                             $dmgAdjMods = $dmgAdjMods.'strength('.formatMod($strDmg).') ';
-                            $dmgAdjMods = $dmgAdjMods.'special('.formatMod($specialDmgAdj).') ';
+                            if ($specialDmgAdj != 0) {
+                                $dmgAdjMods = $dmgAdjMods.'special('.formatMod($specialDmgAdj).') ';
+                            }
+                            
+
                             if ($slots > $minSlots && in_array('fighter', $classNameArray) && ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both')) {
                                 $dmgAdj = $dmgAdj +2;
                                 $dmgAdjMods = $dmgAdjMods."specialized(+2) ";
@@ -160,7 +169,16 @@
                                 <td><?= $weapon['speed'] ?></td>
                             </tr>
                             <tr>
-                                <td colspan="13" class="weapon-notes">THAC0 Mods: <?= $thac0Mods ?> / Dmg Mods: <?= $dmgAdjMods ?> / Notes: <?= $weaponNotes ?> <?= get_sub_field('notes') ?></td>
+                                <td colspan="13" class="weapon-notes">
+                                    
+                                    <?php
+                                        $weaponNotesField = get_sub_field('notes');
+                                        echo "THAC0 Mods: $thac0Mods";
+                                        if ($dmgAdjMods != '') echo " / Dmg Mods: $dmgAdjMods";
+                                        if ($weaponNotes != '') echo " / $weaponNotes";
+                                        if ($weaponNotesField != '') echo " / $weaponNotesField";
+                                    ?>
+                                </td>
                             </tr>
                         </table>
 <?php

@@ -12,3 +12,10 @@
     <?php printAttribute('Move',$baseMovement) ?>
     <?php printAttribute('Max. Hit Points',get_field('maximum_hit_points')) ?>
 </div>
+<?php
+    $imageUrl = '';
+    if (has_post_thumbnail()) {
+        $imageUrl = 123;
+    }
+?>
+<img class="character-image" src="<?= $imageUrl ?>" />
