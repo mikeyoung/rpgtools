@@ -176,7 +176,7 @@
                                         echo "THAC0 Mods: $thac0Mods";
                                         if ($dmgAdjMods != '') echo " / Dmg Mods: $dmgAdjMods";
                                         if ($weaponNotes != '') echo " / $weaponNotes";
-                                        if ($weaponNotesField != '') echo " / $weaponNotesField";
+                                        if ($weaponNotesField != '') echo " / Notes: $weaponNotesField";
                                     ?>
                                 </td>
                             </tr>
