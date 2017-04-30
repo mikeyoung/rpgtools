@@ -1,0 +1,213 @@
+<?php
+function getSavesArray() {
+    return [
+        'priest' => [
+            1 => [
+                'paralyzation' => 10,
+                'rod' => 14,
+                'petrification' => 13,
+                'breath' => 16,
+                'spell' => 15,
+            ],
+            4 => [
+                'paralyzation' => 9,
+                'rod' => 13,
+                'petrification' => 12,
+                'breath' => 15,
+                'spell' => 14,
+            ],
+            7 => [
+                'paralyzation' => 7,
+                'rod' => 11,
+                'petrification' => 10,
+                'breath' => 13,
+                'spell' => 12,
+            ],
+            10 => [
+                'paralyzation' => 6,
+                'rod' => 10,
+                'petrification' => 9,
+                'breath' => 12,
+                'spell' => 11,
+            ],
+            13 => [
+                'paralyzation' => 5,
+                'rod' => 9,
+                'petrification' => 8,
+                'breath' => 11,
+                'spell' => 10,
+            ],
+            16 => [
+                'paralyzation' => 4,
+                'rod' => 8,
+                'petrification' => 7,
+                'breath' => 10,
+                'spell' => 9,
+            ],
+            19 => [
+                'paralyzation' => 2,
+                'rod' => 6,
+                'petrification' => 5,
+                'breath' => 8,
+                'spell' => 7,
+            ],
+        ],
+
+        'rogue' => [
+            1 => [
+                'paralyzation' => 13,
+                'rod' => 14,
+                'petrification' => 12,
+                'breath' => 16,
+                'spell' => 15,
+            ],
+            5 => [
+                'paralyzation' => 12,
+                'rod' => 12,
+                'petrification' => 11,
+                'breath' => 15,
+                'spell' => 13,
+            ],
+            9 => [
+                'paralyzation' => 11,
+                'rod' => 10,
+                'petrification' => 10,
+                'breath' => 14,
+                'spell' => 11,
+            ],
+            13 => [
+                'paralyzation' => 10,
+                'rod' => 8,
+                'petrification' => 9,
+                'breath' => 13,
+                'spell' => 9,
+            ],
+            17 => [
+                'paralyzation' => 9,
+                'rod' => 6,
+                'petrification' => 8,
+                'breath' => 12,
+                'spell' => 7,
+            ],
+            21 => [
+                'paralyzation' => 8,
+                'rod' => 4,
+                'petrification' => 7,
+                'breath' => 11,
+                'spell' => 5,
+            ],
+        ],
+
+        'warrior' => [
+            0 => [
+                'paralyzation' => 16,
+                'rod' => 18,
+                'petrification' => 17,
+                'breath' => 20,
+                'spell' => 19,
+            ],
+            1 => [
+                'paralyzation' => 14,
+                'rod' => 16,
+                'petrification' => 15,
+                'breath' => 17,
+                'spell' => 17,
+            ],
+            3 => [
+                'paralyzation' => 13,
+                'rod' => 15,
+                'petrification' => 14,
+                'breath' => 16,
+                'spell' => 16,
+            ],
+            5 => [
+                'paralyzation' => 11,
+                'rod' => 13,
+                'petrification' => 12,
+                'breath' => 13,
+                'spell' => 14,
+            ],
+            7 => [
+                'paralyzation' => 10,
+                'rod' => 12,
+                'petrification' => 11,
+                'breath' => 12,
+                'spell' => 13,
+            ],
+            9 => [
+                'paralyzation' => 8,
+                'rod' => 10,
+                'petrification' => 9,
+                'breath' => 9,
+                'spell' => 11,
+            ],
+            11 => [
+                'paralyzation' => 7,
+                'rod' => 9,
+                'petrification' => 8,
+                'breath' => 8,
+                'spell' => 10,
+            ],
+            13 => [
+                'paralyzation' => 5,
+                'rod' => 7,
+                'petrification' => 6,
+                'breath' => 5,
+                'spell' => 8,
+            ],
+            15 => [
+                'paralyzation' => 4,
+                'rod' => 6,
+                'petrification' => 5,
+                'breath' => 4,
+                'spell' => 7,
+            ],
+            17 => [
+                'paralyzation' => 3,
+                'rod' => 5,
+                'petrification' => 4,
+                'breath' => 4,
+                'spell' => 6,
+            ],
+        ],
+
+        'wizard' => [
+            1 => [
+                'paralyzation' => 14,
+                'rod' => 11,
+                'petrification' => 13,
+                'breath' => 15,
+                'spell' => 12,
+            ],
+            6 => [
+                'paralyzation' => 13,
+                'rod' => 9,
+                'petrification' => 11,
+                'breath' => 13,
+                'spell' => 10,
+            ],
+            11 => [
+                'paralyzation' => 11,
+                'rod' => 7,
+                'petrification' => 9,
+                'breath' => 11,
+                'spell' => 8,
+            ],
+            16 => [
+                'paralyzation' => 10,
+                'rod' => 5,
+                'petrification' => 7,
+                'breath' => 9,
+                'spell' => 6,
+            ],
+            21 => [
+                'paralyzation' => 8,
+                'rod' => 3,
+                'petrification' => 5,
+                'breath' => 7,
+                'spell' => 4,
+            ],
+        ],
+    ];
+}
+?>

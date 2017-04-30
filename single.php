@@ -27,6 +27,7 @@ get_header(); ?>
 		$missileAttackAdj = (int) getDexMissileAttack(get_field('dexterity'));
 		$race = get_field('race');
 		$baseMovement = getMovementRate($race);
+		$savesArray = getSavesArray();
 	?>
 
 	<div id="primary" class="content-area">
@@ -34,6 +35,12 @@ get_header(); ?>
 			<main id="main" class="site-main" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
+					<?php
+					 	getSave('rod' ,$classArray, $savesArray);
+					?>
+
+
+
 					<div class="sheet-top">
 						<?php
 							require get_template_directory() . '/mikeyoung.org/php/add-character-summary-area.php';

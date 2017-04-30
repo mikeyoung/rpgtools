@@ -1,80 +1,77 @@
 <?php
 
 function getArmorArray() {
-	$armorArray = [
+	return [
         array(
-            "name" => "Banded Mail",
-            "ac" => 4,
+            'name' => 'Banded Mail',
+            'ac' => 4,
         ),
 
         array(
-            "name" => "Brigandine",
-            "ac" => 6,
+            'name' => 'Brigandine',
+            'ac' => 6,
         ),
 
         array(
-            "name" => "Bronze Plate Mail",
-            "ac" => 4,
+            'name' => 'Bronze Plate Mail',
+            'ac' => 4,
         ),
 
         array(
-            "name" => "Chain Mail",
-            "ac" => 5,
+            'name' => 'Chain Mail',
+            'ac' => 5,
         ),
 
         array(
-            "name" => "Field Plate",
-            "ac" => 2,
+            'name' => 'Field Plate',
+            'ac' => 2,
         ),
 
         array(
-            "name" => "Full Plate",
-            "ac" => 1,
+            'name' => 'Full Plate',
+            'ac' => 1,
         ),
 
         array(
-            "name" => "Hide",
-            "ac" => 6,
+            'name' => 'Hide',
+            'ac' => 6,
         ),
 
         array(
-            "name" => "Leather",
-            "ac" => 8,
+            'name' => 'Leather',
+            'ac' => 8,
         ),
 
         array(
-            "name" => "Padded",
-            "ac" => 8,
+            'name' => 'Padded',
+            'ac' => 8,
         ),
 
         array(
-            "name" => "Plate Mail",
-            "ac" => 3,
+            'name' => 'Plate Mail',
+            'ac' => 3,
         ),
 
         array(
-            "name" => "Ring Mail",
-            "ac" => 7,
+            'name' => 'Ring Mail',
+            'ac' => 7,
         ),
 
         array(
-            "name" => "Scale Mail",
-            "ac" => 6,
+            'name' => 'Scale Mail',
+            'ac' => 6,
         ),
 
         array(
-            "name" => "Splint Mail",
-            "ac" => 4,
+            'name' => 'Splint Mail',
+            'ac' => 4,
         ),
 
         array(
-            "name" => "Studded Leather",
-            "ac" => 7,
+            'name' => 'Studded Leather',
+            'ac' => 7,
         ),
 
     ];
-
-    return $armorArray;
 }
-
 ?>

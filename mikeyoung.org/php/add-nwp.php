@@ -1,7 +1,7 @@
 <?php
 
 function getNwpArray() {
-    $nwpArray = [
+    return [
         array(
 			'name' => 'Agriculture',
 			'minSlots' => '1',
@@ -534,8 +534,6 @@ function getNwpArray() {
 			'abilityMod' => '-1',
         ),
     ];
-
-    return $nwpArray;
 }
 
 ?>

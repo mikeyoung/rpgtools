@@ -19,6 +19,11 @@ require get_template_directory() . '/mikeyoung.org/php/add-nwp.php';
  */
 require get_template_directory() . '/mikeyoung.org/php/add-wp.php';
 
+/**
+ * Load AD&D savesArray function
+ */
+require get_template_directory() . '/mikeyoung.org/php/add-saves-array.php';
+
 
 /* BEGIN MIKE YOUNG FUNCTIONS & CLASSES */
 function printAttribute($label,$value) {
@@ -401,189 +406,153 @@ function printProficiencies($profArray) {
 
 function getLevel($class,$xp) {
 	$level = 0;
-	$levelTable = [];
+	$levelClass = $class;
 
-	$mageSpecialistLevels = [
-		0,
-		2500,
-		5000,
-		10000,
-		20000,
-		40000,
-		60000,
-		90000,
-		135000,
-		250000,
-		375000,
-		750000,
-		1125000,
-		1500000,
-		1875000,
-		2250000,
-		2625000,
-		3000000,
-		3375000,
-		3750000
+	$levelTable = [
+		'mage' => [
+			0,
+			2500,
+			5000,
+			10000,
+			20000,
+			40000,
+			60000,
+			90000,
+			135000,
+			250000,
+			375000,
+			750000,
+			1125000,
+			1500000,
+			1875000,
+			2250000,
+			2625000,
+			3000000,
+			3375000,
+			3750000
+		],
+
+		'fighter' => [
+			0,
+			2000,
+			4000,
+			8000,
+			16000,
+			32000,
+			64000,
+			125000,
+			250000,
+			500000,
+			750000,
+			1000000,
+			1250000,
+			1500000,
+			1750000,
+			2000000,
+			2250000,
+			2500000,
+			2750000,
+			3000000
+		],
+
+		'paladin' => [
+			0,
+			2250,
+			4500,
+			9000,
+			18000,
+			36000,
+			75000,
+			150000,
+			300000,
+			600000,
+			900000,
+			1200000,
+			1500000,
+			1800000,
+			2100000,
+			2400000,
+			2700000,
+			3000000,
+			3300000,
+			3600000
+		],
+
+		'cleric' => [
+			0,
+			1500,
+			3000,
+			6000,
+			13000,
+			27500,
+			55000,
+			110000,
+			225000,
+			450000,
+			675000,
+			900000,
+			1125000,
+			1350000,
+			1575000,
+			1800000,
+			2025000,
+			2250000,
+			2475000,
+			2700000
+		],
+
+		'druid' => [
+			0,
+			2000,
+			4000,
+			7500,
+			12500,
+			20000,
+			35000,
+			60000,
+			90000,
+			125000,
+			200000,
+			300000,
+			750000,
+			1500000,
+			3000000,
+			3500000,
+			4000000,
+			4500000,
+			5000000,
+			5500000
+		],
+
+		'thief' => [
+			0,
+			1250,
+			2500,
+			5000,
+			10000,
+			20000,
+			40000,
+			70000,
+			110000,
+			160000,
+			220000,
+			440000,
+			660000,
+			880000,
+			1100000,
+			1320000,
+			1540000,
+			1760000,
+			1980000,
+			2200000
+		],
 	];
 
-	$fighterLevels = [
-		0,
-		2000,
-		4000,
-		8000,
-		16000,
-		32000,
-		64000,
-		125000,
-		250000,
-		500000,
-		750000,
-		1000000,
-		1250000,
-		1500000,
-		1750000,
-		2000000,
-		2250000,
-		2500000,
-		2750000,
-		3000000
-	];
+	if ($class == 'paladin' || $class == 'ranger') $levelClass = 'paladin';
+	if ($class == 'illusionist') $levelClass = 'mage';
+	if ($class == 'thief' || $class == 'bard' || $class == 'assassin') $levelClass = 'thief';
 
-	$paladinRangerLevels = [
-		0,
-		2250,
-		4500,
-		9000,
-		18000,
-		36000,
-		75000,
-		150000,
-		300000,
-		600000,
-		900000,
-		1200000,
-		1500000,
-		1800000,
-		2100000,
-		2400000,
-		2700000,
-		3000000,
-		3300000,
-		3600000
-	];
-
-	$clericLevels = [
-		0,
-		1500,
-		3000,
-		6000,
-		13000,
-		27500,
-		55000,
-		110000,
-		225000,
-		450000,
-		675000,
-		900000,
-		1125000,
-		1350000,
-		1575000,
-		1800000,
-		2025000,
-		2250000,
-		2475000,
-		2700000
-	];
-
-	$druidLevels = [
-		0,
-		2000,
-		4000,
-		7500,
-		12500,
-		20000,
-		35000,
-		60000,
-		90000,
-		125000,
-		200000,
-		300000,
-		750000,
-		1500000,
-		3000000,
-		3500000,
-		4000000,
-		4500000,
-		5000000,
-		5500000
-	];
-
-	$thiefBardAssassinLevels = [
-		0,
-		1250,
-		2500,
-		5000,
-		10000,
-		20000,
-		40000,
-		70000,
-		110000,
-		160000,
-		220000,
-		440000,
-		660000,
-		880000,
-		1100000,
-		1320000,
-		1540000,
-		1760000,
-		1980000,
-		2200000
-	];
-
-	switch ($class) {
-		case 'fighter':
-			$levelTable = $fighterLevels;
-			break;
-			
-		case 'ranger':
-			$levelTable = $paladinRangerLevels;
-			break;
-			
-		case 'paladin':
-			$levelTable = $paladinRangerLevels;
-			break;
-			
-		case 'mage':
-			$levelTable = $mageSpecialistLevels;
-			break;
-			
-		case 'illusionist':
-			$levelTable = $mageSpecialistLevels;
-			break;
-			
-		case 'cleric':
-			$levelTable = $clericLevels;
-			break;
-			
-		case 'druid':
-			$levelTable = $druidLevels;
-			break;
-			
-		case 'thief':
-			$levelTable = $thiefBardAssassinLevels;
-			break;
-			
-		case 'bard':
-			$levelTable = $thiefBardAssassinLevels;
-			break;
-			
-		case 'assassin':
-			$levelTable = $thiefBardAssassinLevels;
-			break;
-	}
-
-	foreach ($levelTable as $key => $value) {
+	foreach ($levelTable[$levelClass] as $key => $value) {
 		if ($xp >= $value) {
 			$level = 1 + $key;
 		}
@@ -624,5 +593,28 @@ function getMovementRate($race) {
 	];
 
 	return $moveArray[$race];
+}
+
+function getSave($saveName, $classArray, $savesArray) {
+	$save = $classGroupSave = 99;
+
+	foreach($classArray as $class) {
+		$className = strtolower($class['name']);
+		$classGroup = getClassGroup($className);
+		$savesGroupArray = $savesArray[$classGroup];
+
+		// get the highest level's' save in the current class
+		foreach ($savesGroupArray as $key => $value) {
+			if ($class['level'] >= $key) {
+				$classGroupSave = $value[$saveName];	
+			} else {
+				break;
+			}
+		}
+		
+		if ($classGroupSave < $save) $save = $classGroupSave;
+	}
+
+	return $save;
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
