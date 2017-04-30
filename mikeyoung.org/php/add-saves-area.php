@@ -82,7 +82,7 @@
             }
 
             if (in_array('paladin',$classNameArray)) {
-                $saveNotes = $saveNotes.'Paladin: global save +2 (applied above)<br>';
+                $saveNotes = $saveNotes.'Paladin: global save +2 (already applied above)<br>';
             }
             echo $saveNotes;
         ?>
