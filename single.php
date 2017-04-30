@@ -28,6 +28,7 @@ get_header(); ?>
 		$race = get_field('race');
 		$baseMovement = getMovementRate($race);
 		$savesArray = getSavesArray();
+		$constitution = get_field('constitution');
 	?>
 
 	<div id="primary" class="content-area">

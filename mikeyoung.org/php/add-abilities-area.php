@@ -50,12 +50,12 @@
     </table>
     <table class="ability-scores-table">
         <tr>
-            <td class="ability-value-cell"><?= get_field('constitution') ?></td>
+            <td class="ability-value-cell"><?= $constitution ?></td>
             <td class="ability-label-cell">
                 CON
                 <div class="ability-details">
                     Hit Point Adj: <?= formatMod(get_field('constitution_hit_point_adjustment')) ?>,
-                    <?= printConPoisonAdj(get_field('constitution')) ?>
+                    <?= printConPoisonAdj($constitution) ?>
                 </div>
             </td>
         </tr>
