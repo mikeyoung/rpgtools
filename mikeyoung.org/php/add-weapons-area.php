@@ -34,21 +34,24 @@
                                 $sheetWp = get_sub_field('weapon');
 
                                 if (strpos($weapon['name'], $sheetWp) !== false) {
-                                    $proficient = true;
-                                    $profBadge = '(P)';
-                                    $thac0Mods = $thac0Mods.'proficient ';
-                                    
-                                    foreach ($wpArray as $wp) {
-                                        if (strpos($wp['name'], $sheetWp) !== false) {
-                                            $slots = (int) get_sub_field('slots');
-                                            $minSlots = (int) $wp['minSlots'];
+                                    if ((strtolower($sheetWp) == 'sling' && (strtolower($weapon['name']) == 'staff sling w/ stone' || strtolower($weapon['name']) == 'staff sling w/ bullet')) == false)  {
+                                        clog($sheetWp.' / '.strtolower($weapon['name']));
+                                        $proficient = true;
+                                        $profBadge = '(P)';
+                                        $thac0Mods = $thac0Mods.'proficient ';
+                                        
+                                        foreach ($wpArray as $wp) {
+                                            if (strpos($wp['name'], $sheetWp) !== false) {
+                                                $slots = (int) get_sub_field('slots');
+                                                $minSlots = (int) $wp['minSlots'];
+                                            }
+                                        }
+
+                                        if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
+                                            $specialized = true;
+                                            $profBadge = '(S)';
                                         }
                                     }
-                                }
-
-                                if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
-                                    $specialized = true;
-                                    $profBadge = '(S)';
                                 }
                             endwhile;
                         else :
