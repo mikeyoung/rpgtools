@@ -47,6 +47,14 @@ function printClasses($classArray) {
 	}
 }
 
+function getClassLevel($requestClass,$classArray) {
+	foreach ($classArray as $class) {
+		if (strtolower($class['name']) == $requestClass) {
+			return $class['level'];
+		}
+	}
+}
+
 function hasClassGroup($classNameArray, $classGroup) {
 	foreach ($classNameArray as $className) {
 		if (getClassGroup($className) == $classGroup) {
@@ -617,5 +625,234 @@ function getSave($saveName, $classArray, $savesArray) {
 	}
 
 	return $save;
+}
+
+function getBaseHeight($race) {
+	$race = strtolower($race);
+
+	switch ($race) {
+		case 'dwarf':
+			return '4\'0"';
+		case 'elf':
+			return '5\'0"';
+		case 'gnome':
+			return '3\'6"';
+		case 'half-elf':
+			return '5\'6"';
+		case 'half-orc':
+			return '6\'0"';
+		case 'halfling':
+			return '3\'6"';
+		case 'human':
+			return '6\'0"';
+	}
+}
+
+function getBaseWeight($race) {
+	$race = strtolower($race);
+
+	switch ($race) {
+		case 'dwarf':
+			return 135;
+		case 'elf':
+			return 95;
+		case 'gnome':
+			return 80;
+		case 'half-elf':
+			return 135;
+		case 'half-orc':
+			return 165;
+		case 'halfling':
+			return 60;
+		case 'human':
+			return 155;
+	}
+}
+
+function classInClassArray($requestClass,$classArray) {
+	foreach ($classArray as $class) {
+		$className = strtolower($class['name']);
+		$requestClassName = strtolower($requestClass);
+		if ($className == $requestClassName) {
+			return $class;
+		}
+	}
+
+	return false;
+}
+
+function getBaseAttackRate($classNameArray,$isWarrior,$classArray) {
+	if ($isWarrior) {
+		$warriorLevel = 0;
+		$attackRate = '';
+
+		if (in_array('fighter',$classNameArray)) {
+			$classLevel = getClassLevel('fighter',$classArray);
+			if ($warriorLevel < $classLevel) {
+				$warriorLevel = $classLevel;
+			}
+		}
+
+		if (in_array('paladin',$classNameArray)) {
+			$classLevel = getClassLevel('paladin',$classArray);
+			if ($warriorLevel < $classLevel) {
+				$warriorLevel = $classLevel;
+			}
+		}
+
+		if (in_array('ranger',$classNameArray)) {
+			$classLevel = getClassLevel('ranger',$classArray);
+			if ($warriorLevel < $classLevel) {
+				$warriorLevel = $classLevel;
+			}
+		}
+
+		$warriorArray = [
+			1 => '1/round',
+			7 => '3/2 rounds',
+			13 => '2/round'
+		];
+
+		foreach ($warriorArray as $key => $value) {
+			if ($warriorLevel >= $key) {
+				$attackRate = $value;
+			}
+		}
+
+		return $attackRate;
+	} else {
+		return '1/round';
+	}
+}
+
+function getSpecialistAttackRate($classArray,$weapon) {
+	$fightlerLevel = classInClassArray('fighter',$classArray)['level'];
+	$newAttackRate = 0;
+	$weaponName = strtolower($weapon['name']);
+	$meleeAttackRate = 0;
+	$thrownAttackRate = 0;
+
+	/*
+	Row keys are minimum fighter level
+
+	Columns are:
+		0 Melee Weapon,
+		1 Light Crossbow,
+		2 Heavy Crossbow,
+		3 Thrown Dagger
+		4 Thrown Dart
+		5 Other
+	*/	
+	$specialistAttacks = [
+		1 => ['3/2','1/1','1/2','3/1','4/1','3/2'],
+		7 => ['2/1','3/2','1/1','4/1','5/1','2/1'],
+		13 => ['5/2','2/1','3/2','5/1','6/1','5/2'],
+	];
+
+	foreach ($specialistAttacks as $key => $value) {
+		if ($fightlerLevel >= $key) {
+			if ($weapon['attackType'] == 'melee') {
+				$newAttackRate = $value[0];
+			} elseif ($weapon['attackType'] == 'both') {
+				$meleeAttackRate = $value[0];
+				if ($weaponName == 'dagger') {
+					$thrownAttackRate = $value[3];
+				} elseif ($weaponName == 'dart') {
+					$thrownAttackRate = $value[4];
+				} else {
+					$thrownAttackRate = $value[5];
+				}
+
+				$newAttackRate = "M: $meleeAttackRate<br>R: $thrownAttackRate";
+			} elseif ($weaponName == 'hand crossbow' || $weaponName == 'light crossbow') {
+				$newAttackRate = $value[1];
+			} elseif ($weaponName == 'heavy crossbow') {
+				$newAttackRate = $value[2];
+			} elseif ($weapon['thrown'] == 'yes') {
+				$newAttackRate = $value[5];
+			} else {
+				$newAttackRate = 1;
+			}
+		}
+	}
+
+	return $newAttackRate;
+}
+
+function getPaladinAbilityArray($level,$column) {
+	/*
+	Rows are ranger levels, starting at 9.
+
+	Columns are:
+		0 Casting Level,
+		1 Level 1 Spells,
+		2 Level 2 Spells,
+		3 Level 3 Spells,
+		4 Level 4 Spells
+	*/
+
+	$classAbilityArray = [
+		[1,1,0,0,0],
+		[2,2,0,0,0],
+		[3,2,1,0,0],
+		[4,2,2,0,0],
+		[5,2,2,1,0],
+		[6,3,2,1,0],
+		[7,3,2,1,1],
+		[8,3,3,2,1],
+		[9,3,3,3,1],
+		[9,3,3,3,1],
+		[9,3,3,3,2],
+		[9,3,3,3,3],
+	];
+
+	$levelOffset = $level - 9;
+
+	if ($level >= 9 && $level < 21) {
+		return $classAbilityArray[$levelOffset][$column];
+	} else {
+		return -1;
+	}
+}
+
+function getRangerAbilityArray($level,$column) {
+	/*
+	Rows are ranger levels, starting at 1.
+
+	Columns are:
+		0 Hide in Shadows,
+		1 Move Silently,
+		2 Casting Level,
+		3 Level 1 Spells,
+		4 Level 2 Spells,
+		5 Level 3 Spells
+	*/
+
+	$classAbilityArray = [
+		[10,15,0,0,0,0],
+		[15,21,0,0,0,0],
+		[20,27,0,0,0,0],
+		[25,33,0,0,0,0],
+		[31,40,0,0,0,0],
+		[37,47,0,0,0,0],
+		[43,55,0,0,0,0],
+		[49,62,1,1,0,0],
+		[56,70,2,2,0,0],
+		[63,78,3,2,1,0],
+		[70,86,4,2,2,0],
+		[77,94,5,2,2,1],
+		[85,99,6,3,2,1],
+		[93,99,7,3,2,2],
+		[99,99,8,3,3,2],
+		[99,99,9,3,3,3],
+	];
+
+	$levelOffset = $level - 1;
+
+	if ($level < 17) {
+		return $classAbilityArray[$levelOffset][$column];
+	} else {
+		return -1;
+	}
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */

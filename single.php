@@ -29,6 +29,17 @@ get_header(); ?>
 		$baseMovement = getMovementRate($race);
 		$savesArray = getSavesArray();
 		$constitution = get_field('constitution');
+		$height = '';
+		$weight = 0;
+		$baseMeleeAttacks = getBaseAttackRate($classNameArray,$isWarrior,$classArray);
+
+		if (get_field('custom_height_and_weight')) {
+			$height = get_field('height');
+			$weight = get_field('weight');
+		} else {
+			$height = getBaseHeight($race);
+			$weight = getBaseWeight($race);
+		}
 	?>
 
 	<div id="primary" class="content-area">

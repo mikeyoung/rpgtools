@@ -6,9 +6,10 @@
     <?php printClasses($classArray) ?>
     <?php printAttribute('Age',get_field('age')) ?>
     <?php printAttribute('Sex',get_field('sex')) ?>
-    <?php printAttribute('Height',get_field('height')) ?>
-    <?php printAttribute('Weight',get_field('weight')) ?>
+    <?php printAttribute('Height',$height) ?>
+    <?php printAttribute('Weight',$weight) ?>
     <?php printAttribute('Base THAC0',$baseThac0) ?>
-    <?php printAttribute('Move',$baseMovement) ?>
+    <?php printAttribute('Move',$baseMovement.' ('.($baseMovement*10).'\'/'.($baseMovement*30).'\')') ?>
+    <?php printAttribute('Melee Attacks',$baseMeleeAttacks) ?>
 </div>
 <img class="character-image" src='<?= the_post_thumbnail_url('large'); ?>' />

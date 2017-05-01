@@ -27,7 +27,7 @@
                         $weaponNotes = '';
                         $nonProficientMod = 0;
                         $nonProficientNote = '';
-
+                        $attackRate = 1;
 
                         if( have_rows('weapon_proficiencies') ):
                             while ( have_rows('weapon_proficiencies') ) : the_row();
@@ -81,10 +81,15 @@
                             $thac0Mods = $thac0Mods.'specialAttackAdj('.formatMod(-$specialAttackAdj).') ';
                         }
                         
-
-                        if ($weapon['attackType'] == "melee" || $weapon['attackType'] == "both") {
+                        // if melee weapon
+                        if ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both') {
                             $thac0Melee = $baseThac0 - $strHit - $specialAttackAdj - $nonProficientMod;
                             $thac0Mods = $thac0Mods.'strength('.formatMod(-$strHit).') ';
+                            if ($weapon['attackType'] == 'melee') {
+                                $attackRate = $baseMeleeAttacks;
+                            } elseif ($weapon['attackType'] == 'both') {
+                                $attackRate = "M: $baseMeleeAttacks<br>R: 1";
+                            }
 
                             // apply proficiencies
                             if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
@@ -93,12 +98,14 @@
                             }
                         }
 
+                        // if ranged weapon
                         if ($weapon['attackType'] == "ranged" || $weapon['attackType'] == "both") {
                             $thac0Ranged = $baseThac0 - $missileAttackAdj - $specialAttackAdj - $nonProficientMod;
                             if ($missileAttackAdj != 0) {
                                 $thac0Mods = $thac0Mods.'missileAttackAdj('.formatMod(-$missileAttackAdj).') ';
                             }
 
+                            // apply proficiencies
                             if ($slots > $minSlots && in_array('fighter', $classNameArray) && (strpos(strtolower($weapon['name']), 'bow') !== false)) {
                                 $weaponNotes = $weaponNotes.'Specialization: +2 to hit at Point Blank Range. ';
                             }
@@ -129,6 +136,9 @@
                             $thac0Mods = $thac0Mods.'halflingThrownWeapon(-1) ';
                         }
 
+                        if ($specialized) {
+                            $attackRate = getSpecialistAttackRate($classArray,$weapon);
+                        }
             ?>
                         <table class="weapons-table avoid-page-break">
                             <tr>
@@ -155,7 +165,7 @@
                             </tr>
                             <tr>
 
-                                <td><?= get_sub_field('number_of_attacks') ?></td>
+                                <td><?= $attackRate ?></td>
                                 <td><?= $weapon['rof'] ?></td>
                                 <td><?= $thac0Melee ?></td>
                                 <td><?= $thac0Ranged ?></td>
