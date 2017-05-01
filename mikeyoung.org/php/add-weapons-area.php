@@ -35,7 +35,6 @@
 
                                 if (strpos($weapon['name'], $sheetWp) !== false) {
                                     if ((strtolower($sheetWp) == 'sling' && (strtolower($weapon['name']) == 'staff sling w/ stone' || strtolower($weapon['name']) == 'staff sling w/ bullet')) == false)  {
-                                        clog($sheetWp.' / '.strtolower($weapon['name']));
                                         $proficient = true;
                                         $profBadge = '(P)';
                                         $thac0Mods = $thac0Mods.'proficient ';
