@@ -3,6 +3,17 @@
     if ($isWizard || in_array('bard',$classNameArray)) {
 
         $spellsArray = [0,0,0,0,0,0,0,0,0,];
+
+        $spellsArray = getClassSpellsArray('mage', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('illusionist', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('abjurer', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('conjurer', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('diviner', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('enchanter', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('invoker', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('necromancer', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('transmuter', 0, $spellsArray, $classNameArray, $classArray);
+        $spellsArray = getClassSpellsArray('bard', 0, $spellsArray, $classNameArray, $classArray);
 ?>
     <div class="avoid-page-break">
         <h3>Maximum Prepared Wizard Spells Per Level</h3>
@@ -19,15 +30,15 @@
                 <th>9</th>
             </tr>
             <tr>
-                <td><?= get_field('maximum_spells_level_1') ?></td>
-                <td><?= get_field('maximum_spells_level_2') ?></td>
-                <td><?= get_field('maximum_spells_level_3') ?></td>
-                <td><?= get_field('maximum_spells_level_4') ?></td>
-                <td><?= get_field('maximum_spells_level_5') ?></td>
-                <td><?= get_field('maximum_spells_level_6') ?></td>
-                <td><?= get_field('maximum_spells_level_7') ?></td>
-                <td><?= get_field('maximum_spells_level_8') ?></td>
-                <td><?= get_field('maximum_spells_level_9') ?></td>
+                <td><?= $spellsArray[0] ?></td>
+                <td><?= $spellsArray[1] ?></td>
+                <td><?= $spellsArray[2] ?></td>
+                <td><?= $spellsArray[3] ?></td>
+                <td><?= $spellsArray[4] ?></td>
+                <td><?= $spellsArray[5] ?></td>
+                <td><?= $spellsArray[6] ?></td>
+                <td><?= $spellsArray[7] ?></td>
+                <td><?= $spellsArray[8] ?></td>
             </tr>
             <tr>
                 <td colspan='9'><?= getWizardSpellInfo($classNameArray) ?></td>

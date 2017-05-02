@@ -1106,6 +1106,14 @@ function getClassSpellsArray($className, $spellColumnOffset, $spellsArray, $clas
 				$classSpells = getRangerAbility($classLevel,$key + $spellColumnOffset);
 			}
 
+			if ($className == 'mage' || $className == 'illusionist' || $className == 'abjurer' || $className == 'conjurer' || $className == 'diviner' || $className == 'enchanter' || $className == 'invoker' || $className == 'necromancer' || $className == 'transmuter') {
+				$classSpells = getWizardAbility($classLevel,$key + $spellColumnOffset);
+			}
+
+			if ($className == 'bard') {
+				$classSpells = getBardAbility($classLevel,$key + $spellColumnOffset);
+			}
+
 			if ($classSpells > $spellsArray[$key]) {
 				$spellsArray[$key] = $classSpells;
 			}
