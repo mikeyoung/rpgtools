@@ -37,13 +37,15 @@ function printClasses($classArray) {
 			$className = $classArray[$key]['name'];
 			$classLevel = $classArray[$key]['level'];
 			$classExperience = $classArray[$key]['experience'];
-			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (".$classExperience."xp)</span></div>";
+			$formattedExperience = number_format($classExperience, 0,'',',');
+			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (".$formattedExperience."xp)</span></div>";
 		}
 	} else {
 		$className = $classArray[0]['name'];
 		$classLevel = $classArray[0]['level'];
 		$classExperience = $classArray[0]['experience'];
-		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (".$classExperience."xp)</span></div>";
+		$formattedExperience = number_format($classExperience, 0,'',',');
+		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (".$formattedExperience."xp)</span></div>";
 	}
 }
 
