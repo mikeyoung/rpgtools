@@ -779,9 +779,9 @@ function getSpecialistAttackRate($classArray,$weapon) {
 	return $newAttackRate;
 }
 
-function getPaladinAbilityArray($level,$column) {
+function getPaladinAbility($level,$column) {
 	/*
-	Rows are ranger levels, starting at 9.
+	Rows are ranger levels, starting at 1.
 
 	Columns are:
 		0 Casting Level,
@@ -792,21 +792,29 @@ function getPaladinAbilityArray($level,$column) {
 	*/
 
 	$classAbilityArray = [
-		[1,1,0,0,0],
-		[2,2,0,0,0],
-		[3,2,1,0,0],
-		[4,2,2,0,0],
-		[5,2,2,1,0],
-		[6,3,2,1,0],
-		[7,3,2,1,1],
-		[8,3,3,2,1],
-		[9,3,3,3,1],
-		[9,3,3,3,1],
-		[9,3,3,3,2],
-		[9,3,3,3,3],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[1,1,0,0,0,0,0,0],
+		[2,2,0,0,0,0,0,0],
+		[3,2,1,0,0,0,0,0],
+		[4,2,2,0,0,0,0,0],
+		[5,2,2,1,0,0,0,0],
+		[6,3,2,1,0,0,0,0],
+		[7,3,2,1,1,0,0,0],
+		[8,3,3,2,1,0,0,0],
+		[9,3,3,3,1,0,0,0],
+		[9,3,3,3,1,0,0,0],
+		[9,3,3,3,2,0,0,0],
+		[9,3,3,3,3,0,0,0],
 	];
 
-	$levelOffset = $level - 9;
+	$levelOffset = $level - 1;
 
 	if ($level >= 9 && $level < 21) {
 		return $classAbilityArray[$levelOffset][$column];
@@ -815,36 +823,34 @@ function getPaladinAbilityArray($level,$column) {
 	}
 }
 
-function getRangerAbilityArray($level,$column) {
+function getRangerAbility($level,$column) {
 	/*
 	Rows are ranger levels, starting at 1.
 
 	Columns are:
-		0 Hide in Shadows,
-		1 Move Silently,
-		2 Casting Level,
-		3 Level 1 Spells,
-		4 Level 2 Spells,
-		5 Level 3 Spells
+		0 Casting Level,
+		1 Level 1 Spells,
+		2 Level 2 Spells,
+		3 Level 3 Spells ...
 	*/
 
 	$classAbilityArray = [
-		[10,15,0,0,0,0],
-		[15,21,0,0,0,0],
-		[20,27,0,0,0,0],
-		[25,33,0,0,0,0],
-		[31,40,0,0,0,0],
-		[37,47,0,0,0,0],
-		[43,55,0,0,0,0],
-		[49,62,1,1,0,0],
-		[56,70,2,2,0,0],
-		[63,78,3,2,1,0],
-		[70,86,4,2,2,0],
-		[77,94,5,2,2,1],
-		[85,99,6,3,2,1],
-		[93,99,7,3,2,2],
-		[99,99,8,3,3,2],
-		[99,99,9,3,3,3],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[1,1,0,0,0,0,0,0],
+		[2,2,0,0,0,0,0,0],
+		[3,2,1,0,0,0,0,0],
+		[4,2,2,0,0,0,0,0],
+		[5,2,2,1,0,0,0,0],
+		[6,3,2,1,0,0,0,0],
+		[7,3,2,2,0,0,0,0],
+		[8,3,3,2,0,0,0,0],
+		[9,3,3,3,0,0,0,0],
 	];
 
 	$levelOffset = $level - 1;
@@ -854,5 +860,258 @@ function getRangerAbilityArray($level,$column) {
 	} else {
 		return -1;
 	}
+}
+
+function getWizardAbility($level,$column) {
+	/*
+	Rows are wizard levels, starting at 1.
+
+	Columns are:
+		0 Level 1 Spells,
+		1 Level 2 Spells,
+		2 Level 3 Spells,
+		3 Level 4 Spells,
+		4 Level 5 Spells,
+		5 Level 6 Spells,
+		6 Level 7 Spells,
+		7 Level 8 Spells,
+		8 Level 9 Spells,
+	*/
+
+	$classAbilityArray = [
+		[1,0,0,0,0,0,0,0,0],
+		[2,0,0,0,0,0,0,0,0],
+		[2,1,0,0,0,0,0,0,0],
+		[3,2,0,0,0,0,0,0,0],
+		[4,2,1,0,0,0,0,0,0],
+		[4,2,2,0,0,0,0,0,0],
+		[4,3,2,1,0,0,0,0,0],
+		[4,3,3,2,0,0,0,0,0],
+		[4,3,3,2,1,0,0,0,0],
+		[4,4,3,2,2,0,0,0,0],
+		[4,4,4,3,3,0,0,0,0],
+		[4,4,4,4,4,1,0,0,0],
+		[5,5,5,4,4,2,0,0,0],
+		[5,5,5,4,4,2,1,0,0],
+		[5,5,5,5,5,2,1,0,0],
+		[5,5,5,5,5,3,2,1,0],
+		[5,5,5,5,5,3,3,2,0],
+		[5,5,5,5,5,3,3,2,1],
+		[5,5,5,5,5,3,3,3,1],
+		[5,5,5,5,5,4,3,3,2],
+	];
+
+	$levelOffset = $level - 1;
+
+	if ($level < 21) {
+		return $classAbilityArray[$levelOffset][$column];
+	} else {
+		return -1;
+	}
+}
+
+function getPriestAbility($level,$column) {
+	/*
+	Rows are priest levels, starting at 1.
+
+	Columns are:
+		0 Level 1 Spells,
+		1 Level 2 Spells,
+		2 Level 3 Spells,
+		3 Level 4 Spells,
+		4 Level 5 Spells,
+		5 Level 6 Spells,
+		6 Level 7 Spells,
+	*/
+
+	$classAbilityArray = [
+		[1,0,0,0,0,0,0],
+		[2,0,0,0,0,0,0],
+		[2,1,0,0,0,0,0],
+		[3,2,0,0,0,0,0],
+		[3,3,1,0,0,0,0],
+		[3,3,2,0,0,0,0],
+		[3,3,2,1,0,0,0],
+		[3,3,3,2,0,0,0],
+		[4,4,3,2,1,0,0],
+		[4,4,3,3,2,0,0],
+		[5,4,4,3,2,1,0],
+		[6,5,5,3,2,2,0],
+		[6,6,6,4,2,2,0],
+		[6,6,6,5,3,2,1],
+		[6,6,6,6,4,2,1],
+		[7,7,7,6,4,3,1],
+		[7,7,7,7,5,3,2],
+		[8,8,8,8,6,4,2],
+		[9,9,8,8,6,4,2],
+		[9,9,9,8,7,5,2],
+	];
+
+	$levelOffset = $level - 1;
+
+	if ($level < 21) {
+		return $classAbilityArray[$levelOffset][$column];
+	} else {
+		return -1;
+	}
+}
+
+function getBardAbility($level,$column) {
+	/*
+	Rows are bard levels, starting at 1.
+
+	Columns are:
+		0 Level 1 Spells,
+		1 Level 2 Spells,
+		2 Level 3 Spells,
+		3 Level 4 Spells,
+		4 Level 5 Spells,
+		5 Level 6 Spells,
+		6 Level 7 Spells,
+		7 Level 8 Spells,
+		8 Level 9 Spells
+	*/
+
+	$classAbilityArray = [
+		[0,0,0,0,0,0,0,0,0],
+		[1,0,0,0,0,0,0,0,0],
+		[2,0,0,0,0,0,0,0,0],
+		[2,1,0,0,0,0,0,0,0],
+		[3,1,0,0,0,0,0,0,0],
+		[3,2,0,0,0,0,0,0,0],
+		[3,2,1,0,0,0,0,0,0],
+		[3,3,1,0,0,0,0,0,0],
+		[3,3,2,0,0,0,0,0,0],
+		[3,3,2,1,0,0,0,0,0],
+		[3,3,3,1,0,0,0,0,0],
+		[3,3,3,2,0,0,0,0,0],
+		[3,3,3,2,1,0,0,0,0],
+		[3,3,3,3,1,0,0,0,0],
+		[3,3,3,3,2,0,0,0,0],
+		[4,3,3,3,2,1,0,0,0],
+		[4,4,3,3,3,1,0,0,0],
+		[4,4,4,3,3,2,0,0,0],
+		[4,4,4,4,3,2,0,0,0],
+		[4,4,4,4,4,3,0,0,0],
+	];
+
+	$levelOffset = $level - 1;
+
+	if ($level < 21) {
+		return $classAbilityArray[$levelOffset][$column];
+	} else {
+		return -1;
+	}
+}
+
+function getBackstabBonus($classArray) {
+	$thiefLevel = getClassLevel('thief',$classArray);
+
+	if ($thiefLevel >= 13) return 'X5';
+	if ($thiefLevel >= 9) return 'X4';
+	if ($thiefLevel >= 5) return 'X3';
+	if ($thiefLevel >= 1) return 'X2';
+}
+
+function getPriestSpellInfo($classNameArray) {
+	$spellInfo = '';
+
+	foreach ($classNameArray as $className) {
+		switch ($className) {
+			case 'cleric':
+				$spellInfo = $spellInfo.'Cleric(Priest Spells: Major access to every sphere except plant, animal, weather, and elemental spheres. Minor access to the elemental sphere. Cannot cast spells of plant, animal, weather spheres.) ';
+				break;
+
+			case 'druid':
+				$spellInfo = $spellInfo.'Druid(Priest Spells: Major access to the following spheres: all, animal, elemental, healing, plant, and weather. Minor access to divination.) ';
+				break;
+
+			case 'paladin':
+				$spellInfo = $spellInfo.'Paladin(Priest Spells: Only combat, divination, healing, and protective spheres) ';
+				break;
+
+			case 'ranger':
+				$spellInfo = $spellInfo.'Ranger(Priest Spells: Only plant and animal spheres) ';
+				break;
+		}
+	}
+
+	return $spellInfo;
+}
+
+function getWizardSpellInfo($classNameArray) {
+	$spellInfo = '';
+
+	foreach ($classNameArray as $className) {
+		switch ($className) {
+			case 'abjurer':
+				$spellInfo = $spellInfo.'Abjurer(School: Abjuration) ';
+				break;
+
+			case 'bard':
+				$spellInfo = $spellInfo.'Bard(Wizard Spells) ';
+				break;
+
+			case 'conjurer':
+				$spellInfo = $spellInfo.'Conjurer(School: Conjuration/Summoning) ';
+				break;
+
+			case 'diviner':
+				$spellInfo = $spellInfo.'Diviner(School: Greater Divination) ';
+				break;
+
+			case 'enchanter':
+				$spellInfo = $spellInfo.'Enchanter(School: Enchantment/Charm) ';
+				break;
+
+			case 'illusionist':
+				$spellInfo = $spellInfo.'Illusionist(School: Illusion) ';
+				break;
+
+			case 'invoker':
+				$spellInfo = $spellInfo.'Invoker(School: Invocation/Evocation) ';
+				break;
+
+			case 'mage':
+				$spellInfo = $spellInfo.'Mage(Wizard Spells) ';
+				break;
+
+			case 'necromancer':
+				$spellInfo = $spellInfo.'Necromancer(School: Necromancy) ';
+				break;
+
+			case 'transmuter':
+				$spellInfo = $spellInfo.'Transmuter(School: Alteration) ';
+				break;
+		}
+	}
+
+	return $spellInfo;
+}
+
+function getClassSpellsArray($className, $spellColumnOffset, $spellsArray, $classNameArray, $classArray) {
+	foreach ($spellsArray as $key => $value) {
+		if (in_array($className,$classNameArray)) {
+			$classLevel = getClassLevel($className,$classArray);
+
+			if ($className == 'cleric' || $className == 'druid') {
+				$classSpells = getPriestAbility($classLevel,$key + $spellColumnOffset);
+			}
+
+			if ($className == 'paladin') {
+				$classSpells = getPaladinAbility($classLevel,$key + $spellColumnOffset);
+			}
+
+			if ($className == 'ranger') {
+				$classSpells = getRangerAbility($classLevel,$key + $spellColumnOffset);
+			}
+
+			if ($classSpells > $spellsArray[$key]) {
+				$spellsArray[$key] = $classSpells;
+			}
+		}
+	}
+
+	return $spellsArray;
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */

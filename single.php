@@ -77,7 +77,8 @@ get_header(); ?>
 						<div class="multi-size-header multi-size-header-small">Memorized spells, inventory, quests, etc.</div>
 						<br class="clear" />
 						<div class="hr" />
-						<?= get_field('notes') ?>
+						
+						<br /><?= get_field('notes') ?>
 					</div>
 
 					<div class="hidden"><?php get_template_part( 'template-parts/content', 'single' ); ?></div>
