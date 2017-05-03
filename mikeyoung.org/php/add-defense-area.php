@@ -40,7 +40,7 @@
                 else :
                     // no rows found
                 endif;
-                $armorClass += getDexDefAdj(get_field('dexterity'));
+                $armorClass += getDexDefAdj($dexterity);
 
                 // capture armor class before shield added
                 $shieldlessArmorClass = $armorClass;
@@ -72,9 +72,9 @@
         <td class="defense-detail-adj-ac">
             
             <?php
-                printAttribute('Surpise AC',$shieldlessArmorClass - getDexDefAdj(get_field('dexterity')));
+                printAttribute('Surpise AC',$shieldlessArmorClass - getDexDefAdj($dexterity));
                 printAttribute('Shieldless AC',$shieldlessArmorClass);
-                printAttribute('Armorless & Shieldless AC',10 + getDexDefAdj(get_field('dexterity')));
+                printAttribute('Armorless & Shieldless AC',10 + getDexDefAdj($dexterity));
                 printAttribute('Parry Adjustment',getParryAdjustment($classArray,$isWarrior));
             ?>
         </td>

@@ -189,6 +189,27 @@ function printStrBarsGates($ability,$exStr) {
 	return 'Bars/Gates: '.$stat.'%';
 }
 
+function getDexReactionAdj($ability) {
+	$stat = 0;
+
+	if ($ability == 1) $stat = -6;
+	if ($ability == 2) $stat = -4;
+	if ($ability == 3) $stat = -3;
+	if ($ability == 4) $stat = -2;
+	if ($ability == 5) $stat = -1;
+	if ($ability == 16) $stat = 1;
+	if ($ability >= 17 && $ability < 19) $stat = 2;
+	if ($ability >= 19 && $ability < 21) $stat = 3;
+	if ($ability >= 22 && $ability < 24) $stat = 4;
+	if ($ability >= 24) $stat = 5;
+
+	return $stat;
+}
+
+function printDexReactionAdj($ability) {
+	return 'React.: '.formatMod(getDexReactionAdj($ability));
+}
+
 function getDexMissileAttack($ability) {
 	$stat = 0;
 
@@ -207,7 +228,7 @@ function getDexMissileAttack($ability) {
 }
 
 function printDexMissileAttack($ability) {
-	return 'Missile Attack Adj: '.formatMod(getDexMissileAttack($ability));
+	return 'Missile Attack: '.formatMod(getDexMissileAttack($ability));
 }
 
 function getDexDefAdj($ability) {
@@ -229,7 +250,25 @@ function getDexDefAdj($ability) {
 }
 
 function printDexDefAdj($ability) {
-	return 'Defensive Adj: '.formatMod(getDexDefAdj($ability));
+	return 'Defense: '.formatMod(getDexDefAdj($ability));
+}
+
+function printConHitPointAdj($ability,$isWarrior) {
+	$stat = '--';
+
+	if ($ability >= 1) $stat = -3;
+	if ($ability >= 2) $stat = -2;
+	if ($ability >= 4) $stat = -1;
+	if ($ability >= 7) $stat = 0;
+	if ($ability >= 15) $stat = 1;
+	if ($ability >= 16) $stat = 2;
+	if ($ability >= 17 && $isWarrior) $stat = 3;
+	if ($ability >= 18 && $isWarrior) $stat = 4;
+	if ($ability >= 19 && $isWarrior) $stat = 5;
+	if ($ability >= 21 && $isWarrior) $stat = 6;
+	if ($ability >= 24 && $isWarrior) $stat = 7;
+
+	return 'Hit Points: '.formatMod($stat);
 }
 
 function printConPoisonAdj($ability) {
@@ -242,7 +281,7 @@ function printConPoisonAdj($ability) {
 	if ($ability >= 23 && $ability < 25) $stat = 3;
 	if ($ability == 25) $stat = 4;
 
-	return 'Poison Save Adj: '.formatMod($stat);
+	return 'Poison Save: '.formatMod($stat);
 }
 
 function printIntMaxSpellLevel($ability) {
