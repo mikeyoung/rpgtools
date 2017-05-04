@@ -61,6 +61,8 @@
                             if (get_sub_field('shield_notes') != '') {
                                 $shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
                             }
+                        } else {
+                            $shieldDetail = 'None';
                         }
                     endwhile;
                 else :
