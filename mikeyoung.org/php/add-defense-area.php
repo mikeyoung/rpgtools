@@ -9,11 +9,10 @@
                 $armorDetail = '';
 
                 if( have_rows('armor') ):
-                    $baseArmorAC = 0;
-
                     while ( have_rows('armor') ) : the_row();
                         if (strtolower(get_sub_field('armor_type')) != "none") {
                             $armorType = get_sub_field('armor_type');
+                            $armorAdjustment = (int) get_sub_field('armor_adjustment');
 
                             foreach ($armorArray as $armor) {
                                 if (strpos($armor['name'], $armorType) !== false) {
@@ -22,20 +21,21 @@
                                 }
                             }
 
-                            $baseArmorAC = $armorClass;
 
                             if (get_sub_field('armor_adjustment') != 0) {
-                                $armorClass += (int) get_sub_field('armor_adjustment');
+                                $armorClass += $armorAdjustment;
                             }
 
-                            $armorDetail = get_sub_field('armor_type')."($baseArmorAC) ";
+
+                            // print AC before adding in shield
+                            $armorDetail = $armorType."($armorClass) ";
 
                             if (get_sub_field('armor_adjustment') != 0) {
-                                $armorDetail = $armorDetail.'(special adj: '.formatMod(get_sub_field('armor_adjustment')).') ';
+                                $armorDetail = $armorDetail.'(special adj: '.$armorAdjustment.') ';
                             }
 
                             if (get_sub_field('armor_notes') != '') {
-                                $armorDetail = $armorDetail.' ('.get_sub_field('armor_notes').')';
+                                $armorDetail = $armorDetail.get_sub_field('armor_notes');
                             }
                         } else {
                             $armorDetail = 'None';
