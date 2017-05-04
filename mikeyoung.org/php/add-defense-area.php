@@ -28,10 +28,10 @@
                                 $armorClass += (int) get_sub_field('armor_adjustment');
                             }
 
-                            $armorDetail = get_sub_field('armor_type')." ($baseArmorAC)";
+                            $armorDetail = get_sub_field('armor_type')."($baseArmorAC) ";
 
                             if (get_sub_field('armor_adjustment') != 0) {
-                                $armorDetail = $armorDetail.formatMod(get_sub_field('armor_adjustment'));
+                                $armorDetail = $armorDetail.'(special adj: '.formatMod(get_sub_field('armor_adjustment')).') ';
                             }
 
                             if (get_sub_field('armor_notes') != '') {
@@ -53,17 +53,18 @@
                 if( have_rows('shield') ):
                     while ( have_rows('shield') ) : the_row();
                         if (strtolower(get_sub_field('shield_type')) != "none") {
+                            $shieldAdjustment = (int) get_sub_field('shield_adjustment');
                             $armorClass -= 1;
-                            $armorClass += (int) get_sub_field('shield_adjustment');
+                            $armorClass += $shieldAdjustment;
 
-                            $shieldDetail = get_sub_field('shield_type').'(-1)';
+                            $shieldDetail = get_sub_field('shield_type').'('.(-1 + $shieldAdjustment).') ';
 
                             if (get_sub_field('shield_adjustment') != 0) {
-                                $shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));
+                                $shieldDetail = $shieldDetail.'(special adj: '.formatMod(get_sub_field('shield_adjustment')).') ';
                             }
 
                             if (get_sub_field('shield_notes') != '') {
-                                $shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
+                                $shieldDetail = $shieldDetail.' '.get_sub_field('shield_notes');
                             }
                         } else {
                             $shieldDetail = 'None';
