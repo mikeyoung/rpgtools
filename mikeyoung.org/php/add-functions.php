@@ -1086,7 +1086,7 @@ function getWizardSpellInfo($classNameArray) {
 	foreach ($classNameArray as $className) {
 		switch ($className) {
 			case 'abjurer':
-				$spellInfo = $spellInfo.'Abjurer(School: Abjuration) ';
+				$spellInfo = $spellInfo.'Abjurer(School: Abjuration, Opposition Schools: Alteration & Illusion) ';
 				break;
 
 			case 'bard':
@@ -1094,23 +1094,23 @@ function getWizardSpellInfo($classNameArray) {
 				break;
 
 			case 'conjurer':
-				$spellInfo = $spellInfo.'Conjurer(School: Conjuration/Summoning) ';
+				$spellInfo = $spellInfo.'Conjurer(School: Conj./Summ, Opposition Schools: Gr. Divin. & Invoc./Evoc.) ';
 				break;
 
 			case 'diviner':
-				$spellInfo = $spellInfo.'Diviner(School: Greater Divination) ';
+				$spellInfo = $spellInfo.'Diviner(School: Gr. Divin., Opposition Schools: Conj./Summ.) ';
 				break;
 
 			case 'enchanter':
-				$spellInfo = $spellInfo.'Enchanter(School: Enchantment/Charm) ';
+				$spellInfo = $spellInfo.'Enchanter(School: Ench./Charm, Opposition Schools: Invoc./Evoc. & Necromancy) ';
 				break;
 
 			case 'illusionist':
-				$spellInfo = $spellInfo.'Illusionist(School: Illusion) ';
+				$spellInfo = $spellInfo.'Illusionist(School: Illusion, Opposition Schools: Necro., Invoc./Evoc., Abjur.) ';
 				break;
 
 			case 'invoker':
-				$spellInfo = $spellInfo.'Invoker(School: Invocation/Evocation) ';
+				$spellInfo = $spellInfo.'Invoker(School: Invoc./Evoc., Opposition Schools: Ench./Charm & Conj./Summ.) ';
 				break;
 
 			case 'mage':
@@ -1118,11 +1118,11 @@ function getWizardSpellInfo($classNameArray) {
 				break;
 
 			case 'necromancer':
-				$spellInfo = $spellInfo.'Necromancer(School: Necromancy) ';
+				$spellInfo = $spellInfo.'Necromancer(School: Necromancy, Opposition Schools: Illusion & Ench./Charm) ';
 				break;
 
 			case 'transmuter':
-				$spellInfo = $spellInfo.'Transmuter(School: Alteration) ';
+				$spellInfo = $spellInfo.'Transmuter(School: Alteration, Opposition Schools: Abjuration & Necromancy) ';
 				break;
 		}
 	}
