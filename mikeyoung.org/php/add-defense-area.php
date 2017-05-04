@@ -44,22 +44,23 @@
 
                 // capture armor class before shield added
                 $shieldlessArmorClass = $armorClass;
+                $shieldDetail = '';
 
                 if( have_rows('shield') ):
                     while ( have_rows('shield') ) : the_row();
                         if (strtolower(get_sub_field('shield_type')) != "none") {
                             $armorClass -= 1;
                             $armorClass += (int) get_sub_field('shield_adjustment');
-                        }
 
-                        $shieldDetail = get_sub_field('shield_type').'(-1)';
+                            $shieldDetail = get_sub_field('shield_type').'(-1)';
 
-                        if (get_sub_field('shield_adjustment') != 0) {
-                            $shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));
-                        }
+                            if (get_sub_field('shield_adjustment') != 0) {
+                                $shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));
+                            }
 
-                        if (get_sub_field('shield_notes') != '') {
-                            $shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
+                            if (get_sub_field('shield_notes') != '') {
+                                $shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
+                            }
                         }
                     endwhile;
                 else :
