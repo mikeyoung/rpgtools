@@ -6,6 +6,8 @@
     <tr>
         <td class="defense-detail-ac">
             <?php
+                $armorDetail = '';
+
                 if( have_rows('armor') ):
                     $baseArmorAC = 0;
 
@@ -35,6 +37,8 @@
                             if (get_sub_field('armor_notes') != '') {
                                 $armorDetail = $armorDetail.' ('.get_sub_field('armor_notes').')';
                             }
+                        } else {
+                            $armorDetail = 'None';
                         }
                     endwhile;
                 else :
