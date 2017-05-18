@@ -23,7 +23,7 @@
                             }
                         }
 
-                        echo "<li>$sheetWp($slots)</li>";
+                        echo "<li>$sheetWp ($slots/$minSlots)</li>";
                     endwhile;
                     echo '</ul>';
                 else :
@@ -70,7 +70,7 @@
                             }
                         }
 
-                        echo "<li>$sheetNwp($slots): $rollUnder<sup>$specialNote</sup></li>";
+                        echo "<li>$sheetNwp ($slots/$minSlots): $rollUnder<sup>$specialNote</sup></li>";
                     endwhile;
                     echo '</ul>';
                 else :

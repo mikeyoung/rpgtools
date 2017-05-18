@@ -7,6 +7,13 @@
 
 get_header(); ?>
 	<?php
+		$strength = get_field('strength');
+		$exceptionalStrength = get_field('exceptional_strength');
+		$intelligence = get_field('intelligence');
+		$wisdom = get_field('wisdom');
+		$dexterity = get_field('dexterity');
+		$constitution = get_field('constitution');
+		$charisma = get_field('charisma');
 		$armorClass = 10;
 		$shieldlessArmorClass = 10;
 		$shieldDetail = "";
@@ -22,16 +29,16 @@ get_header(); ?>
 		$isPriest = hasClassGroup($classNameArray,'priest');
 		$isRogue = hasClassGroup($classNameArray,'rogue');
 		$baseThac0 = getBaseThac0($classArray);
-		$strHit = (int) getStrHit(get_field('strength'),get_field('exceptional_strength'));
-		$strDmg = getStrDmg(get_field('strength'),get_field('exceptional_strength'));
-		$missileAttackAdj = (int) getDexMissileAttack(get_field('dexterity'));
+		$strHit = (int) getStrHit($strength,$exceptionalStrength);
+		$strDmg = getStrDmg($strength,$exceptionalStrength);
+		$missileAttackAdj = (int) getDexMissileAttack($dexterity);
 		$race = get_field('race');
 		$baseMovement = getMovementRate($race);
 		$savesArray = getSavesArray();
-		$constitution = get_field('constitution');
 		$height = '';
 		$weight = 0;
 		$baseMeleeAttacks = getBaseAttackRate($classNameArray,$isWarrior,$classArray);
+		$racialMagicSaveBonus = getRacialMagicSaveBonus($race,$constitution);
 
 		if (get_field('custom_height_and_weight')) {
 			$height = get_field('height');
@@ -69,6 +76,7 @@ get_header(); ?>
 						require get_template_directory() . '/mikeyoung.org/php/add-weapons-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-rogue-abilities.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-proficiencies-area.php';
+						require get_template_directory() . '/mikeyoung.org/php/add-special-features-area.php';
 						require get_template_directory() . '/mikeyoung.org/php/add-spells-area.php';
 					?>
 

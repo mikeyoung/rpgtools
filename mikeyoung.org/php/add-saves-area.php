@@ -55,22 +55,13 @@
     <div class="save-mods">
         <?php
             $saveNotes = '';
-            $magicSaveBonus = 0;
-            if ($race == 'Dwarf' || $race == 'Halfling' || $race == 'Gnome') {
-                if ($constitution >= 3) $magicSaveBonus = 0;
-                if ($constitution >= 6) $magicSaveBonus = 1;
-                if ($constitution >= 10) $magicSaveBonus = 2;
-                if ($constitution >= 13) $magicSaveBonus = 3;
-                if ($constitution >= 17) $magicSaveBonus = 4;
-                if ($constitution >= 19) $magicSaveBonus = 5;
 
-                if ($magicSaveBonus > 0) {
-                    $saveNotes = $saveNotes."$race: +$magicSaveBonus vs magic<br />";
+            if ($racialMagicSaveBonus > 0) {
+    			$saveNotes = $saveNotes."$race: +$racialMagicSaveBonus vs magic<br />";
+
+                if ($race == 'Dwarf' || $race == 'Halfling') {
+                    $saveNotes = $saveNotes."$race: +$racialMagicSaveBonus vs poison<br />";
                 }
-            }
-
-            if ($race == 'Dwarf' || $race == 'Halfling') {
-                $saveNotes = $saveNotes."$race: +2 vs poison<br />";
             }
 
             if ($race == 'Elf') {

@@ -127,7 +127,7 @@
                             }
                         }
 
-                        if (strtolower($race) == 'elf' && strpos($weapon['name'], " Bow ") !== false || $weapon['name'] == 'Short Sword' || $weapon['name'] == 'Short Sword') {
+                        if (strtolower($race) == 'elf' && strpos($weapon['name'], " Bow ") !== false || $weapon['name'] == 'Short Sword' || $weapon['name'] == 'Long Sword') {
                             $thac0Melee--;
                             $thac0Ranged--;
                             $thac0Mods = $thac0Mods.'elfFavoredWeapon(-1) ';

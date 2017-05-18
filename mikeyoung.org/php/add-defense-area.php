@@ -6,12 +6,13 @@
     <tr>
         <td class="defense-detail-ac">
             <?php
-                if( have_rows('armor') ):
-                    $baseArmorAC = 0;
+                $armorDetail = '';
 
+                if( have_rows('armor') ):
                     while ( have_rows('armor') ) : the_row();
                         if (strtolower(get_sub_field('armor_type')) != "none") {
                             $armorType = get_sub_field('armor_type');
+                            $armorAdjustment = (int) get_sub_field('armor_adjustment');
 
                             foreach ($armorArray as $armor) {
                                 if (strpos($armor['name'], $armorType) !== false) {
@@ -20,46 +21,53 @@
                                 }
                             }
 
-                            $baseArmorAC = $armorClass;
 
                             if (get_sub_field('armor_adjustment') != 0) {
-                                $armorClass += (int) get_sub_field('armor_adjustment');
+                                $armorClass += $armorAdjustment;
                             }
 
-                            $armorDetail = get_sub_field('armor_type')." ($baseArmorAC)";
+
+                            // print AC before adding in shield
+                            $armorDetail = $armorType."($armorClass) ";
 
                             if (get_sub_field('armor_adjustment') != 0) {
-                                $armorDetail = $armorDetail.formatMod(get_sub_field('armor_adjustment'));
+                                $armorDetail = $armorDetail.'(special adj: '.$armorAdjustment.') ';
                             }
 
                             if (get_sub_field('armor_notes') != '') {
-                                $armorDetail = $armorDetail.' ('.get_sub_field('armor_notes').')';
+                                $armorDetail = $armorDetail.get_sub_field('armor_notes');
                             }
+                        } else {
+                            $armorDetail = 'None';
                         }
                     endwhile;
                 else :
                     // no rows found
                 endif;
-                $armorClass += getDexDefAdj(get_field('dexterity'));
+                $armorClass += getDexDefAdj($dexterity);
 
                 // capture armor class before shield added
                 $shieldlessArmorClass = $armorClass;
+                $shieldDetail = '';
 
                 if( have_rows('shield') ):
                     while ( have_rows('shield') ) : the_row();
                         if (strtolower(get_sub_field('shield_type')) != "none") {
+                            $shieldAdjustment = (int) get_sub_field('shield_adjustment');
                             $armorClass -= 1;
-                            $armorClass += (int) get_sub_field('shield_adjustment');
-                        }
+                            $armorClass += $shieldAdjustment;
 
-                        $shieldDetail = get_sub_field('shield_type').'(-1)';
+                            $shieldDetail = get_sub_field('shield_type').'('.(-1 + $shieldAdjustment).') ';
 
-                        if (get_sub_field('shield_adjustment') != 0) {
-                            $shieldDetail = $shieldDetail.formatMod(get_sub_field('shield_adjustment'));
-                        }
+                            if (get_sub_field('shield_adjustment') != 0) {
+                                $shieldDetail = $shieldDetail.'(special adj: '.formatMod(get_sub_field('shield_adjustment')).') ';
+                            }
 
-                        if (get_sub_field('shield_notes') != '') {
-                            $shieldDetail = $shieldDetail.' ('.get_sub_field('shield_notes').')';
+                            if (get_sub_field('shield_notes') != '') {
+                                $shieldDetail = $shieldDetail.' '.get_sub_field('shield_notes');
+                            }
+                        } else {
+                            $shieldDetail = 'None';
                         }
                     endwhile;
                 else :
@@ -72,9 +80,9 @@
         <td class="defense-detail-adj-ac">
             
             <?php
-                printAttribute('Surpise AC',$shieldlessArmorClass - getDexDefAdj(get_field('dexterity')));
+                printAttribute('Surpise AC',$shieldlessArmorClass - getDexDefAdj($dexterity));
                 printAttribute('Shieldless AC',$shieldlessArmorClass);
-                printAttribute('Armorless & Shieldless AC',10 + getDexDefAdj(get_field('dexterity')));
+                printAttribute('Armorless & Shieldless AC',10 + getDexDefAdj($dexterity));
                 printAttribute('Parry Adjustment',getParryAdjustment($classArray,$isWarrior));
             ?>
         </td>

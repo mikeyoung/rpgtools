@@ -37,13 +37,15 @@ function printClasses($classArray) {
 			$className = $classArray[$key]['name'];
 			$classLevel = $classArray[$key]['level'];
 			$classExperience = $classArray[$key]['experience'];
-			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (".$classExperience."xp)</span></div>";
+			$formattedExperience = number_format($classExperience, 0,'',',');
+			echo "<div>&nbsp;&nbsp;<span class='field-value'>$className $classLevel (".$formattedExperience."xp)</span></div>";
 		}
 	} else {
 		$className = $classArray[0]['name'];
 		$classLevel = $classArray[0]['level'];
 		$classExperience = $classArray[0]['experience'];
-		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (".$classExperience."xp)</span></div>";
+		$formattedExperience = number_format($classExperience, 0,'',',');
+		echo "<div><span class='field-label'>Class:</span> <span class='field-value'>$className $classLevel (".$formattedExperience."xp)</span></div>";
 	}
 }
 
@@ -187,6 +189,27 @@ function printStrBarsGates($ability,$exStr) {
 	return 'Bars/Gates: '.$stat.'%';
 }
 
+function getDexReactionAdj($ability) {
+	$stat = 0;
+
+	if ($ability == 1) $stat = -6;
+	if ($ability == 2) $stat = -4;
+	if ($ability == 3) $stat = -3;
+	if ($ability == 4) $stat = -2;
+	if ($ability == 5) $stat = -1;
+	if ($ability == 16) $stat = 1;
+	if ($ability >= 17 && $ability < 19) $stat = 2;
+	if ($ability >= 19 && $ability < 21) $stat = 3;
+	if ($ability >= 22 && $ability < 24) $stat = 4;
+	if ($ability >= 24) $stat = 5;
+
+	return $stat;
+}
+
+function printDexReactionAdj($ability) {
+	return 'React.: '.formatMod(getDexReactionAdj($ability));
+}
+
 function getDexMissileAttack($ability) {
 	$stat = 0;
 
@@ -205,7 +228,7 @@ function getDexMissileAttack($ability) {
 }
 
 function printDexMissileAttack($ability) {
-	return 'Missile Attack Adj: '.formatMod(getDexMissileAttack($ability));
+	return 'Missile Attack: '.formatMod(getDexMissileAttack($ability));
 }
 
 function getDexDefAdj($ability) {
@@ -227,7 +250,25 @@ function getDexDefAdj($ability) {
 }
 
 function printDexDefAdj($ability) {
-	return 'Defensive Adj: '.formatMod(getDexDefAdj($ability));
+	return 'Defense: '.formatMod(getDexDefAdj($ability));
+}
+
+function printConHitPointAdj($ability,$isWarrior) {
+	$stat = '--';
+
+	if ($ability >= 1) $stat = -3;
+	if ($ability >= 2) $stat = -2;
+	if ($ability >= 4) $stat = -1;
+	if ($ability >= 7) $stat = 0;
+	if ($ability >= 15) $stat = 1;
+	if ($ability >= 16) $stat = 2;
+	if ($ability >= 17 && $isWarrior) $stat = 3;
+	if ($ability >= 18 && $isWarrior) $stat = 4;
+	if ($ability >= 19 && $isWarrior) $stat = 5;
+	if ($ability >= 21 && $isWarrior) $stat = 6;
+	if ($ability >= 24 && $isWarrior) $stat = 7;
+
+	return 'Hit Points: '.formatMod($stat);
 }
 
 function printConPoisonAdj($ability) {
@@ -240,7 +281,7 @@ function printConPoisonAdj($ability) {
 	if ($ability >= 23 && $ability < 25) $stat = 3;
 	if ($ability == 25) $stat = 4;
 
-	return 'Poison Save Adj: '.formatMod($stat);
+	return 'Poison Save: '.formatMod($stat);
 }
 
 function printIntMaxSpellLevel($ability) {
@@ -1045,7 +1086,7 @@ function getWizardSpellInfo($classNameArray) {
 	foreach ($classNameArray as $className) {
 		switch ($className) {
 			case 'abjurer':
-				$spellInfo = $spellInfo.'Abjurer(School: Abjuration) ';
+				$spellInfo = $spellInfo.'Abjurer(School: Abjuration, Opposition Schools: Alteration & Illusion) ';
 				break;
 
 			case 'bard':
@@ -1053,23 +1094,23 @@ function getWizardSpellInfo($classNameArray) {
 				break;
 
 			case 'conjurer':
-				$spellInfo = $spellInfo.'Conjurer(School: Conjuration/Summoning) ';
+				$spellInfo = $spellInfo.'Conjurer(School: Conj./Summ, Opposition Schools: Gr. Divin. & Invoc./Evoc.) ';
 				break;
 
 			case 'diviner':
-				$spellInfo = $spellInfo.'Diviner(School: Greater Divination) ';
+				$spellInfo = $spellInfo.'Diviner(School: Gr. Divin., Opposition Schools: Conj./Summ.) ';
 				break;
 
 			case 'enchanter':
-				$spellInfo = $spellInfo.'Enchanter(School: Enchantment/Charm) ';
+				$spellInfo = $spellInfo.'Enchanter(School: Ench./Charm, Opposition Schools: Invoc./Evoc. & Necromancy) ';
 				break;
 
 			case 'illusionist':
-				$spellInfo = $spellInfo.'Illusionist(School: Illusion) ';
+				$spellInfo = $spellInfo.'Illusionist(School: Illusion, Opposition Schools: Necro., Invoc./Evoc., Abjur.) ';
 				break;
 
 			case 'invoker':
-				$spellInfo = $spellInfo.'Invoker(School: Invocation/Evocation) ';
+				$spellInfo = $spellInfo.'Invoker(School: Invoc./Evoc., Opposition Schools: Ench./Charm & Conj./Summ.) ';
 				break;
 
 			case 'mage':
@@ -1077,11 +1118,11 @@ function getWizardSpellInfo($classNameArray) {
 				break;
 
 			case 'necromancer':
-				$spellInfo = $spellInfo.'Necromancer(School: Necromancy) ';
+				$spellInfo = $spellInfo.'Necromancer(School: Necromancy, Opposition Schools: Illusion & Ench./Charm) ';
 				break;
 
 			case 'transmuter':
-				$spellInfo = $spellInfo.'Transmuter(School: Alteration) ';
+				$spellInfo = $spellInfo.'Transmuter(School: Alteration, Opposition Schools: Abjuration & Necromancy) ';
 				break;
 		}
 	}
@@ -1121,5 +1162,21 @@ function getClassSpellsArray($className, $spellColumnOffset, $spellsArray, $clas
 	}
 
 	return $spellsArray;
+}
+
+function getRacialMagicSaveBonus($race,$constitution) {
+	$racialMagicSaveBonus = 0;
+
+	if ($race == 'Dwarf' || $race == 'Halfling' || $race == 'Gnome') {
+		if ($constitution >= 3) $racialMagicSaveBonus = 0;
+		if ($constitution >= 4) $racialMagicSaveBonus = 1;
+		if ($constitution >= 7) $racialMagicSaveBonus = 2;
+		if ($constitution >= 11) $racialMagicSaveBonus = 3;
+		if ($constitution >= 14) $racialMagicSaveBonus = 4;
+		if ($constitution >= 18) $racialMagicSaveBonus = 5;
+	}
+
+	return $racialMagicSaveBonus;
+
 }
 /* END MIKE YOUNG FUNCTIONS & CLASSES */
