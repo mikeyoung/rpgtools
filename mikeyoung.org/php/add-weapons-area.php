@@ -8,7 +8,16 @@
                 $sheetWeapon = get_sub_field('weapon');
 
                 foreach ($weaponsArray as $weapon) {
+                    $validWeapon = true;
+
                     if (strpos($weapon['name'], $sheetWeapon) !== false) {
+
+                        if (strToLower($sheetWeapon) == 'sling') {
+                            if (strpos(strToLower($weapon['name']), 'staff') !== false) {
+                                continue;
+                            }
+                        }
+
                         $thac0Melee = "-";
                         $thac0Ranged = "-";
                         $slots = 0;
