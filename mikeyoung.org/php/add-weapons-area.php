@@ -18,6 +18,12 @@
                             }
                         }
 
+                        if (strToLower($sheetWeapon) == 'short bow' || strToLower($sheetWeapon) == 'long bow') {
+                            if (strpos(strToLower($weapon['name']), 'composite') !== false) {
+                                continue;
+                            }
+                        }
+
                         $thac0Melee = "-";
                         $thac0Ranged = "-";
                         $slots = 0;
