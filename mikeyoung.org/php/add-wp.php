@@ -49,12 +49,12 @@ function getWpArray() {
 
 		array(
 			'name' => 'Composite Long Bow',
-			'minSlots' => '2',
+			'minSlots' => '1',
 		),
 
 		array(
 			'name' => 'Composite Short Bow',
-			'minSlots' => '2',
+			'minSlots' => '1',
 		),
 
 		array(
@@ -199,7 +199,7 @@ function getWpArray() {
 
 		array(
 			'name' => 'Long Bow',
-			'minSlots' => '2',
+			'minSlots' => '1',
 		),
 
 		array(
@@ -259,7 +259,7 @@ function getWpArray() {
 
 		array(
 			'name' => 'Short Bow',
-			'minSlots' => '2',
+			'minSlots' => '1',
 		),
 
 		array(

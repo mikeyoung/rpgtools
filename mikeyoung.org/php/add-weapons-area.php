@@ -49,19 +49,21 @@
                                 $sheetWp = get_sub_field('weapon');
 
                                 if (strpos($weapon['name'], $sheetWp) !== false) {
-                                    if ((strtolower($sheetWp) == 'sling' && (strtolower($weapon['name']) == 'staff sling w/ stone' || strtolower($weapon['name']) == 'staff sling w/ bullet')) == false)  {
-                                        $proficient = true;
-                                        $profBadge = '(P)';
-                                        $thac0Mods = $thac0Mods.'proficient ';
-                                        
-                                        foreach ($wpArray as $wp) {
-                                            if (strpos($wp['name'], $sheetWp) !== false) {
-                                                $slots = (int) get_sub_field('slots');
-                                                $minSlots = (int) $wp['minSlots'];
-                                            }
+                                    $proficient = true;
+                                    $profBadge = '(P)';
+                                    $thac0Mods = $thac0Mods.'proficient ';
+                                    
+                                    foreach ($wpArray as $wp) {
+                                        if (strpos($wp['name'], $sheetWp) !== false) {
+                                            $slots = (int) get_sub_field('slots');
+                                            $minSlots = (int) $wp['minSlots'];
                                         }
+                                    }
 
-                                        if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
+                                    if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
+                                        if (strpos(strtolower($weapon['name']), 'bow') !== false && $slots < 3) {
+                                            $specialized = false;
+                                        } else {
                                             $specialized = true;
                                             $profBadge = '(S)';
                                         }
@@ -109,7 +111,7 @@
                             }
 
                             // apply proficiencies
-                            if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
+                            if ($specialized) {
                                 $thac0Mods = $thac0Mods.'specialized(-1) ';
                                 $thac0Melee--;
                             }
@@ -123,7 +125,7 @@
                             }
 
                             // apply proficiencies
-                            if ($slots > $minSlots && in_array('fighter', $classNameArray) && (strpos(strtolower($weapon['name']), 'bow') !== false)) {
+                            if ($specialized && (strpos(strtolower($weapon['name']), 'bow') !== false)) {
                                 $weaponNotes = $weaponNotes.'Specialization: +2 to hit at Point Blank Range. ';
                             }
                         }
@@ -136,7 +138,7 @@
                             }
                             
 
-                            if ($slots > $minSlots && in_array('fighter', $classNameArray) && ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both')) {
+                            if ($specialized && ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both')) {
                                 $dmgAdj = $dmgAdj +2;
                                 $dmgAdjMods = $dmgAdjMods."specialized(+2) ";
                             }
