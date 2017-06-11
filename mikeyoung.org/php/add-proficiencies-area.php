@@ -48,13 +48,10 @@
                             if (strpos($nwp['name'], $sheetNwp) !== false) {
                                 $slots = get_sub_field('slots');
                                 $minSlots = (int) $nwp['minSlots'];
-                                if ($nwp['abilityMod'] != 'NA' && $nwp['abilityMod'] != 'SP' ) {
+                                if ($nwp['abilityMod'] != 'NA') {
                                     $abilityMod = (int) ($nwp['abilityMod']);
                                 } else {
                                     $abilityMod = $nwp['abilityMod'];
-                                    if ($abilityMod == "SP") {
-                                        $specialNote = "&dagger;";
-                                    }
                                 }
                                 $abilityScore = get_field(strtolower($nwp['ability']));
                             }

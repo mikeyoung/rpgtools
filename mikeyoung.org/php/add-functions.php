@@ -349,7 +349,7 @@ function getClassGroup($class) {
 	if ($class == 'fighter' || $class == 'ranger'  || $class == 'paladin' ) return 'warrior';
 	if ($class == 'mage' || $class == 'illusionist' || $class == 'abjurer' || $class == 'conjurer' || $class == 'diviner' || $class == 'enchanter' || $class == 'invoker' || $class == 'necromancer' || $class == 'transmuter') return 'wizard';
 	if ($class == 'cleric' || $class == 'druid') return 'priest';
-	if ($class == 'thief' || $class == 'bard'  || $class == 'assassin' ) return 'rogue';
+	if ($class == 'thief' || $class == 'bard') return 'rogue';
 }
 
 function getClassArray() {
@@ -600,7 +600,7 @@ function getLevel($class,$xp) {
 
 	if ($class == 'paladin' || $class == 'ranger') $levelClass = 'paladin';
 	if (getClassGroup($class) == 'wizard') $levelClass = 'mage';
-	if ($class == 'thief' || $class == 'bard' || $class == 'assassin') $levelClass = 'thief';
+	if ($class == 'thief' || $class == 'bard') $levelClass = 'thief';
 
 	foreach ($levelTable[$levelClass] as $key => $value) {
 		if ($xp >= $value) {
@@ -680,8 +680,6 @@ function getBaseHeight($race) {
 			return '3\'6"';
 		case 'half-elf':
 			return '5\'6"';
-		case 'half-orc':
-			return '6\'0"';
 		case 'halfling':
 			return '3\'6"';
 		case 'human':
@@ -701,8 +699,6 @@ function getBaseWeight($race) {
 			return 80;
 		case 'half-elf':
 			return 135;
-		case 'half-orc':
-			return 165;
 		case 'halfling':
 			return 60;
 		case 'human':

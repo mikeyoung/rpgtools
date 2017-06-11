@@ -10,13 +10,6 @@ function getNwpArray() {
         ),
 
         array(
-			'name' => 'Alertness',
-			'minSlots' => '1',
-			'ability' => 'Wisdom',
-			'abilityMod' => '1',
-        ),
-
-        array(
 			'name' => 'Ancient History',
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
@@ -70,13 +63,6 @@ function getNwpArray() {
 			'minSlots' => '2',
 			'ability' => 'Intelligence',
 			'abilityMod' => '0',
-        ),
-
-        array(
-			'name' => 'Begging',
-			'minSlots' => '1',
-			'ability' => 'Charisma',
-			'abilityMod' => 'SP',
         ),
 
         array(
@@ -262,13 +248,6 @@ function getNwpArray() {
         ),
 
         array(
-			'name' => 'Information Gathering',
-			'minSlots' => '1',
-			'ability' => 'Intelligence',
-			'abilityMod' => 'SP',
-        ),
-
-        array(
 			'name' => 'Intimidation',
 			'minSlots' => '1',
 			'ability' => 'Strength',
@@ -350,13 +329,6 @@ function getNwpArray() {
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
 			'abilityMod' => '-2',
-        ),
-
-        array(
-			'name' => 'Observation',
-			'minSlots' => '1',
-			'ability' => 'Intelligence',
-			'abilityMod' => '0',
         ),
 
         array(
@@ -486,13 +458,6 @@ function getNwpArray() {
         ),
 
         array(
-			'name' => 'Trailing',
-			'minSlots' => '1',
-			'ability' => 'Dexterity',
-			'abilityMod' => 'SP',
-        ),
-
-        array(
 			'name' => 'Tumbling',
 			'minSlots' => '1',
 			'ability' => 'Dexterity',
@@ -504,13 +469,6 @@ function getNwpArray() {
 			'minSlots' => '1',
 			'ability' => 'Intelligence',
 			'abilityMod' => '-2',
-        ),
-
-        array(
-			'name' => 'Voice Mimicry',
-			'minSlots' => '2',
-			'ability' => 'Charisma',
-			'abilityMod' => 'SP',
         ),
 
         array(

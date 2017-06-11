@@ -72,13 +72,6 @@
                             ";
                         }
 
-                        if (strToLower($race) == 'half-orc') {
-                            echo "
-                            <li>Orcish 60’ infravision</li>
-                            <li>Half-orc single classed characters with exceptional ability scores can advance further: Fighter 17th at 21 Strength (20—14th; 19—12th; 18/00—11th). Priests gain one max level per point of Wisdom over 18, up to 7th level. Thieves gain one max level per point of Dexterity over 18 up to 11th level.</li>
-                            ";
-                        }
-
                         if (strToLower($race) == 'human') {
                             echo "
                             <li>Humans have no special features except that they can be of any character class and rise to any level in any class.</li>
