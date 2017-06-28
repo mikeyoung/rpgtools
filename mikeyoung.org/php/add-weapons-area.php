@@ -48,6 +48,18 @@
                             while ( have_rows('weapon_proficiencies') ) : the_row();
                                 $sheetWp = get_sub_field('weapon');
 
+                                if (strToLower($sheetWp) == 'sling') {
+                                    if (strpos(strToLower($weapon['name']), 'staff') !== false) {
+                                        continue;
+                                    }
+                                }
+
+                                if (strToLower($sheetWp) == 'short bow' || strToLower($sheetWp) == 'long bow') {
+                                    if (strpos(strToLower($weapon['name']), 'composite') !== false) {
+                                        continue;
+                                    }
+                                }
+
                                 if (strpos($weapon['name'], $sheetWp) !== false) {
                                     $proficient = true;
                                     $profBadge = '(P)';
@@ -61,9 +73,7 @@
                                     }
 
                                     if ($slots > $minSlots && in_array('fighter', $classNameArray)) {
-                                        if (strpos(strtolower($weapon['name']), 'bow') !== false && $slots < 3) {
-                                            $specialized = false;
-                                        } else {
+                                        if (!(strpos(strtolower($weapon['name']), 'bow') !== false && $slots < 3)) {
                                             $specialized = true;
                                             $profBadge = '(S)';
                                         }
@@ -159,57 +169,118 @@
                             $attackRate = getSpecialistAttackRate($classArray,$weapon);
                         }
             ?>
-                        <table class="weapons-table avoid-page-break">
-                            <tr>
-                                <th colspan="2" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?> <?= $profBadge ?></th>
-                                <th colspan="2">THAC0</th>
-                                <th colspan="2">Damage</th>
-                                <th class="no-border"></th>
-                                <th colspan="3">Range</th>
-                                <th colspan="2" class="no-border"></th>
-                            </tr>
-                            <tr>
-                                <th># AT</th>
-                                <th>ROF</th>
-                                <th>Melee</th>
-                                <th>Ranged</th>
-                                <th>S / M</th>
-                                <th>L</th>
-                                <th>Dmg Type</th>
-                                <th>S</th>
-                                <th>M (-2)</th>
-                                <th>L (-5)</th>
-                                <th>Size</th>
-                                <th>Speed</th>
-                            </tr>
-                            <tr>
+                        <div class="avoid-page-break weapon-border">
+                            <table class="weapons-table">
+                                <tr>
+                                    <th colspan="2" class="no-border weapon-title"><?= strtoupper($weapon['name']) ?> <?= $profBadge ?></th>
+                                    <th colspan="2">THAC0</th>
+                                    <th colspan="2">Damage</th>
+                                    <th class="no-border"></th>
+                                    <th colspan="3">Range</th>
+                                    <th colspan="2" class="no-border"></th>
+                                </tr>
+                                <tr>
+                                    <th># AT</th>
+                                    <th>ROF</th>
+                                    <th>Melee</th>
+                                    <th>Ranged</th>
+                                    <th>S / M</th>
+                                    <th>L</th>
+                                    <th>Dmg Type</th>
+                                    <th>S</th>
+                                    <th>M (-2)</th>
+                                    <th>L (-5)</th>
+                                    <th>Size</th>
+                                    <th>Speed</th>
+                                </tr>
+                                <tr>
 
-                                <td><?= $attackRate ?></td>
-                                <td><?= $weapon['rof'] ?></td>
-                                <td><?= $thac0Melee ?></td>
-                                <td><?= $thac0Ranged ?></td>
-                                <td><?= getFormattedDamage($weapon['damageSM'], $dmgAdj) ?></td>
-                                <td><?= getFormattedDamage($weapon['damageL'], $dmgAdj) ?></td>
-                                <td><?= $weapon['damageType'] ?></td>
-                                <td><?= $weapon['rangeS'] ?></td>
-                                <td><?= $weapon['rangeM'] ?></td>
-                                <td><?= $weapon['rangeL'] ?></td>
-                                <td><?= $weapon['size'] ?></td>
-                                <td><?= $weapon['speed'] ?></td>
-                            </tr>
-                            <tr>
-                                <td colspan="13" class="weapon-notes">
-                                    
-                                    <?php
-                                        $weaponNotesField = get_sub_field('notes');
-                                        echo "THAC0 Mods: $thac0Mods";
-                                        if ($dmgAdjMods != '') echo " / Dmg Mods: $dmgAdjMods";
-                                        if ($weaponNotes != '') echo " / $weaponNotes";
-                                        if ($weaponNotesField != '') echo " / Notes: $weaponNotesField";
-                                    ?>
-                                </td>
-                            </tr>
-                        </table>
+                                    <td><?= $attackRate ?></td>
+                                    <td><?= $weapon['rof'] ?></td>
+                                    <td><?= $thac0Melee ?></td>
+                                    <td><?= $thac0Ranged ?></td>
+                                    <td><?= getFormattedDamage($weapon['damageSM'], $dmgAdj) ?></td>
+                                    <td><?= getFormattedDamage($weapon['damageL'], $dmgAdj) ?></td>
+                                    <td><?= $weapon['damageType'] ?></td>
+                                    <td><?= $weapon['rangeS'] ?></td>
+                                    <td><?= $weapon['rangeM'] ?></td>
+                                    <td><?= $weapon['rangeL'] ?></td>
+                                    <td><?= $weapon['size'] ?></td>
+                                    <td><?= $weapon['speed'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="13" class="weapon-notes">
+                                        
+                                        <?php
+                                            $weaponNotesField = get_sub_field('notes');
+                                            echo "THAC0 Mods: $thac0Mods";
+                                            if ($dmgAdjMods != '') echo " / Dmg Mods: $dmgAdjMods";
+                                            if ($weaponNotes != '') echo " / $weaponNotes";
+                                            if ($weaponNotesField != '') echo " / Notes: $weaponNotesField";
+                                        ?>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <?php
+                                if ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both') {
+                            ?>
+                                    <div class="proficiences-and-languages-headers"><?= strtoupper($weapon['name']) ?> MELEE ATTACK TABLE</div>
+                                    <table class="weapon-roll-table">
+                                        <tr>
+                                            <td>Roll</td>
+                                            <?php
+                                                for ($x = -5; $x <= 25; $x++) {
+                                            ?>
+                                            <td><?= $x ?></td>
+                                            <?php
+                                                }
+                                            ?>
+                                        </tr>
+                                        <tr>
+                                            <td>AC Hit</td>
+                                            <?php
+                                                for ($x = -5; $x <= 25; $x++) {
+                                            ?>
+                                            <td><?= $thac0Melee - $x ?></td>
+                                            <?php
+                                                }
+                                            ?>
+                                        </tr>
+                                    </table>
+                            <?php
+                                }
+                            ?>
+                            <?php
+                                if ($weapon['attackType'] == "ranged" || $weapon['attackType'] == "both") {
+                            ?>
+                                    <div class="proficiences-and-languages-headers"><?= strtoupper($weapon['name']) ?> RANGED ATTACK TABLE</div>
+                                    <table class="weapon-roll-table">
+                                        <tr>
+                                            <td>Roll</td>
+                                            <?php
+                                                for ($x = -5; $x <= 25; $x++) {
+                                            ?>
+                                            <td><?= $x ?></td>
+                                            <?php
+                                                }
+                                            ?>
+                                        </tr>
+                                        <tr>
+                                            <td>AC Hit</td>
+                                            <?php
+                                                for ($x = -5; $x <= 25; $x++) {
+                                            ?>
+                                            <td><?= $thac0Ranged - $x ?></td>
+                                            <?php
+                                                }
+                                            ?>
+                                        </tr>
+                                    </table>
+                            <?php
+                                }
+                            ?>
+                        </div>
 <?php
                     }
                 }
