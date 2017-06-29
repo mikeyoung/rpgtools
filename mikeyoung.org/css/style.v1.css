@@ -88,11 +88,12 @@ h3 {
 
 .character-image {
     float: left;
-    max-width: 44%;
+    max-width: 40%;
     max-height: 20em;
     border: 1px solid #000;
     margin: .2em;
     height: auto;
+	filter: grayscale(100%);
 }
 
 @media screen and (min-width: 55em) {
