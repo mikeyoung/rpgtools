@@ -485,6 +485,12 @@ th.no-border {
 	margin-bottom: 1em;
 }
 
+.character-list-thumb {
+	width: 100px;
+	max-height: 125px;
+	filter: grayscale(100%);
+}
+
 [v-cloak] {
 	display: none;
 }

@@ -9,7 +9,12 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		
+		<?php
+			if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+				echo '<a href="'.get_permalink().'"><img class="character-list-thumb" src="'.get_the_post_thumbnail_url().'" /></a>';
+			}
+		?>
+
 		<?php $widont = remove_filter( 'the_title', 'widont' ); ?>
 			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 		<?php if ( $widont ) add_filter( 'the_title', 'widont' ); ?>
