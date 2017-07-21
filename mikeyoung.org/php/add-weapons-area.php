@@ -44,7 +44,7 @@
                         $nonProficientNote = '';
                         $attackRate = 1;
 
-                        if( have_rows('weapon_proficiencies') ):
+                        if( have_rows('weapon_proficiencies') && $usingProficiencies ):
                             while ( have_rows('weapon_proficiencies') ) : the_row();
                                 $sheetWp = get_sub_field('weapon');
 
@@ -86,7 +86,7 @@
 
                         $thac0Mods = $thac0Mods."baseTHAC0($baseThac0) ";
 
-                        if ($slots == 0) {
+                        if ($slots == 0 && $usingProficiencies) {
                             if ($isWizard) {
                                 $nonProficientNote = 'wizardNonProficiency(+5) ';
                                 $nonProficientMod = -5;
@@ -121,7 +121,7 @@
                             }
 
                             // apply proficiencies
-                            if ($specialized) {
+                            if ($specialized && $usingProficiencies) {
                                 $thac0Mods = $thac0Mods.'specialized(-1) ';
                                 $thac0Melee--;
                             }
@@ -135,7 +135,7 @@
                             }
 
                             // apply proficiencies
-                            if ($specialized && (strpos(strtolower($weapon['name']), 'bow') !== false)) {
+                            if ($specialized && (strpos(strtolower($weapon['name']), 'bow') !== false) && $usingProficiencies) {
                                 $weaponNotes = $weaponNotes.'Specialization: +2 to hit at Point Blank Range. ';
                             }
                         }
@@ -148,7 +148,7 @@
                             }
                             
 
-                            if ($specialized && ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both')) {
+                            if ($specialized && ($weapon['attackType'] == 'melee' || $weapon['attackType'] == 'both') && $usingProficiencies) {
                                 $dmgAdj = $dmgAdj +2;
                                 $dmgAdjMods = $dmgAdjMods."specialized(+2) ";
                             }
@@ -165,7 +165,7 @@
                             $thac0Mods = $thac0Mods.'halflingThrownWeapon(-1) ';
                         }
 
-                        if ($specialized) {
+                        if ($specialized && $usingProficiencies) {
                             $attackRate = getSpecialistAttackRate($classArray,$weapon);
                         }
             ?>
