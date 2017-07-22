@@ -39,11 +39,7 @@ get_header(); ?>
 		$weight = 0;
 		$baseMeleeAttacks = getBaseAttackRate($classNameArray,$isWarrior,$classArray);
 		$racialMagicSaveBonus = getRacialMagicSaveBonus($race,$constitution);
-		$usingProficiencies = false;
-
-		if (get_field('using_proficiencies') == 1) {
-			$usingProficiencies = true;
-		}
+		$usingProficiencies = get_field('using_proficiencies');
 
 		if (get_field('custom_height_and_weight')) {
 			$height = get_field('height');
