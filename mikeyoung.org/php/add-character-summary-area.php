@@ -10,6 +10,7 @@
     <?php printAttribute('Weight',$weight) ?>
     <?php printAttribute('Base THAC0',$baseThac0) ?>
     <?php printAttribute('Move',$baseMovement.' ('.($baseMovement*10).'\'/'.($baseMovement*30).'\')') ?>
+    <?php printAttribute('Deity',get_field('deity')); ?>
     <?php printAttribute('Melee Attacks',$baseMeleeAttacks) ?>
 </div>
 <img class="character-image" src='<?= the_post_thumbnail_url('large'); ?>' />
